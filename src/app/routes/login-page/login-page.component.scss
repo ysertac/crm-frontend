@@ -1,0 +1,32 @@
+.login-text {
+  color: #fff;
+  font-family: "inter", sans-serif;
+  font-weight: 400;
+  font-size: 1.25rem;
+  line-height: 1.5rem;
+  box-shadow: #f38022;
+  text-shadow: #f38022;
+}
+
+.login-button {
+  background-color: #f38022;
+  width: 6rem;
+  height: 2.5rem;
+  color: #fff;
+  font-weight: 400;
+  font-size: 1.25rem;
+  line-height: 1.5rem;
+}
+
+.eye-icon {
+  width: 2rem;
+  cursor: pointer;
+}
+
+.main {
+  background-color: #242342;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
