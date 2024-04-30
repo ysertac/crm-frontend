@@ -1,0 +1,16 @@
+.navbar-section {
+  width: 10rem;
+  height: 8rem;
+  background-color: #F38022;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 0.062rem solid black;
+  cursor: pointer;
+  p {
+    width: 2.5rem;
+    height: 1.5rem;
+    font-family: 'Inter', sans-serif;
+  }
+}
