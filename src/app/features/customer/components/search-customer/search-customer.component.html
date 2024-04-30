@@ -92,14 +92,20 @@
   <div
     class="search-result border border-dark d-flex flex-column justify-content-around align-items-center"
   >
-    <app-table [headers]="headers" headerClasses="table-header" class="search-result-table">
+    <app-table
+      [headers]="headers"
+      headerClasses="table-header"
+      class="search-result-table"
+    >
       <tr class="table-primary" *ngFor="let customer of customers">
-        <td>{{customer.customerId}}</td>
-        <td>{{customer.firstName}}</td>
-        <td>{{customer.middleName}}</td>
-        <td>{{customer.lastName}}</td>
-        <td>{{customer.role}}</td>
-        <td>{{customer.id}}</td>
+        <td>
+         <a [routerLink]="['/home/customer/'+customer.customerId]">{{ customer.customerId }}</a>
+        </td>
+        <td>{{ customer.firstName }}</td>
+        <td>{{ customer.middleName }}</td>
+        <td>{{ customer.lastName }}</td>
+        <td>{{ customer.role }}</td>
+        <td>{{ customer.id }}</td>
       </tr>
     </app-table>
   </div>
