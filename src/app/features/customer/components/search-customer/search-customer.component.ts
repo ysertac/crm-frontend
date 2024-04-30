@@ -3,19 +3,20 @@ import { InputComponent } from '../../../../shared/components/input/input.compon
 import { ButtonComponent } from '../../../../shared/components/button/button.component';
 import { TableComponent } from '../../../../shared/components/table/table.component';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'app-search-customer-page',
+  selector: 'app-search-customer',
   standalone: true,
   templateUrl: './search-customer.component.html',
   styleUrl: './search-customer.component.scss',
-  imports: [InputComponent, ButtonComponent,TableComponent,CommonModule],
+  imports: [InputComponent, ButtonComponent,TableComponent,CommonModule, RouterModule],
 })
-export class SearchCustomerPageComponent {
+export class SearchCustomerComponent {
   customers :any[] = [
     {
         "id": "987654321",
-        "customerId": "C123456789",
+        "customerId": "1",
         "accountNumber": "ACC987654",
         "phoneNumber": "5551234567",
         "firstName": "John",
