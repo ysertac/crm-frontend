@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { InputComponent } from '../../../shared/components/input/input.component';
-import { ButtonComponent } from '../../../shared/components/button/button.component';
+import { InputComponent } from '../../../../shared/components/input/input.component';
+import { ButtonComponent } from '../../../../shared/components/button/button.component';
+
 
 @Component({
   selector: 'app-login-form',

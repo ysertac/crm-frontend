@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SearchCustomerPageComponent } from './search-customer-page.component';
+import { SearchCustomerPageComponent } from './search-customer.component';
 
 describe('SearchCustomerPageComponent', () => {
   let component: SearchCustomerPageComponent;
