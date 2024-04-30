@@ -1,0 +1,10 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th [class]="headerClasses" *ngFor="let head of headers" scope="col">{{head}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-content></ng-content>
+    </tbody>
+</table>
