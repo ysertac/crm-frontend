@@ -1,0 +1,52 @@
+<!-- <app-input labelName="E-mail" inputType="email"></app-input>
+<app-input labelName="Password" inputType="password"></app-input> -->
+<div class="main">
+  <div class="container d-flex justify-content-center align-items-center">
+    <div class="border-end w-50">
+      <img src="../../../assets/login-screen/crmlogo.png" class="w-100" />
+    </div>
+    <div class="w-50 d-flex flex-column">
+      <p class="login-text ms-5">{{ title }}</p>
+      <form class="d-flex flex-column align-items-start w-75 mx-auto">
+        <app-input
+          inputId="email"
+          class="w-75 mt-4"
+          type="email"
+          placeholder=""
+          inputClasses="form-control"
+          labelClasses="login-screen-label text-white mb-2 fw-bolder text-xl"
+          [required]="true"
+          >E-mail</app-input
+        >
+        <app-input
+          inputId="password"
+          class="w-75 mt-4"
+          type="password"
+          placeholder=""
+          inputClasses="form-control"
+          labelClasses="login-screen-label text-white mb-2 fw-bolder text-xl"
+          [required]="true"
+        >
+          Password
+        </app-input>
+        <app-input
+          inputId="rememberMe"
+          class="form-check mt-3"
+          type="checkbox"
+          inputClasses="form-check-input"
+          labelClasses="login-screen-label form-check-label text-white"
+          autocomplete="off"
+        >
+          Remember me!
+        </app-input>
+        <app-button
+          type="submit"
+          buttonClasses="btn login-submit-button mt-3 fw-medium"
+          class="d-flex justify-content-center w-75"
+          >
+          Login
+        </app-button>
+      </form>
+    </div>
+  </div>
+</div>

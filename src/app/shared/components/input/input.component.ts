@@ -10,7 +10,6 @@ type InputType = 'text' | 'email' | 'number' | 'password' | 'checkbox';
   styleUrl: './input.component.scss',
 })
 export class InputComponent {
-  @Input() labelName: string = '';
   @Input() type: InputType = 'text';
   @Input() placeholder: string = '';
   @Input() labelClasses: string = '';

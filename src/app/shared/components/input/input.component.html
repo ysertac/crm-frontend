@@ -1,4 +1,4 @@
-<label for="{{ inputId }}" [class]="labelClasses">{{ labelName }}</label>
+<label for="{{ inputId }}" [class]="labelClasses"><ng-content></ng-content></label>
 <span class="required" *ngIf="required"> *</span>
 <input
   [type]="type"
