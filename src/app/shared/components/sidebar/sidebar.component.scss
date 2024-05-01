@@ -1,10 +1,10 @@
 .main-layout-sidebar {
-  height: 85%;
+  height: 90%;
 }
 .sidebar-section {
   width: 10rem;
   height: 20%;
-  background-color: #F38022;
+  background-color: #f38022;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -14,6 +14,6 @@
   p {
     width: 2.5rem;
     height: 1.5rem;
-    font-family: 'Inter', sans-serif;
+    font-family: "Inter", sans-serif;
   }
 }
