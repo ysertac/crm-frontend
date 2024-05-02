@@ -8,6 +8,7 @@ import { CustomerAccountComponent } from './features/customer/components/custome
 import { CustomerAddressComponent } from './features/customer/components/customer-address/customer-address.component';
 import { ContactMediumComponent } from './features/customer/components/contact-medium/contact-medium.component';
 import { CustomerInfoUpdateFormComponent } from './features/customer/components/customer-info-update-form/customer-info-update-form.component';
+import { ContactMediumUpdateComponent } from './features/customer/components/contact-medium-update/contact-medium-update.component';
 
 export const routes: Routes = [
   {
@@ -51,6 +52,10 @@ export const routes: Routes = [
           {
             path: 'contact-medium',
             component: ContactMediumComponent,
+          },
+          {
+            path: 'contact-medium/update',
+            component: ContactMediumUpdateComponent,
           },
         ],
       },
