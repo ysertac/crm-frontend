@@ -1,0 +1,43 @@
+.p-address{
+    font-family: "inter", sans-serif;
+    color: #F38022;
+    font-size: 1.3rem;
+    font-weight: 900;
+}
+
+.box{
+    background-color: #FFCDA4;
+    border: 0.05rem solid;
+    margin: 1.5rem;
+    height: 50vh;
+    overflow-y: auto;
+}
+
+.p-primary{
+    height: 5%;
+    p{
+        font-family: "inter", sans-serif;
+        color: #B1B1B1;
+        font-size: 0.75rem;
+    } 
+}
+.address-icons{
+    height: 5%;
+}
+
+.content{
+    padding-top: 14vh;
+}
+
+.b-add-address{
+    background-color: #F38022;
+    color: #FFFFFF;
+    font-family: "inter", sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    width: 17.8vw;
+    height: 10vh ;
+    //width: 21.4rem;
+    //height: 4.6rem;
+}
+
