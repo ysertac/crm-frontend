@@ -13,6 +13,7 @@ import { RouterModule } from '@angular/router';
   imports: [InputComponent, ButtonComponent,TableComponent,CommonModule, RouterModule],
 })
 export class SearchCustomerComponent {
+  customerCount : number = 0;
   customers :any[] = [
     {
         "id": "987654321",
