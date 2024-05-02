@@ -6,6 +6,7 @@
     line-height: 1.5rem;
     box-shadow: #f38022;
     text-shadow: #f38022;
+      
   }
   
   .login-button {
@@ -29,4 +30,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+
+  img {
+    width: 100%;
+  }
+
+  @media screen and (max-width: 1750px) {
+    img {
+      width: 75%;
+    }
   }

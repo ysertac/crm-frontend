@@ -3,5 +3,11 @@
 }
 
 .content {
-  height: 90vh;
+  height: 90.65vh;
+}
+
+@media screen and (max-width: 1750px) {
+  .content {
+    height: 87.8vh;
+  }
 }
