@@ -1,9 +1,20 @@
 <div class="d-flex justify-content-center customer-layout">
   <ul class="list-group list-group-horizontal w-100">
-    <li [routerLink]="['info']"  class="list-group-item w-25 text-center">Customer Info</li>
-    <li [routerLink]="['account']"  class="list-group-item w-25 text-center">Customer Account</li>
-    <li [routerLink]="['address']"  class="list-group-item w-25 text-center">Address</li>
-    <li [routerLink]="['contact-medium']"  class="list-group-item w-25 text-center">Contact Medium</li>
+    <li [routerLink]="['info']" class="list-group-item w-25 text-center">
+      Customer Info
+    </li>
+    <li [routerLink]="['account']" class="list-group-item w-25 text-center">
+      Customer Account
+    </li>
+    <li [routerLink]="['address']" class="list-group-item w-25 text-center">
+      Address
+    </li>
+    <li
+      [routerLink]="['contact-medium']"
+      class="list-group-item w-25 text-center"
+    >
+      Contact Medium
+    </li>
   </ul>
 </div>
 <router-outlet></router-outlet>

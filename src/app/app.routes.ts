@@ -7,6 +7,7 @@ import { CustomerInfoComponent } from './features/customer/components/customer-i
 import { CustomerAccountComponent } from './features/customer/components/customer-account/customer-account.component';
 import { CustomerAddressComponent } from './features/customer/components/customer-address/customer-address.component';
 import { ContactMediumComponent } from './features/customer/components/contact-medium/contact-medium.component';
+import { ContactMediumUpdateComponent } from './features/customer/components/contact-medium-update/contact-medium-update.component';
 
 export const routes: Routes = [
   {
@@ -20,7 +21,7 @@ export const routes: Routes = [
   },
   {
     path: 'home',
-    pathMatch:'prefix',
+    pathMatch: 'prefix',
     component: MainLayoutComponent,
     children: [
       {
@@ -32,23 +33,33 @@ export const routes: Routes = [
         component: CustomerLayoutComponent,
         children: [
           {
-            path:'info',
-            component:CustomerInfoComponent
+            path: 'info',
+            component: CustomerInfoComponent,
           },
           {
-            path:'account',
-            component:CustomerAccountComponent
+            path: 'account',
+            component: CustomerAccountComponent,
           },
           {
-            path:'address',
-            component:CustomerAddressComponent
+            path: 'address',
+            component: CustomerAddressComponent,
           },
           {
-            path:'contact-medium',
-            component:ContactMediumComponent
-          }
-        ]
-      }
-    ]
+            path: 'contact-medium',
+            component: ContactMediumComponent,
+            //children: [
+            //{
+            //path: 'contact-medium-update',
+            //component: ContactMediumUpdateComponent,
+            //},
+            //],
+          },
+          {
+            path: 'contact-medium/update',
+            component: ContactMediumUpdateComponent,
+          },
+        ],
+      },
+    ],
   },
 ];

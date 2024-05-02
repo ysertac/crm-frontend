@@ -1,0 +1,35 @@
+.contact-medium-container {
+  padding: 1.25rem;
+}
+
+.contact-medium-title {
+  color: #f38022;
+  display: flex;
+  font-weight: bold;
+  align-items: center;
+  padding: 1rem;
+}
+
+.edit-icon {
+  margin-left: 0.5rem;
+  cursor: pointer;
+}
+
+.info-item {
+  margin-bottom: 0.625rem;
+  margin-left: 3rem;
+  font-size: 1.1rem;
+}
+
+.info-item span:first-child {
+  font-weight: bold;
+  margin-right: 0.625rem;
+  display: block;
+  padding: 1rem;
+}
+
+.title-container {
+  display: flex;
+  margin-left: 1rem;
+  align-items: center;
+}
