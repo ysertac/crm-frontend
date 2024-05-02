@@ -95,8 +95,8 @@
         </app-input>
       </div>
     </div>
-    <div class="buttons d-flex w-75 mx-auto  justify-content-between ">
-      <app-button type="submit" buttonClasses="create-customer-button" class="">Cancel</app-button>
+    <div class="d-flex w-75 mx-auto  justify-content-between ">
+      <app-button [routerLink]="['/home/search-customer']" type="submit" buttonClasses="create-customer-button" class="">Cancel</app-button>
       <app-button [routerLink]="['/home/create-address']" type="submit" buttonClasses="create-customer-button" class="">Next</app-button>
     </div>
 </fieldset>
