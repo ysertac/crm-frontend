@@ -7,7 +7,7 @@ import { CustomerInfoComponent } from './features/customer/components/customer-i
 import { CustomerAccountComponent } from './features/customer/components/customer-account/customer-account.component';
 import { CustomerAddressComponent } from './features/customer/components/customer-address/customer-address.component';
 import { ContactMediumComponent } from './features/customer/components/contact-medium/contact-medium.component';
-import { ContactMediumUpdateComponent } from './features/customer/components/contact-medium-update/contact-medium-update.component';
+import { CustomerInfoUpdateFormComponent } from './features/customer/components/customer-info-update-form/customer-info-update-form.component';
 
 export const routes: Routes = [
   {
@@ -37,6 +37,10 @@ export const routes: Routes = [
             component: CustomerInfoComponent,
           },
           {
+            path: 'info/update',
+            component: CustomerInfoUpdateFormComponent,
+          },
+          {
             path: 'account',
             component: CustomerAccountComponent,
           },
@@ -47,16 +51,6 @@ export const routes: Routes = [
           {
             path: 'contact-medium',
             component: ContactMediumComponent,
-            //children: [
-            //{
-            //path: 'contact-medium-update',
-            //component: ContactMediumUpdateComponent,
-            //},
-            //],
-          },
-          {
-            path: 'contact-medium/update',
-            component: ContactMediumUpdateComponent,
           },
         ],
       },

@@ -8,8 +8,23 @@
   height: 1.5rem;
 }
 
-.required {
-  color: #f38022;
+.customer-info-update-input {
+  width: 60%;
+  background-color: #ffcda4;
+  border: 1px solid black;
+}
+
+.customer-info-update-column {
+  .required {
+    color: #000;
+    font-weight: 900;
+  }
+}
+
+.login-form {
+  .required {
+    color: #f38022;
+  }
 }
 
 .contact-medium-update-input {
