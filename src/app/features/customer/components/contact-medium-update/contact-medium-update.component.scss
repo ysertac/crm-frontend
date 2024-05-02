@@ -1,0 +1,57 @@
+// contact-medium-update.component.scss
+
+.contact-medium-update-container {
+  padding: 1.25rem;
+}
+
+.contact-medium-update-title {
+  color: #f38022;
+  display: flex;
+  font-weight: bold;
+  align-items: center;
+  padding: 1rem;
+}
+
+.edit-icon {
+  margin-left: 0.5rem;
+  cursor: pointer;
+}
+
+.form-container {
+  margin-top: 1rem;
+}
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.form-group {
+  flex: 0 0 48%; /* İki alanı yan yana yerleştir */
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.mobile-phone-input {
+  display: flex;
+  align-items: center;
+  color: #f38022;
+}
+
+.area-code-select {
+  width: 70px;
+}
+
+.phone-input {
+  flex: 1;
+  margin-left: 10px; /* Dropdown'dan sonra bir boşluk bırak */
+}
+
+.buttons {
+  margin-top: 5rem; // butonlara yukarıdan boşluk ekler
+}

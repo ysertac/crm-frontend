@@ -1,5 +1,7 @@
-<label for="{{ inputId }}" [class]="labelClasses"><ng-content></ng-content></label>
-<span class="required" *ngIf="required"> *</span>
+<label for="{{ inputId }}" [class]="labelClasses"
+  ><ng-content></ng-content>
+  <span class="required" *ngIf="required"> *</span>
+</label>
 <input
   [type]="type"
   [placeholder]="placeholder"

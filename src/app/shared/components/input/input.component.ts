@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
-type InputType = 'text' | 'email' | 'number' | 'password' | 'checkbox';
+type InputType = 'text' | 'email' | 'number' | 'password' | 'checkbox' | 'radio';
 
 @Component({
   selector: 'app-input',
