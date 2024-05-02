@@ -10,6 +10,8 @@ import { ContactMediumComponent } from './features/customer/components/contact-m
 import { CustomerInfoUpdateFormComponent } from './features/customer/components/customer-info-update-form/customer-info-update-form.component';
 import { ContactMediumUpdateComponent } from './features/customer/components/contact-medium-update/contact-medium-update.component';
 import { ContactMediumCreateComponent } from './features/customer/components/contact-medium-create/contact-medium-create.component';
+import { CustomerAddressCreateComponent } from './features/customer/components/customer-address-create/customer-address-create.component';
+import { CreateCustomerFormComponent } from './features/customer/components/create-customer-form/create-customer-form.component';
 
 export const routes: Routes = [
   {
@@ -36,8 +38,16 @@ export const routes: Routes = [
         component: SearchCustomerComponent,
       },
       {
+        path: 'create-customer',
+        component: CreateCustomerFormComponent
+      },
+      {
         path: 'contact-medium-create',
         component: ContactMediumCreateComponent,
+      },
+      {
+        path: 'create-address',
+        component: CustomerAddressCreateComponent,
       },
       {
         path: 'customer/:id',
