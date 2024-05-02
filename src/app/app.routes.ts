@@ -9,7 +9,7 @@ import { CustomerAddressComponent } from './features/customer/components/custome
 import { ContactMediumComponent } from './features/customer/components/contact-medium/contact-medium.component';
 import { CustomerInfoUpdateFormComponent } from './features/customer/components/customer-info-update-form/customer-info-update-form.component';
 import { ContactMediumUpdateComponent } from './features/customer/components/contact-medium-update/contact-medium-update.component';
-import { CustomerAddressCreateComponent } from './features/customer/components/customer-address-create/customer-address-create.component';
+import { ContactMediumCreateComponent } from './features/customer/components/contact-medium-create/contact-medium-create.component';
 
 export const routes: Routes = [
   {
@@ -36,17 +36,17 @@ export const routes: Routes = [
         component: SearchCustomerComponent,
       },
       {
-        path: 'create-address',
-        component: CustomerAddressCreateComponent,
+        path: 'contact-medium-create',
+        component: ContactMediumCreateComponent,
       },
       {
         path: 'customer/:id',
         component: CustomerLayoutComponent,
         children: [
           {
-            path: "",
-            pathMatch: "full",
-            redirectTo: "info"
+            path: '',
+            pathMatch: 'full',
+            redirectTo: 'info',
           },
           {
             path: 'info',

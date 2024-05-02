@@ -13,13 +13,21 @@
   background: #f38022;
 }
 
-.contact-medium-update-button {
+.contact-medium-update-button,
+.contact-medium-create-button {
   width: 6rem;
   height: 2.2rem;
   background: #f38022;
 }
 
 .customer-account-button {
+  height: 2.2rem;
+  background: #f38022;
+}
+
+.create-customer-button {
+  margin-left: 2rem;
+  width: 12rem;
   height: 2.2rem;
   background: #f38022;
 }
