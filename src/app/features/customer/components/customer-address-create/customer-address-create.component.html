@@ -1,5 +1,5 @@
-<div class="create-customer border border-dark">
-    <p class="ms-2 mt-2">Create Customer</p>
+<fieldset class="create-customer border border-dark">
+  <legend class="ms-4 px-2">Create Customer:</legend>
     <p class="ms-4 mt-4 p-address">Address Info</p>
     <div class="row">
         <div class="col-6">
@@ -12,7 +12,7 @@
         <app-button [routerLink]="['/home/create-customer']" type="submit" buttonClasses="create-customer-button" class="">Previous</app-button>
         <app-button [routerLink]="['/home/contact-medium-create']" type="submit" buttonClasses="create-customer-button" class="">Next</app-button>
     </div>
-</div>
+</fieldset>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-xl">
@@ -88,4 +88,4 @@
 </div>
 
 
-  
+

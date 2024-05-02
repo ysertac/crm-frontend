@@ -1,9 +1,11 @@
-<div
+<fieldset
   class="search-customer d-flex justify-content-around align-items-center border border-dark"
 >
-  <div
+<legend class="ms-4 px-2">Search Customer:</legend>
+  <fieldset
     class="search-filter border border-dark d-flex flex-column justify-content-around align-items-center"
   >
+  <legend class="ms-4 px-2">Search Filter:</legend>
     <app-input
       inputId="search-customer-id-number"
       class="d-flex flex-column search-customer-input"
@@ -88,14 +90,15 @@
         >Search</app-button
       >
     </div>
-  </div>
-  <div
+  </fieldset>
+  <fieldset
     class="search-result border border-dark d-flex flex-column justify-content-around align-items-center"
   >
+  <legend class="ms-4 px-2">Search Result:</legend>
     <div class="d-flex align-items-center" *ngIf="customerCount < 1; else notFoundCustomer">
       <p class="customer-not-found-header">No customer found! Would you like to create the customer?</p>
       <app-button [routerLink]="['/home/create-customer/']" type="button" buttonClasses="create-customer-button">Create Customer</app-button>
-      
+
     </div>
     <ng-template #notFoundCustomer>
       <app-table
@@ -117,5 +120,5 @@
         </tr>
       </app-table>
     </ng-template>
-  </div>
-</div>
+  </fieldset>
+</fieldset>
