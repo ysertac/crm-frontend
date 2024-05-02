@@ -10,19 +10,19 @@ import { RouterLink } from '@angular/router';
   styleUrl: './contact-medium.component.scss',
 })
 export class ContactMediumComponent {
-  customers: any[] = [
+  customer =
     {
       id: '987654321',
       customerId: '1',
       email: 'melsa@gmail.com',
       accountNumber: 'ACC987654',
       mobilePhone: '5551234567',
+      homePhone: '5551234567',
       firstName: 'John',
       middleName: 'abc',
       role: 'Customer',
       lastName: 'Doe',
       fax: '887666788',
       orderName: 'Product A',
-    },
-  ];
+    }
 }

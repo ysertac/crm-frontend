@@ -4,16 +4,21 @@
 .sidebar-section {
   width: 10rem;
   height: 20%;
-  background-color: #f38022;
+  background: rgba(250, 161, 88, 1);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   border: 0.062rem solid black;
   cursor: pointer;
+
   p {
     width: 2.5rem;
     height: 1.5rem;
     font-family: "Inter", sans-serif;
   }
+}
+
+.selected {
+  background: rgba(243, 128, 34, 1);
 }

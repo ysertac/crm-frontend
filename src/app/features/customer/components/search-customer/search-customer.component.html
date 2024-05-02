@@ -97,9 +97,9 @@
       headerClasses="table-header"
       class="search-result-table"
     >
-      <tr class="table-primary" *ngFor="let customer of customers">
-        <td>
-         <a [routerLink]="['/home/customer/'+customer.customerId]">{{ customer.customerId }}</a>
+      <tr *ngFor="let customer of customers">
+        <td >
+         <a [routerLink]="['/home/customer/' + customer.customerId]">{{ customer.customerId }}</a>
         </td>
         <td>{{ customer.firstName }}</td>
         <td>{{ customer.middleName }}</td>

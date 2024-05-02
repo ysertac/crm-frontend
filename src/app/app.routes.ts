@@ -26,6 +26,11 @@ export const routes: Routes = [
     component: MainLayoutComponent,
     children: [
       {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'search-customer',
+      },
+      {
         path: 'search-customer',
         component: SearchCustomerComponent,
       },
@@ -33,6 +38,11 @@ export const routes: Routes = [
         path: 'customer/:id',
         component: CustomerLayoutComponent,
         children: [
+          {
+            path: "",
+            pathMatch: "full",
+            redirectTo: "info"
+          },
           {
             path: 'info',
             component: CustomerInfoComponent,
