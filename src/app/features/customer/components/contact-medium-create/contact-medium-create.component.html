@@ -1,0 +1,79 @@
+<div
+  class="contact-medium-create-container d-flex flex-column justify-content-around align-items-center border border-dark"
+>
+  <div class="title-container">
+    <h2 class="contact-medium-create-title">Contact Medium</h2>
+  </div>
+  <div class="form-container w-100">
+    <div class="form-row mt-5">
+      <div class="form-group">
+        <app-input
+          inputId="contact-medium-create-email"
+          class="d-flex align-items-center"
+          type="email"
+          placeholder=""
+          inputClasses="form-control contact-medium-create-input w-50"
+          labelClasses="login-screen-label w-25 text-end me-4 text-dark mb-2 fw-bolder text-xl"
+          [required]="true"
+          >Email</app-input
+        >
+      </div>
+      <div class="form-group">
+        <app-input
+          inputId="contact-medium-create-home-phone"
+          class="d-flex align-items-center"
+          type="number"
+          placeholder=""
+          inputClasses="form-control contact-medium-create-input w-50"
+          labelClasses="login-screen-label w-25 text-end me-4 text-dark mb-2 fw-bolder text-xl"
+          >Home Phone</app-input
+        >
+      </div>
+    </div>
+    <div class="form-row mt-5">
+      <div class="form-group">
+        <app-input
+          inputId="contact-medium-create-mobile-phone"
+          class="d-flex align-items-center"
+          type="number"
+          placeholder=""
+          inputClasses="form-control contact-medium-create-input w-50"
+          labelClasses="login-screen-label w-25 text-end me-4 text-dark mb-2 fw-bolder text-xl"
+          [required]="true"
+          >Mobile Phone</app-input
+        >
+      </div>
+      <div class="form-group">
+        <app-input
+          inputId="contact-medium-create-fax"
+          class="d-flex align-items-center"
+          type="number"
+          placeholder=""
+          inputClasses="form-control contact-medium-create-input w-50"
+          labelClasses="login-screen-label w-25 text-end me-4 text-dark mb-2 fw-bolder text-xl"
+          >Fax</app-input
+        >
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="buttons d-flex align-items-center flex-grow-1">
+        <app-button
+          type="submit"
+          buttonClasses="contact-medium-create-button fw-bolder"
+          class="d-flex align-items-center -center w-50"
+          >Previous</app-button
+        >
+      </div>
+      <div
+        class="buttons d-flex align-items-center flex-grow-1 justify-content-end"
+      >
+        <app-button
+          type="submit"
+          buttonClasses="contact-medium-create-button fw-bolder"
+          class="d-flex align-items-center -center"
+          >Create</app-button
+        >
+      </div>
+    </div>
+  </div>
+</div>
