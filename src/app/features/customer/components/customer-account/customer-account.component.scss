@@ -1,0 +1,28 @@
+.customer-account-header {
+  color:  #F38022;
+  font-size: 1.5rem;
+}
+
+.customer-account-icon {
+  cursor: pointer;
+}
+
+.customer-account-table-header {
+  background-color: rgba(243, 128, 34, 0.68);
+}
+
+.customer-account-table-data {
+  background-color: #ffcda4;
+}
+
+.customer-account-sub-table-row:nth-child(odd) td {
+  background-color: #efefef;
+}
+
+.customer-account-sub-table-row:nth-child(even) td {
+  background-color: rgba(36, 35, 66, 0.15);
+}
+
+.customer-account-sub-table-header th {
+  background-color: rgba(36, 35, 66, 0.15);
+}
