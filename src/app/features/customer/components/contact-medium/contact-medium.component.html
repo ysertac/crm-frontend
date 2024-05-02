@@ -7,22 +7,22 @@
       class="edit-icon"
     />
   </div>
-  <div *ngFor="let customer of customers">
-    <div class="info-item">
-      <span>Email:</span>
-      <span>{{ customer?.email }}</span>
+  <div>
+    <div class="info-item d-flex justify-content-evenly align-items-center w-25">
+      <span class="w-50">Email:</span>
+      <span class="w-50 text-start">{{ customer.email }}</span>
     </div>
-    <div class="info-item">
-      <span>Mobile Phone:</span>
-      <span>{{ customer?.mobilePhone }}</span>
+    <div class="info-item d-flex justify-content-between align-items-center w-25">
+      <span class="w-50">Mobile Phone:</span>
+      <span class="w-50 text-start">{{ customer.mobilePhone }}</span>
     </div>
-    <div class="info-item">
-      <span>Home Phone:</span>
-      <span>{{ customer?.homePhone }}</span>
+    <div class="info-item d-flex justify-content-between align-items-center w-25">
+      <span class="w-50">Home Phone:</span>
+      <span class="w-50 text-start">{{ customer.homePhone }}</span>
     </div>
-    <div class="info-item">
-      <span>Fax:</span>
-      <span>{{ customer?.fax }}</span>
+    <div class="info-item d-flex justify-content-between align-items-center w-25">
+      <span class="w-50">Fax:</span>
+      <span class="w-50 text-start">{{ customer.fax }}</span>
     </div>
   </div>
 </div>

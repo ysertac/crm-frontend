@@ -1,4 +1,5 @@
 .search-customer {
+  background-color: #fff;
   width: 80vw;
   height: 96%;
 
@@ -24,4 +25,10 @@
 .search-result-table {
   width: 95%;
   height: 95%;
+
+  tr {
+    td {
+      background-color: #ffcea6;
+    }
+  }
 }
