@@ -1,0 +1,75 @@
+<!-- contact-medium-update.component.html -->
+
+<div class="contact-medium-update-container">
+  <div class="title-container">
+    <h2 class="contact-medium-update-title">Contact Medium Update</h2>
+  </div>
+  <div class="form-container">
+    <div class="form-row">
+      <div class="form-group">
+        <app-input
+          inputId="contact-medium-update-email"
+          class="d-flex flex-column"
+          type="email"
+          placeholder=""
+          inputClasses="form-control contact-medium-update-input"
+          labelClasses="login-screen-label text-dark mb-2 fw-bolder text-xl"
+          [required]="true"
+          >Email</app-input
+        >
+      </div>
+      <div class="form-group">
+        <app-input
+          inputId="contact-medium-update-home-phone"
+          class="d-flex flex-column"
+          type="number"
+          placeholder=""
+          inputClasses="form-control contact-medium-update-input"
+          labelClasses="login-screen-label text-dark mb-2 fw-bolder text-xl"
+          >Home Phone</app-input
+        >
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <app-input
+          inputId="contact-medium-update-mobile-phone"
+          class="d-flex flex-column"
+          type="number"
+          placeholder=""
+          inputClasses="form-control contact-medium-update-input"
+          labelClasses="login-screen-label text-dark mb-2 fw-bolder text-xl"
+          [required]="true"
+          >Mobile Phone</app-input
+        >
+      </div>
+      <div class="form-group">
+        <app-input
+          inputId="contact-medium-update-fax"
+          class="d-flex flex-column"
+          type="number"
+          placeholder=""
+          inputClasses="form-control contact-medium-update-input"
+          labelClasses="login-screen-label text-dark mb-2 fw-bolder text-xl"
+          >Fax</app-input
+        >
+      </div>
+    </div>
+    <div class="form-row justify-content-end">
+      <div class="buttons d-flex">
+        <app-button
+          type="submit"
+          buttonClasses="contact-medium-update-button fw-bolder me-4"
+          class="d-flex justify-content-center w-75"
+          >Cancel</app-button
+        >
+        <app-button
+          type="submit"
+          buttonClasses="contact-medium-update-button fw-bolder me-4"
+          class="d-flex justify-content-center w-75"
+          >Save</app-button
+        >
+      </div>
+    </div>
+  </div>
+</div>

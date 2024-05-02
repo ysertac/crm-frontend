@@ -1,1 +1,28 @@
-<p>contact-medium works!</p>
+<div class="contact-medium-container">
+  <div class="title-container">
+    <h2 class="contact-medium-title">Contact Medium</h2>
+    <img
+      [routerLink]="['update']"
+      src="../../../../../assets/images/contact-medium/edit-icon.png"
+      class="edit-icon"
+    />
+  </div>
+  <div *ngFor="let customer of customers">
+    <div class="info-item">
+      <span>Email:</span>
+      <span>{{ customer?.email }}</span>
+    </div>
+    <div class="info-item">
+      <span>Mobile Phone:</span>
+      <span>{{ customer?.mobilePhone }}</span>
+    </div>
+    <div class="info-item">
+      <span>Home Phone:</span>
+      <span>{{ customer?.homePhone }}</span>
+    </div>
+    <div class="info-item">
+      <span>Fax:</span>
+      <span>{{ customer?.fax }}</span>
+    </div>
+  </div>
+</div>
