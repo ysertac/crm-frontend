@@ -1,7 +1,7 @@
 <fieldset class="customer-create border border-dark ">
 <legend class="ms-4 px-2">Create Customer:</legend>
     <h2
-      class="d-flex justify-content-center align-items-center w-50 pt-5 fw-bolder customer-create-header"
+      class="d-flex justify-content-center align-items-center w-25 pt-5 fw-bolder customer-create-header"
     >
       Demographic Info
     </h2>
@@ -95,7 +95,7 @@
         </app-input>
       </div>
     </div>
-    <div class="d-flex w-75 mx-auto  justify-content-between ">
+    <div class="create-customer-button-section">
       <app-button [routerLink]="['/home/search-customer']" type="submit" buttonClasses="create-customer-button" class="">Cancel</app-button>
       <app-button [routerLink]="['/home/create-address']" type="submit" buttonClasses="create-customer-button" class="">Next</app-button>
     </div>
