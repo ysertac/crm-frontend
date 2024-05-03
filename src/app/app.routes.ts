@@ -12,6 +12,7 @@ import { ContactMediumUpdateComponent } from './features/customer/components/con
 import { ContactMediumCreateComponent } from './features/customer/components/contact-medium-create/contact-medium-create.component';
 import { CustomerAddressCreateComponent } from './features/customer/components/customer-address-create/customer-address-create.component';
 import { CreateCustomerFormComponent } from './features/customer/components/create-customer-form/create-customer-form.component';
+import { ProductConfigurationFormComponent } from './features/product/components/product-configuration-form/product-configuration-form.component';
 import { SalesLayoutComponent } from './shared/layouts/sales-layout/sales-layout.component';
 import { CreateBillingAccountComponent } from './features/billing/components/create-billing-account/create-billing-account.component';
 
@@ -52,10 +53,13 @@ export const routes: Routes = [
         component: CustomerAddressCreateComponent,
       },
       {
+        path: 'product-configuration',
+        component:ProductConfigurationFormComponent
+      },
+      {
         path: 'create-billing-account',
         component: CreateBillingAccountComponent,
       },
-
       {
         path: 'customer/:id',
         component: CustomerLayoutComponent,
