@@ -12,8 +12,13 @@
   height: 1.5rem;
 }
 
-.customer-info-update-input {
-  width: 60%;
+.customer-create-label {
+  width: 25%;
+}
+
+.customer-info-update-input,
+.customer-create-input {
+  width: 70%;
   background-color: #ffcda4;
   border: 1px solid black;
 }
@@ -34,4 +39,12 @@
 .contact-medium-update-input,
 .contact-medium-create-input {
   background-color: #ffcda4;
+}
+
+.address-modal-input {
+  width: 60%;
+}
+
+.address-modal-label {
+  width: 35%;
 }
