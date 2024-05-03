@@ -1,0 +1,126 @@
+<div class="billing-account-container">
+  <h2 class="create-billing-account-title">Create Billing Account</h2>
+
+  <div class="form-container w-100">
+    <div class="form-row mt-5">
+      <div class="form-group billing-account-section-1">
+        <app-input
+          inputId="create-billing-account-name"
+          class="d-flex align-items-center"
+          type="text"
+          placeholder=""
+          inputClasses="form-control create-billing-account-input w-50"
+          labelClasses="create-billing-account-label login-screen-label w-50 text-end me-4 text-dark mb-2 text-xl"
+          [required]="true"
+          >Account Name</app-input
+        >
+      </div>
+
+      <div class="form-group billing-account-section-2">
+        <label class="label-container" for="account-description"
+          >Account Description *</label
+        >
+        <textarea
+          id="account-description"
+          class="text-area w-75"
+          rows="4"
+        ></textarea>
+      </div>
+
+      <div class="form-group billing-account-section-3">
+        <div>
+          <label class="label-container" for="address-info">Address Info</label>
+          <app-button
+            type="submit"
+            buttonClasses="create-billing-account-button me-4"
+            class="d-flex align-items-center -center w-75"
+            >Add New Address</app-button
+          >
+        </div>
+
+        <div class="my-scroll row w-100">
+          <div class="col-6">
+            <div class="box">
+              <div class="d-flex justify-content-between mt-2 ms-2 me-2">
+                <app-input
+                  class="d-flex flex-row-reverse"
+                  type="radio"
+                  inputId="radio"
+                  [checked]="true"
+                  >Select as a primary address</app-input
+                >
+                <div class="">
+                  <img
+                    class="me-3"
+                    src="../../../../../assets/images/address-feature/addresspenicon.png"
+                    width="22"
+                    height="22"
+                  />
+                  <img
+                    class="me-3"
+                    src="../../../../../assets/images/address-feature/addresstrashicon.png"
+                    width="22"
+                    height="22"
+                  />
+                </div>
+              </div>
+              <div class="content d-flex justify-content-center">
+                City, District, Neighborhood, Street Name,<br />
+                House/Flat Number<br />
+                Address Description
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6">
+            <div class="box">
+              <div class="d-flex justify-content-between mt-2 ms-2 me-2">
+                <app-input
+                  class="d-flex flex-row-reverse"
+                  type="radio"
+                  inputId="radio"
+                  >Select as a primary address</app-input
+                >
+                <div class="">
+                  <img
+                    class="me-3"
+                    src="../../../../../assets/images/address-feature/addresspenicon.png"
+                    width="22"
+                    height="22"
+                  />
+                  <img
+                    class="me-3"
+                    src="../../../../../assets/images/address-feature/billingtrashenableicon.png"
+                    width="22"
+                    height="22"
+                  />
+                </div>
+              </div>
+              <div class="content d-flex justify-content-center">
+                City, District, Neighborhood, Street Name,<br />
+                House/Flat Number<br />
+                Address Description
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-row justify-content-end">
+      <div class="buttons d-flex align-items-center">
+        <app-button
+          type="submit"
+          buttonClasses="contact-medium-update-button fw-bolder me-4"
+          class="d-flex align-items-center -center w-75"
+          >Cancel</app-button
+        >
+        <app-button
+          type="submit"
+          buttonClasses="contact-medium-update-button fw-bolder me-4"
+          class="d-flex align-items-center -center w-75"
+          >Save</app-button
+        >
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,73 @@
+.create-billing-account-container {
+  padding: 1.25rem;
+  height: 96%;
+}
+
+.create-billing-account-title {
+  color: #f38022;
+  display: flex;
+  font-weight: bold;
+  padding: 1rem;
+}
+
+.form-group {
+  display: flex;
+  width: 80%;
+  align-items: center;
+  padding: 1rem;
+  margin-left: 1rem;
+}
+
+.text-area {
+  background-color: #ffcda4;
+  margin-left: 1.5rem;
+}
+
+.billing-account-container {
+  width: 84vw;
+  height: 96%;
+}
+
+.billing-account-section-1 {
+  height: 15%;
+}
+
+.billing-account-section-2 {
+  height: 25%;
+}
+
+.billing-account-section-3 {
+  height: 60%;
+}
+
+.box {
+  background-color: #ffcda4;
+  border: 0.05rem solid;
+  height: 20vh;
+}
+
+.my-scroll {
+  overflow-y: auto;
+}
+
+.p-primary {
+  height: 5%;
+  p {
+    font-family: "inter", sans-serif;
+    color: #b1b1b1;
+    font-size: 0.75rem;
+  }
+}
+.address-icons {
+  height: 5%;
+}
+
+.content {
+  padding-top: 14vh;
+}
+
+.label-container {
+  min-width: 12.5rem;
+  text-align: right;
+  padding-right: 1rem;
+}

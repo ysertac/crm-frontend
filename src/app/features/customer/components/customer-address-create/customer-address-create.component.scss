@@ -1,48 +1,49 @@
-.create-customer{
-    width: 80vw;
-    height: 96%;
+.box {
+  width: 45%;
+  background-color: #ffcda4;
+  border: 0.05rem solid;
+  height: 50vh;
+  overflow-y: auto;
 }
 
-.p-address{
-    font-family: "inter", sans-serif;
-    color: #F38022;
-    font-size: 1.3rem;
-    font-weight: 900;
-    padding-left: 4rem;
-    margin-bottom: 2rem;
+.b-add-address {
+  background-color: #f38022;
+  color: #ffffff;
+  font-family: "inter", sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  width: 17.8vw;
+  height: 10vh;
+  //width: 21.4rem;
+  //height: 4.6rem;
 }
 
-.box{
-    background-color: #FFCDA4;
-    border: 0.05rem solid;
-    height: 50vh;
-    overflow-y: auto;
+.modal-content {
+  background-color: #f6e0ce;
 }
 
-.b-add-address{
-    background-color: #F38022;
-    color: #FFFFFF;
-    font-family: "inter", sans-serif;
-    font-weight: 400;
-    font-size: 1rem;
-    width: 17.8vw;
-    height: 10vh ;
-    //width: 21.4rem;
-    //height: 4.6rem;
+.b-popup {
+  background-color: #f38022;
+  font-family: "inter", sans-serif;
+  font-size: 1rem;
+  width: 7rem;
 }
 
-.modal-content{
-    background-color: #F6E0CE;
+.customer-address-textarea {
+  width: 90%;
+  height: 10rem;
 }
 
-.b-popup{
-    background-color: #F38022;
-    font-family: "inter", sans-serif;
-    font-size: 1rem;
-    width: 7rem;
-}
-
-.customer-address-textarea{
-    width: 90%;
-    height: 10rem;
+.modal-body {
+  form {
+    .address-modal-inputs {
+      display: flex;
+      justify-content: space-between;
+      width: 90%;
+      margin: 0 auto;
+      .form-column {
+        width: 50%;
+      }
+    }
+  }
 }

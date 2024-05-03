@@ -13,6 +13,7 @@ import { ContactMediumCreateComponent } from './features/customer/components/con
 import { CustomerAddressCreateComponent } from './features/customer/components/customer-address-create/customer-address-create.component';
 import { CreateCustomerFormComponent } from './features/customer/components/create-customer-form/create-customer-form.component';
 import { SalesLayoutComponent } from './shared/layouts/sales-layout/sales-layout.component';
+import { CreateBillingAccountComponent } from './features/billing/components/create-billing-account/create-billing-account.component';
 
 export const routes: Routes = [
   {
@@ -40,7 +41,7 @@ export const routes: Routes = [
       },
       {
         path: 'create-customer',
-        component: CreateCustomerFormComponent
+        component: CreateCustomerFormComponent,
       },
       {
         path: 'contact-medium-create',
@@ -50,6 +51,11 @@ export const routes: Routes = [
         path: 'create-address',
         component: CustomerAddressCreateComponent,
       },
+      {
+        path: 'create-billing-account',
+        component: CreateBillingAccountComponent,
+      },
+
       {
         path: 'customer/:id',
         component: CustomerLayoutComponent,
