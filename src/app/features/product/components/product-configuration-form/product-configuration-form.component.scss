@@ -1,0 +1,39 @@
+.product-config-container {
+  width: 84vw;
+  height: 96%;
+}
+
+.section {
+  height: 30%;
+  background-color: #FFE6D2;
+  margin: 0rem 0rem 0.3rem 1.8rem;
+  padding: 0.5rem;
+  border: 1px solid black;
+}
+
+.product-config-header {
+  color: #F38022;
+  font-family: 'Inter', sans-serif;
+  font-weight: 900;
+  font-size: 1.5rem;
+}
+
+.product-config-address-header {
+  font-family: 'Inter' sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.product-config-address-section {
+  width: 25rem;
+  height: 6rem;
+  background-color: #fff;
+  border: 1px solid black;
+}
+
+.product-config-address-description {
+  padding: 0.5rem;
+  width: 24rem;
+  font-family: 'Inter' sans-serif;
+  font-weight: 400;
+}
