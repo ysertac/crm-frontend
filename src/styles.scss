@@ -3,8 +3,8 @@
   font-family: "Inter", sans-serif;
 }
 
-fieldset{
-  legend{
+fieldset {
+  legend {
     font-size: 1rem;
     font-weight: 600;
     float: none;
@@ -12,18 +12,48 @@ fieldset{
   }
 }
 
-.create-customer-button-section {
+.customer-create {
+  height: 96%;
+  width: 84vw;
+
+  .customer-create-header {
+    font-family: "inter", sans-serif;
+    color: #f38022;
+    height: 10%;
+    width: 90%;
+    margin: 0 auto;
+    padding-top: 1rem;
+  }
+
+  .content {
+    height: 90%;
     width: 90%;
     display: flex;
     justify-content: space-between;
+    align-items: stretch;
+    margin: 0 auto;
+
+    .content-column {
+      width: 40%;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  .create-customer-button-section {
+    height: 25%;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin: auto;
-}
 
-.create-customer-button {
-  background-color: #f38022;
-  font-family: "Inter", sans-serif;
-  font-size: 1rem;
-  font-weight: 400;
-  width: 6.5rem;
+    .create-customer-button {
+      background-color: #f38022;
+      font-family: "Inter", sans-serif;
+      font-size: 1rem;
+      font-weight: 400;
+      width: 6.5rem;
+    }
+  }
 }
-
