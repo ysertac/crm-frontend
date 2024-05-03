@@ -1,0 +1,61 @@
+<h2 class="mt-4 p-offer">Offer Selection</h2>
+<div class="sales-layout mb-3">
+    <div class="div-button d-flex justify-content-start mx-auto">
+        <app-button [routerLink]="['product']" type="button" buttonClasses="sales-button" class="">Catalog</app-button>
+        <app-button [routerLink]="['campaign']" type="button" buttonClasses="sales-button"
+            class="">Campaign</app-button>
+    </div>
+    <div class="row d-flex justify-content-evenly">
+        <div class="col-6 box">
+            <div class="d-flex mt-2">
+                <div class="d-flex flex-column w-75">
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <label for="catalog" class="">Catalog Selection</label>
+                        <select id="catalog" class="w-50 input-background">
+                            <option value="catalog1">catalog1</option>
+                            <option value="catalog2">catalog2</option>
+                            <option value="catalog3">catalog3</option>
+                            <option value="catalog4">catalog4</option>
+                        </select>
+                    </div>
+                    <app-input inputId="offerId" class="d-flex align-items-center justify-content-between mt-3"
+                        type="text" inputClasses="w-50 input-background" labelClasses="text-start">Product Offer
+                        ID</app-input>
+                    <app-input inputId="offerName" class="d-flex align-items-center justify-content-between mt-3"
+                        type="text" inputClasses="w-50 input-background" labelClasses="text-start">Product Offer
+                        Name</app-input>
+                </div>
+                <div class="d-flex justify-content-center align-items-center w-25">
+                    <app-button type="button" buttonClasses="search-button">Search</app-button>
+                </div>
+            </div>
+            <div>
+                <table class="mx-auto mt-5">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Product Offer ID</th>  
+                            <th>Product Offer Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><tr><img src="../../../../assets/images/sales-layout/tableicon.png"></tr></td>
+                            <td>71233</td>
+                            <td>4GB kotalı ADSL Internet </td>
+                        </tr>
+                        <tr>
+                            <td><tr><img src="../../../../assets/images/sales-layout/tableicon.png"></tr></td>
+                            <td>202610</td>
+                            <td>ADSL Modem</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!--<router-outlet></router-outlet>-->
+        </div>
+        <div class="col-4 box">
+            basket
+        </div>
+    </div>
+</div>

@@ -12,6 +12,7 @@ import { ContactMediumUpdateComponent } from './features/customer/components/con
 import { ContactMediumCreateComponent } from './features/customer/components/contact-medium-create/contact-medium-create.component';
 import { CustomerAddressCreateComponent } from './features/customer/components/customer-address-create/customer-address-create.component';
 import { CreateCustomerFormComponent } from './features/customer/components/create-customer-form/create-customer-form.component';
+import { SalesLayoutComponent } from './shared/layouts/sales-layout/sales-layout.component';
 
 export const routes: Routes = [
   {
@@ -83,6 +84,10 @@ export const routes: Routes = [
             component: ContactMediumUpdateComponent,
           },
         ],
+      },
+      {
+        path: 'sales',
+        component: SalesLayoutComponent,
       },
     ],
   },
