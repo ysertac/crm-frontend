@@ -1,23 +1,23 @@
-<div class="billing-account-container">
-  <h2 class="create-billing-account-title">Create Billing Account</h2>
+<div class="customer-create">
+  <div class="h-75">
+    <h2 class="customer-create-header">Create Billing Account</h2>
+    <div
+      class="d-flex flex-column align-items-start justify-content-between w-100"
+    >
+      <app-input
+        inputId="create-billing-account-name"
+        class="form-group w-100"
+        type="text"
+        placeholder=""
+        inputClasses="create-billing-account-input w-25"
+        labelClasses="create-billing-account-label"
+        [required]="true"
+      >
+        Account Name
+      </app-input>
 
-  <div class="form-container w-100">
-    <div class="form-row mt-5">
-      <div class="form-group billing-account-section-1">
-        <app-input
-          inputId="create-billing-account-name"
-          class="d-flex align-items-center"
-          type="text"
-          placeholder=""
-          inputClasses="form-control create-billing-account-input w-50"
-          labelClasses="create-billing-account-label login-screen-label w-50 text-end me-4 text-dark mb-2 text-xl"
-          [required]="true"
-          >Account Name</app-input
-        >
-      </div>
-
-      <div class="form-group billing-account-section-2">
-        <label class="label-container" for="account-description"
+      <div class="form-group billing-account-section-2 w-100">
+        <label class="create-billing-account-label" for="account-description"
           >Account Description *</label
         >
         <textarea
@@ -29,11 +29,11 @@
 
       <div class="form-group billing-account-section-3">
         <div>
-          <label class="label-container" for="address-info">Address Info</label>
+          Address Info
           <app-button
             type="submit"
             buttonClasses="create-billing-account-button me-4"
-            class="d-flex align-items-center -center w-75"
+            class="d-flex align-items-center w-75"
             >Add New Address</app-button
           >
         </div>
@@ -41,12 +41,13 @@
         <div class="my-scroll row w-100">
           <div class="col-6">
             <div class="box">
-              <div class="d-flex justify-content-between mt-2 ms-2 me-2">
+              <div class="d-flex justify-content-between mt-2 mx-2">
                 <app-input
                   class="d-flex flex-row-reverse"
                   type="radio"
-                  inputId="radio"
+                  inputId="radio1"
                   [checked]="true"
+                  name="address"
                   >Select as a primary address</app-input
                 >
                 <div class="">
@@ -64,7 +65,7 @@
                   />
                 </div>
               </div>
-              <div class="content d-flex justify-content-center">
+              <div class="">
                 City, District, Neighborhood, Street Name,<br />
                 House/Flat Number<br />
                 Address Description
@@ -74,11 +75,12 @@
 
           <div class="col-6">
             <div class="box">
-              <div class="d-flex justify-content-between mt-2 ms-2 me-2">
+              <div class="d-flex justify-content-between mt-2 mx-2">
                 <app-input
                   class="d-flex flex-row-reverse"
                   type="radio"
-                  inputId="radio"
+                  inputId="radio2"
+                  name="address"
                   >Select as a primary address</app-input
                 >
                 <div class="">
@@ -96,7 +98,7 @@
                   />
                 </div>
               </div>
-              <div class="content d-flex justify-content-center">
+              <div class="">
                 City, District, Neighborhood, Street Name,<br />
                 House/Flat Number<br />
                 Address Description
@@ -106,21 +108,19 @@
         </div>
       </div>
     </div>
-    <div class="form-row justify-content-end">
-      <div class="buttons d-flex align-items-center">
-        <app-button
-          type="submit"
-          buttonClasses="contact-medium-update-button fw-bolder me-4"
-          class="d-flex align-items-center -center w-75"
-          >Cancel</app-button
-        >
-        <app-button
-          type="submit"
-          buttonClasses="contact-medium-update-button fw-bolder me-4"
-          class="d-flex align-items-center -center w-75"
-          >Save</app-button
-        >
-      </div>
-    </div>
+  </div>
+  <div class="d-flex align-items-center h-25">
+    <app-button
+      type="submit"
+      buttonClasses="general-button me-4"
+      class="d-flex align-items-center -center w-75"
+      >Cancel</app-button
+    >
+    <app-button
+      type="submit"
+      buttonClasses="general-button me-4"
+      class="d-flex align-items-center -center w-75"
+      >Save</app-button
+    >
   </div>
 </div>

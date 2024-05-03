@@ -47,13 +47,12 @@ fieldset {
     justify-content: space-between;
     align-items: center;
     margin: auto;
-
-    .create-customer-button {
-      background-color: #f38022;
-      font-family: "Inter", sans-serif;
-      font-size: 1rem;
-      font-weight: 400;
-      width: 6.5rem;
-    }
   }
+}
+.general-button {
+  background-color: #f38022;
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  width: 6.5rem;
 }
