@@ -97,7 +97,7 @@
   <legend class="ms-4 px-2">Search Result:</legend>
     <div class="d-flex align-items-center" *ngIf="customerCount < 1; else notFoundCustomer">
       <p class="customer-not-found-header">No customer found! Would you like to create the customer?</p>
-      <app-button [routerLink]="['/home/create-customer/']" type="button" buttonClasses="create-customer-button">Create Customer</app-button>
+      <app-button [routerLink]="['/home/create-customer/']" type="button" buttonClasses="search-create-customer-button">Create Customer</app-button>
 
     </div>
     <ng-template #notFoundCustomer>
