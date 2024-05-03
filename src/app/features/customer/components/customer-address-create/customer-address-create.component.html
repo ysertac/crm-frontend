@@ -1,96 +1,125 @@
-<fieldset class="create-customer border border-dark">
+<fieldset class="customer-create border border-dark">
   <legend class="ms-4 px-2">Create Customer:</legend>
-    <h2 class="mt-4 p-address">Address Info</h2>
-    <div class="row d-flex justify-content-around">
-      <div class="col-5">
-            <div class="box d-flex justify-content-center align-items-center">
-                <button type="button" class="b-add-address" data-bs-toggle="modal" data-bs-target="#exampleModal">Add New Address</button>
-            </div>
-        </div>
-        <div class="col-5">
-          <div class="box d-flex justify-content-center align-items-center">
-
-          </div>
+  <div class="h-75">
+    <h2 class="customer-create-header">Address Info</h2>
+    <div class="content">
+      <div
+        class="box d-flex justify-content-center align-items-center align-self-end"
+      >
+        <button
+          type="button"
+          class="b-add-address"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+        >
+          Add New Address
+        </button>
       </div>
+      <div
+        class="box d-flex justify-content-center align-items-center align-self-end"
+      ></div>
     </div>
-    <div class="create-customer-button-section mt-5">
-        <app-button [routerLink]="['/home/create-customer']" type="submit" buttonClasses="create-customer-button" class="">Previous</app-button>
-        <app-button [routerLink]="['/home/contact-medium-create']" type="submit" buttonClasses="create-customer-button" class="">Next</app-button>
-    </div>
+  </div>
+
+  <div class="create-customer-button-section">
+    <app-button
+      [routerLink]="['/home/create-customer']"
+      type="submit"
+      buttonClasses="create-customer-button"
+      class=""
+      >Previous</app-button
+    >
+    <app-button
+      [routerLink]="['/home/contact-medium-create']"
+      type="submit"
+      buttonClasses="create-customer-button"
+      class=""
+      >Next</app-button
+    >
+  </div>
 </fieldset>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-xl">
-      <div class="modal-content">
-        <div class="modal-body d-flex justify-content-between w-100">
-            <div class="w-50">
-                  <app-input
-                    inputId="email"
-                    class="d-flex align-items-center mt-3"
-                    type="email"
-                    placeholder=""
-                    inputClasses="form-control"
-                    labelClasses="login-screen-label w-50 text-end me-2"
-                    [required]="true"
-                    >City</app-input
-                  >
-                  <app-input
-                    inputId="home-phone"
-                    class="d-flex align-items-center mt-3"
-                    type="number"
-                    placeholder=""
-                    inputClasses="form-control"
-                    [required]="true"
-                    labelClasses="login-screen-label w-50 text-end me-2"
-                    >Neighbourhood</app-input
-                  >
-                  <app-input
-                    inputId="email"
-                    class="d-flex align-items-center mt-3"
-                    type="email"
-                    placeholder=""
-                    inputClasses="form-control"
-                    labelClasses="login-screen-label w-50 text-end me-2"
-                    [required]="true"
-                    >House/Flat Number</app-input
-                  >
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered modal-xl">
+    <div class="modal-content">
+      <div class="modal-body">
+        <form>
+          <div class="address-modal-inputs">
+            <div class="form-column">
+              <app-input
+                inputId="email"
+                class="d-flex align-items-center justify-content-between mt-3 w-100"
+                inputClasses="form-control address-modal-input"
+                labelClasses="text-end address-modal-label"
+                type="email"
+                placeholder=""
+                [required]="true"
+              >
+                City
+              </app-input>
+              <app-input
+                inputId="home-phone"
+                class="d-flex align-items-center justify-content-between mt-3 w-100"
+                inputClasses="form-control address-modal-input"
+                labelClasses="text-end address-modal-label"
+                type="number"
+                placeholder=""
+                [required]="true"
+                >Neighbourhood</app-input
+              >
+              <app-input
+                inputId="email"
+                class="d-flex align-items-center justify-content-between mt-3 w-100"
+                inputClasses="form-control address-modal-input"
+                labelClasses="text-end address-modal-label"
+                type="email"
+                placeholder=""
+                [required]="true"
+                >House/Flat Number</app-input
+              >
             </div>
-            <div class="w-50">
-                <app-input
-                  inputId="email"
-                  class="d-flex align-items-center mt-3"
-                  type="email"
-                  placeholder=""
-                  inputClasses="form-control"
-                  labelClasses="login-screen-label w-50 text-end me-2"
-                  [required]="true"
-                  >District</app-input
-                >
-                <app-input
-                  inputId="home-phone"
-                  class="d-flex align-items-center mt-3"
-                  type="number"
-                  placeholder=""
-                  [required]="true"
-                  inputClasses="form-control"
-                  labelClasses="login-screen-label w-50 text-end me-2"
-                  >Street</app-input
-                >
+            <div class="form-column">
+              <app-input
+                inputId="email"
+                class="d-flex align-items-center justify-content-between mt-3 w-100"
+                inputClasses="form-control address-modal-input"
+                labelClasses="text-end address-modal-label"
+                type="email"
+                placeholder=""
+                [required]="true"
+                >District</app-input
+              >
+              <app-input
+                inputId="home-phone"
+                class="d-flex align-items-center justify-content-between mt-3 w-100"
+                inputClasses="form-control address-modal-input"
+                labelClasses="text-end address-modal-label"
+                type="number"
+                placeholder=""
+                [required]="true"
+                >Street</app-input
+              >
             </div>
-        </div>
-        <div class="customer-address-textarea mx-auto">
+          </div>
+          <div class="customer-address-textarea mx-auto mt-3">
             <label for="address-description">Address Description*</label>
-            <textarea id="address-description" class="w-100" rows="4">
-
+            <textarea id="address-description" class="w-100 mt-2" rows="5">
             </textarea>
-        </div>
-        <div class="modal-footer d-flex justify-content-evenly">
-          <button type="button" class="b-popup" data-bs-dismiss="modal">Cancel</button>
-          <button type="button" class="b-popup">Save</button>
-        </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer d-flex justify-content-evenly">
+        <button type="button" class="b-popup" data-bs-dismiss="modal">
+          Cancel
+        </button>
+        <button type="button" class="b-popup">Save</button>
       </div>
     </div>
+  </div>
 </div>
-
-
-

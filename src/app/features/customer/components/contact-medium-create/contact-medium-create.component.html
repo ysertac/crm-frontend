@@ -1,13 +1,9 @@
-<fieldset
-  class="contact-medium-create-container d-flex flex-column justify-content-around align-items-center border border-dark"
->
-<legend class="ms-4 px-2">Create Customer:</legend>
-  <div class="title-container">
-    <h2 class="contact-medium-create-title">Contact Medium</h2>
-  </div>
-  <div class="form-container w-100">
-    <div class="form-row mt-5">
-      <div class="form-group">
+<fieldset class="customer-create border border-dark">
+  <legend class="ms-4 px-2">Create Customer:</legend>
+  <div class="h-75">
+    <h2 class="customer-create-header">Contact Medium</h2>
+    <div class="content">
+      <div class="content-column h-50 my-auto justify-content-around">
         <app-input
           inputId="contact-medium-create-email"
           class="d-flex align-items-center"
@@ -18,8 +14,6 @@
           [required]="true"
           >Email</app-input
         >
-      </div>
-      <div class="form-group">
         <app-input
           inputId="contact-medium-create-home-phone"
           class="d-flex align-items-center"
@@ -30,9 +24,7 @@
           >Home Phone</app-input
         >
       </div>
-    </div>
-    <div class="form-row mt-5">
-      <div class="form-group">
+      <div class="content-column h-50 my-auto justify-content-around">
         <app-input
           inputId="contact-medium-create-mobile-phone"
           class="d-flex align-items-center"
@@ -43,8 +35,6 @@
           [required]="true"
           >Mobile Phone</app-input
         >
-      </div>
-      <div class="form-group">
         <app-input
           inputId="contact-medium-create-fax"
           class="d-flex align-items-center"
@@ -56,26 +46,20 @@
         >
       </div>
     </div>
-    <div class="form-row create-customer-button-section">
-      <div class="buttons d-flex align-items-center flex-grow-1">
-        <app-button
-          [routerLink]="['/home/create-address']"
-          type="submit"
-          buttonClasses="create-customer-button"
-          class="d-flex align-items-center -center w-50"
-          >Previous</app-button
-        >
-      </div>
-      <div
-        class="buttons d-flex align-items-center flex-grow-1 justify-content-end"
-      >
-        <app-button
-          type="submit"
-          buttonClasses="create-customer-button"
-          class="d-flex align-items-center -center"
-          >Create</app-button
-        >
-      </div>
-    </div>
+  </div>
+
+  <div class="create-customer-button-section">
+    <app-button
+      [routerLink]="['/home/create-address']"
+      type="submit"
+      buttonClasses="create-customer-button"
+      >Previous
+    </app-button>
+    <app-button
+      [routerLink]=""
+      type="submit"
+      buttonClasses="create-customer-button"
+      >Create
+    </app-button>
   </div>
 </fieldset>

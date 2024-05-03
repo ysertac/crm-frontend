@@ -12,8 +12,13 @@
   height: 1.5rem;
 }
 
-.customer-info-update-input {
-  width: 60%;
+.customer-create-label {
+  width: 25%;
+}
+
+.customer-info-update-input,
+.customer-create-input {
+  width: 70%;
   background-color: #ffcda4;
   border: 1px solid black;
 }
@@ -36,11 +41,10 @@
   background-color: #ffcda4;
 }
 
-.create-billing-account-input {
-  background-color: #ffcda4;
-  width: 12rem;
+.address-modal-input {
+  width: 60%;
 }
 
-.create-billing-account-label {
-  width: 10rem;
+.address-modal-label {
+  width: 35%;
 }
