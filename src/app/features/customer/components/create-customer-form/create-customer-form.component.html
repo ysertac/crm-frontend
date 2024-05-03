@@ -1,102 +1,106 @@
-<fieldset class="customer-create border border-dark ">
-<legend class="ms-4 px-2">Create Customer:</legend>
-    <h2
-      class="d-flex justify-content-center align-items-center w-25 pt-5 fw-bolder customer-create-header"
-    >
-      Demographic Info
-    </h2>
-    <div class="d-flex h-75 w-100 justify-content-evenly">
-      <div
-        class="d-flex flex-column justify-content-around align-items-center customer-info-update-column w-50"
-      >
+<fieldset class="customer-create border border-dark">
+  <legend class="ms-4 px-2">Create Customer:</legend>
+  <div class="h-75">
+    <h2 class="customer-create-header">Demographic Info</h2>
+    <div class="content">
+      <div class="content-column justify-content-around">
         <app-input
           inputId="fName"
-          class="d-flex w-75 justify-content-between mt-4 align-items-center"
+          class="d-flex w-100 justify-content-between mt-4 align-items-center"
           type="text"
           placeholder=""
-          inputClasses="form-control customer-info-update-input customer-info-update-input"
-          labelClasses="font-inter w-25 fw-bolder text-xl"
+          inputClasses="form-control customer-create-input"
+          labelClasses="font-inter fw-bolder text-xl customer-create-label"
           [required]="true"
           >First Name
         </app-input>
         <app-input
           inputId="mName"
-          class="d-flex w-75 justify-content-between mt-4 align-items-center "
+          class="d-flex w-100 justify-content-between mt-4 align-items-center"
           type="text"
           placeholder=""
-          inputClasses="form-control customer-info-update-input"
-          labelClasses="font-inter w-25 fw-bolder text-xl"
+          inputClasses="form-control customer-create-input"
+          labelClasses="font-inter fw-bolder text-xl"
           [required]="true"
           >Middle Name
         </app-input>
         <app-input
           inputId="lName"
-          class="d-flex w-75 justify-content-between mt-4 align-items-center "
+          class="d-flex w-100 justify-content-between mt-4 align-items-center"
           type="text"
           placeholder=""
-          inputClasses="form-control customer-info-update-input"
-          labelClasses="font-inter w-25 fw-bolder text-xl"
+          inputClasses="form-control customer-create-input"
+          labelClasses="font-inter fw-bolder text-xl"
           [required]="true"
           >Last Name
         </app-input>
         <app-input
           inputId="gender"
-          class="d-flex w-75 justify-content-between mt-4 align-items-center "
+          class="d-flex w-100 justify-content-between mt-4 align-items-center"
           type="text"
           placeholder=""
-          inputClasses="form-control customer-info-update-input"
-          labelClasses="font-inter w-25 fw-bolder text-xl"
+          inputClasses="form-control customer-create-input"
+          labelClasses="font-inter fw-bolder text-xl"
           [required]="true"
           >Gender
         </app-input>
       </div>
-      <div
-        class="d-flex flex-column justify-content-around align-items-start customer-info-update-column w-50"
-      >
+      <div class="d-flex flex-column justify-content-around content-column">
         <app-input
           inputId="motherName"
-          class="d-flex w-75 justify-content-between mt-4 align-items-center "
+          class="d-flex w-100 justify-content-between mt-4 align-items-center"
           type="text"
           placeholder=""
-          inputClasses="form-control customer-info-update-input"
-          labelClasses="font-inter w-25 fw-bolder text-xl"
+          inputClasses="form-control customer-create-input"
+          labelClasses="font-inter fw-bolder text-xl"
           [required]="true"
           >Mother Name
         </app-input>
         <app-input
           inputId="fatherName"
-          class="d-flex w-75 justify-content-between mt-4 align-items-center "
+          class="d-flex w-100 justify-content-between mt-4 align-items-center"
           type="text"
           placeholder=""
-          inputClasses="form-control customer-info-update-input"
-          labelClasses="font-inter w-25 fw-bolder text-xl"
+          inputClasses="form-control customer-create-input"
+          labelClasses="font-inter fw-bolder text-xl"
           [required]="true"
           >Father Name
         </app-input>
         <app-input
           inputId="bDate"
-          class="d-flex w-75 justify-content-between mt-4 align-items-center "
+          class="d-flex w-100 justify-content-between mt-4 align-items-center"
           type="text"
           placeholder=""
-          inputClasses="form-control customer-info-update-input"
-          labelClasses="font-inter w-25 fw-bolder text-xl"
+          inputClasses="form-control customer-create-input"
+          labelClasses="font-inter fw-bolder text-xl"
           [required]="true"
           >Birth Date
         </app-input>
         <app-input
           inputId="nId"
-          class="d-flex w-75 justify-content-between mt-4 align-items-center "
+          class="d-flex w-100 justify-content-between mt-4 align-items-center"
           type="text"
           placeholder=""
-          inputClasses="form-control customer-info-update-input"
-          labelClasses="font-inter w-25 fw-bolder text-xl"
+          inputClasses="form-control customer-create-input"
+          labelClasses="font-inter fw-bolder text-xl"
           [required]="true"
           >Nationality ID
         </app-input>
       </div>
     </div>
-    <div class="create-customer-button-section">
-      <app-button [routerLink]="['/home/search-customer']" type="submit" buttonClasses="create-customer-button" class="">Cancel</app-button>
-      <app-button [routerLink]="['/home/create-address']" type="submit" buttonClasses="create-customer-button" class="">Next</app-button>
-    </div>
+  </div>
+  <div class="create-customer-button-section">
+    <app-button
+      [routerLink]="['/home/search-customer']"
+      type="submit"
+      buttonClasses="create-customer-button"
+      >Cancel</app-button
+    >
+    <app-button
+      [routerLink]="['/home/create-address']"
+      type="submit"
+      buttonClasses="create-customer-button"
+      >Next</app-button
+    >
+  </div>
 </fieldset>

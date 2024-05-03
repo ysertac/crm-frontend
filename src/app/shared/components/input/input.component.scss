@@ -12,8 +12,13 @@
   height: 1.5rem;
 }
 
-.customer-info-update-input {
-  width: 60%;
+.customer-create-label {
+  width: 25%;
+}
+
+.customer-info-update-input,
+.customer-create-input {
+  width: 70%;
   background-color: #ffcda4;
   border: 1px solid black;
 }
@@ -51,4 +56,14 @@
 
 .product-config-radio-button {
   font-size: 0.9rem;
+
+.input-background{
+  background-color: #FFCDA4;
+}
+.address-modal-input {
+  width: 60%;
+}
+
+.address-modal-label {
+  width: 35%;
 }
