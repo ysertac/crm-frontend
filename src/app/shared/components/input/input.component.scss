@@ -70,5 +70,12 @@
 }
 
 .create-billing-account-label {
-  width: 10%;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  width: 16%;
+}
+
+.create-billing-account-input {
+  background-color: #ffcda4;
 }

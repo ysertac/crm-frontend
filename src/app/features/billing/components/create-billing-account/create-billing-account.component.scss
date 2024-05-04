@@ -1,75 +1,26 @@
-.create-billing-account-title {
-  color: #f38022;
+.create-billing-account-content {
+  height: 90%;
   display: flex;
-  font-weight: bold;
-  padding: 1rem;
-}
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
 
-.form-group {
-  display: flex;
-  width: 80%;
-  align-items: center;
-  padding: 1rem;
-  margin-left: 1rem;
-}
-
-.text-area {
-  background-color: #ffcda4;
-  margin-left: 1.5rem;
-}
-
-.billing-account-container {
-  width: 84vw;
-  height: 96%;
-  h2 {
-    height: 10%;
+  .create-billing-account-textarea-label {
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    width: 16%;
   }
 
-  .form-container {
-    height: 90%;
-
-    .billing-account-section-1 {
-      height: 10%;
-    }
-
-    .billing-account-section-2 {
-      height: 25%;
-    }
-
-    .billing-account-section-3 {
-      height: 60%;
-    }
-
-    .buttons {
-      height: 5%;
-    }
+  .create-billing-account-textarea {
+    background-color: #ffcda4;
   }
-}
 
-.box {
-  background-color: #ffcda4;
-  border: 0.05rem solid;
-  height: 20vh;
-}
-
-.my-scroll {
-  overflow-y: auto;
-}
-
-.p-primary {
-  height: 5%;
-  p {
-    font-family: "inter", sans-serif;
-    color: #b1b1b1;
-    font-size: 0.75rem;
+  .box {
+    background-color: #ffcda4;
+    border: 0.05rem solid;
+    height: 100%;
+    width: 49%;
+    overflow-y: auto;
   }
-}
-.address-icons {
-  height: 5%;
-}
-
-.label-container {
-  min-width: 12.5rem;
-  text-align: right;
-  padding-right: 1rem;
 }
