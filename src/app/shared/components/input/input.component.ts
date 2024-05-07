@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 type InputType =
   | 'text'
   | 'email'
@@ -25,7 +25,7 @@ export class InputComponent {
   @Input() required: boolean = false;
   @Input() inputId: string = '';
   @Input() checked: boolean = false;
-  @Input() formControlName: string = '';
+  @Input() control: FormControl | any | null;
 
-  //@Input() inputName: string = '';
+  //@Input() control: FormControl = new FormControl();
 }

@@ -35,15 +35,13 @@
 }
 
 .modal-body {
-  form {
-    .address-modal-inputs {
-      display: flex;
-      justify-content: space-between;
-      width: 90%;
-      margin: 0 auto;
-      .form-column {
-        width: 50%;
-      }
+  .address-modal-inputs {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin: 0 auto;
+    .form-column {
+      width: 50%;
     }
   }
 }

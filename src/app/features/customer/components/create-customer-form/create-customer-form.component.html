@@ -5,7 +5,7 @@
       <h2 class="customer-create-header">Demographic Info</h2>
       <div class="content">
         <div class="content-column justify-content-around">
-          <input
+          <app-input
             inputId="fName"
             class="d-flex w-100 justify-content-between mt-4 align-items-center"
             type="text"
@@ -13,10 +13,11 @@
             inputClasses="form-control customer-create-input"
             labelClasses="font-inter fw-bolder text-xl customer-create-label"
             [required]="true"
-            formControlName="firstName"
-          />First Name
-
-          <input
+            [control]="form.get('firstName')"
+          >
+            First Name
+          </app-input>
+          <app-input
             inputId="mName"
             class="d-flex w-100 justify-content-between mt-4 align-items-center"
             type="text"
@@ -24,10 +25,11 @@
             inputClasses="form-control customer-create-input"
             labelClasses="font-inter fw-bolder text-xl"
             [required]="true"
-            formControlName="middleName"
-          />Middle Name
-
-          <input
+            [control]="form.get('middleName')"
+          >
+            Middle Name
+          </app-input>
+          <app-input
             inputId="lName"
             class="d-flex w-100 justify-content-between mt-4 align-items-center"
             type="text"
@@ -35,10 +37,11 @@
             inputClasses="form-control customer-create-input"
             labelClasses="font-inter fw-bolder text-xl"
             [required]="true"
-            formControlName="lastName"
-          />Last Name
-
-          <input
+            [control]="form.get('lastName')"
+          >
+            Last Name
+          </app-input>
+          <app-input
             inputId="gender"
             class="d-flex w-100 justify-content-between mt-4 align-items-center"
             type="text"
@@ -46,11 +49,13 @@
             inputClasses="form-control customer-create-input"
             labelClasses="font-inter fw-bolder text-xl"
             [required]="true"
-            formControlName="gender"
-          />Gender
+            [control]="form.get('gender')"
+          >
+            Gender
+          </app-input>
         </div>
         <div class="d-flex flex-column justify-content-around content-column">
-          <input
+          <app-input
             inputId="motherName"
             class="d-flex w-100 justify-content-between mt-4 align-items-center"
             type="text"
@@ -58,10 +63,11 @@
             inputClasses="form-control customer-create-input"
             labelClasses="font-inter fw-bolder text-xl"
             [required]="true"
-            formControlName="motherName"
-          />Mother Name
-
-          <input
+            [control]="form.get('motherName')"
+          >
+            Mother Name
+          </app-input>
+          <app-input
             inputId="fatherName"
             class="d-flex w-100 justify-content-between mt-4 align-items-center"
             type="text"
@@ -69,10 +75,11 @@
             inputClasses="form-control customer-create-input"
             labelClasses="font-inter fw-bolder text-xl"
             [required]="true"
-            formControlName="fatherName"
-          />Father Name
-
-          <input
+            [control]="form.get('fatherName')"
+          >
+            Father Name
+          </app-input>
+          <app-input
             inputId="bDate"
             class="d-flex w-100 justify-content-between mt-4 align-items-center"
             type="date"
@@ -80,10 +87,11 @@
             inputClasses="form-control customer-create-input"
             labelClasses="font-inter fw-bolder text-xl"
             [required]="true"
-            formControlName="birthDate"
-          />Birth Date
-
-          <input
+            [control]="form.get('birthDate')"
+          >
+            Birth Date
+          </app-input>
+          <app-input
             inputId="nId"
             class="d-flex w-100 justify-content-between mt-4 align-items-center"
             type="text"
@@ -91,8 +99,10 @@
             inputClasses="form-control customer-create-input"
             labelClasses="font-inter fw-bolder text-xl"
             [required]="true"
-            formControlName="nationalityId"
-          />Nationality ID
+            [control]="form.get('nationalityId')"
+          >
+            Nationality ID
+          </app-input>
         </div>
       </div>
     </div>
