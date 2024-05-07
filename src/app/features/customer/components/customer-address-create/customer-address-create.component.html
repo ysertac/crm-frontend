@@ -23,10 +23,10 @@
   </div>
   <div class="create-customer-button-section">
     <app-button
-      [routerLink]="['/home/create-customer']"
-      type="submit"
+      type="button"
       buttonClasses="general-button"
       class=""
+      (click)="goPrevious()"
       >Previous</app-button
     >
     <app-button
