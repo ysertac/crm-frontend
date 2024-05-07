@@ -66,6 +66,21 @@ export class CustomerAddressCreateComponent {
     this.router.navigate(['/home/create-address']);
   }
 
+  goPrevious() {
+    const customerAddress: CreateAddressRequest = {
+      city: this.form.value.city,
+      neighbourhood: this.form.value.neighbourhood,
+      houseNumber: this.form.value.houseNumber,
+      district: this.form.value.district,
+      street: this.form.value.street,
+      addressDesc: this.form.value.addressDesc,
+    };
+    console.log(this.form.value);
+
+    this.store.dispatch(setCustomerAddress({ customerAddress }));
+    this.router.navigate(['/home/create-customer']);
+  }
+
   onFormSubmit() {
     console.log(this.form);
 
