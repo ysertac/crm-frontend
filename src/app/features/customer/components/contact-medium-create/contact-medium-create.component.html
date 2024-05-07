@@ -13,7 +13,7 @@
             inputClasses="form-control contact-medium-create-input w-50"
             labelClasses="login-screen-label w-25 text-end me-4 text-dark mb-2 fw-bolder text-xl"
             [required]="true"
-            [control]="form.get('contactMediumEmail')"
+            [control]="form.get('email')"
           >
             Email
           </app-input>
@@ -24,7 +24,7 @@
             placeholder=""
             inputClasses="form-control contact-medium-create-input w-50"
             labelClasses="login-screen-label w-25 text-end me-4 text-dark mb-2 fw-bolder text-xl"
-            [control]="form.get('contactMediumHomePhone')"
+            [control]="form.get('homePhone')"
           >
             Home Phone
           </app-input>
@@ -38,7 +38,7 @@
             inputClasses="form-control contact-medium-create-input w-50"
             labelClasses="login-screen-label w-25 text-end me-4 text-dark mb-2 fw-bolder text-xl"
             [required]="true"
-            [control]="form.get('contactMediumMobilePhone')"
+            [control]="form.get('mobilePhone')"
           >
             Mobile Phone
           </app-input>
@@ -49,7 +49,7 @@
             placeholder=""
             inputClasses="form-control contact-medium-create-input w-50"
             labelClasses="login-screen-label w-25 text-end me-4 text-dark mb-2 fw-bolder text-xl"
-            [control]="form.get('contactMediumFax')"
+            [control]="form.get('fax')"
           >
             Fax
           </app-input>
@@ -59,8 +59,8 @@
 
     <div class="create-customer-button-section">
       <app-button
-        [routerLink]="['/home/create-address']"
-        type="submit"
+        (click)="goPrevious()"
+        type="button"
         buttonClasses="general-button"
         >Previous
       </app-button>

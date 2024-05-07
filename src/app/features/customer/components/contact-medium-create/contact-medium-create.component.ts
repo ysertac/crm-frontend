@@ -9,8 +9,11 @@ import {
   Validators,
 } from '@angular/forms';
 import { CustomerApiService } from '../../services/customer-api.service';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import { CreateCustomerRequest } from '../../models/requests/create-customer-request';
+import { CreateContactMediumRequest } from '../../models/requests/create-contact-medium-request';
+import { selectContactMedium } from '../../../../shared/store/contactMedium/contact-medium.selector';
+import { setContactMedium } from '../../../../shared/store/contactMedium/contact-medium.action';
 
 @Component({
   selector: 'app-contact-medium-create',
@@ -32,39 +35,43 @@ export class ContactMediumCreateComponent {
   ngOnInit(): void {
     this.createForm();
 
-    /* this.store
-      .pipe(select(selectIndividualCustomer))
-      .subscribe((individualCustomer) => {
-        this.form.patchValue(individualCustomer);
-        console.log('individualCustomerState:', individualCustomer);
-      }); */
+    this.store.pipe(select(selectContactMedium)).subscribe((contactMedium) => {
+      this.form.patchValue(contactMedium);
+      console.log('contactMediumState:', contactMedium);
+    });
   }
 
   createForm() {
     this.form = this.fb.group({
-      contactMediumEmail: ['', Validators.required],
-      contactMediumHomePhone: ['', Validators.required],
-      contactMediumMobilePhone: ['', Validators.required],
-      contactMediumFax: ['', Validators.required],
+      email: ['', Validators.required],
+      homePhone: ['', Validators.required],
+      mobilePhone: ['', Validators.required],
+      fax: ['', Validators.required],
     });
   }
 
-  //------------------------------------------
-  createCustomer() {
-    const individualCustomer: CreateCustomerRequest = {
-      firstName: this.form.value.firstName,
-      middleName: this.form.value.middleName,
-      lastName: this.form.value.lastName,
-      gender: this.form.value.gender,
-      motherName: this.form.value.motherName,
-      fatherName: this.form.value.fatherName,
-      birthDate: this.form.value.birthDate,
-      nationalityId: this.form.value.nationalityId,
+  createContactMedium() {
+    const contactMedium: CreateContactMediumRequest = {
+      email: this.form.value.email,
+      homePhone: this.form.value.homePhone,
+      mobilePhone: this.form.value.mobilePhone,
+      fax: this.form.value.fax,
     };
-    //this.store.dispatch(setIndividualCustomer({ individualCustomer }));
+    this.store.dispatch(setContactMedium({ contactMedium }));
+  }
+
+  goPrevious() {
+    const contactMedium: CreateContactMediumRequest = {
+      email: this.form.value.email,
+      homePhone: this.form.value.homePhone,
+      mobilePhone: this.form.value.mobilePhone,
+      fax: this.form.value.fax,
+    };
+    console.log(this.form.value);
+
+    this.store.dispatch(setContactMedium({ contactMedium }));
     this.router.navigate(['/home/create-address']);
   }
-  //----------------------------------------------
 
   onFormSubmit() {
     console.log(this.form);
@@ -73,6 +80,6 @@ export class ContactMediumCreateComponent {
       console.error('Form is invalid');
       return;
     }
-    this.createCustomer();
+    this.createContactMedium();
   }
 }

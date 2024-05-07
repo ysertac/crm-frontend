@@ -10,8 +10,9 @@ import {
 } from '@angular/forms';
 import { Store, select } from '@ngrx/store';
 import { CustomerApiService } from '../../services/customer-api.service';
-import { CreateCustomerRequest } from '../../models/requests/create-customer-request';
-import { selectIndividualCustomer } from '../../../../shared/store/customers/individual-customer.selector';
+import { CreateAddressRequest } from '../../models/requests/create-address-request';
+import { setCustomerAddress } from '../../../../shared/store/addresses/customer-address.action';
+import { selectCustomerAddress } from '../../../../shared/store/addresses/customer-address.selector';
 
 @Component({
   selector: 'app-customer-address-create',
@@ -27,18 +28,18 @@ export class CustomerAddressCreateComponent {
     private fb: FormBuilder,
     private customerApiService: CustomerApiService,
     private router: Router,
-    private store: Store<{ individualCustomer: CreateCustomerRequest }>
+    private store: Store<{ customerAddress: CreateAddressRequest }>
   ) {}
 
   ngOnInit(): void {
     this.createForm();
 
-    /* this.store
-      .pipe(select(selectIndividualCustomer))
-      .subscribe((individualCustomer) => {
-        this.form.patchValue(individualCustomer);
-        console.log('individualCustomerState:', individualCustomer);
-      }); */
+    this.store
+      .pipe(select(selectCustomerAddress))
+      .subscribe((customerAddress) => {
+        this.form.patchValue(customerAddress);
+        console.log('customerAddressState:', customerAddress);
+      });
   }
 
   createForm() {
@@ -52,22 +53,18 @@ export class CustomerAddressCreateComponent {
     });
   }
 
-  // Yeni dto oluşturulup değiştirilecek
-  createCustomer() {
-    const individualCustomer: CreateCustomerRequest = {
-      firstName: this.form.value.firstName,
-      middleName: this.form.value.middleName,
-      lastName: this.form.value.lastName,
-      gender: this.form.value.gender,
-      motherName: this.form.value.motherName,
-      fatherName: this.form.value.fatherName,
-      birthDate: this.form.value.birthDate,
-      nationalityId: this.form.value.nationalityId,
+  createAddress() {
+    const customerAddress: CreateAddressRequest = {
+      city: this.form.value.city,
+      neighbourhood: this.form.value.neighbourhood,
+      houseNumber: this.form.value.houseNumber,
+      district: this.form.value.district,
+      street: this.form.value.street,
+      addressDesc: this.form.value.addressDesc,
     };
-    //this.store.dispatch(setIndividualCustomer({ individualCustomer }));
+    this.store.dispatch(setCustomerAddress({ customerAddress }));
     this.router.navigate(['/home/create-address']);
   }
-  // Yeni dto oluşturulup değiştirilecek
 
   onFormSubmit() {
     console.log(this.form);
@@ -76,6 +73,6 @@ export class CustomerAddressCreateComponent {
       console.error('Form is invalid');
       return;
     }
-    this.createCustomer();
+    this.createAddress();
   }
 }
