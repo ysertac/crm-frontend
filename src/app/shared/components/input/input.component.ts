@@ -1,17 +1,19 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 type InputType =
   | 'text'
   | 'email'
   | 'number'
   | 'password'
   | 'checkbox'
-  | 'radio';
+  | 'radio'
+  | 'date';
 
 @Component({
   selector: 'app-input',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './input.component.html',
   styleUrl: './input.component.scss',
 })
@@ -23,6 +25,7 @@ export class InputComponent {
   @Input() required: boolean = false;
   @Input() inputId: string = '';
   @Input() checked: boolean = false;
+  @Input() control: FormControl | any | null;
 
-  //@Input() inputName: string = '';
+  //@Input() control: FormControl = new FormControl();
 }

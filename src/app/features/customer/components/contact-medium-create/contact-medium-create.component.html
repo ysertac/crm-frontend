@@ -1,62 +1,72 @@
 <fieldset class="customer-create border border-dark">
   <legend class="ms-4 px-2">Create Customer:</legend>
-  <div class="h-75">
-    <h2 class="customer-create-header">Contact Medium</h2>
-    <div class="content">
-      <div class="content-column h-50 my-auto justify-content-around">
-        <app-input
-          inputId="contact-medium-create-email"
-          class="d-flex align-items-center"
-          type="email"
-          placeholder=""
-          inputClasses="form-control contact-medium-create-input w-50"
-          labelClasses="login-screen-label w-25 text-end me-4 text-dark mb-2 fw-bolder text-xl"
-          [required]="true"
-          >Email</app-input
-        >
-        <app-input
-          inputId="contact-medium-create-home-phone"
-          class="d-flex align-items-center"
-          type="number"
-          placeholder=""
-          inputClasses="form-control contact-medium-create-input w-50"
-          labelClasses="login-screen-label w-25 text-end me-4 text-dark mb-2 fw-bolder text-xl"
-          >Home Phone</app-input
-        >
-      </div>
-      <div class="content-column h-50 my-auto justify-content-around">
-        <app-input
-          inputId="contact-medium-create-mobile-phone"
-          class="d-flex align-items-center"
-          type="number"
-          placeholder=""
-          inputClasses="form-control contact-medium-create-input w-50"
-          labelClasses="login-screen-label w-25 text-end me-4 text-dark mb-2 fw-bolder text-xl"
-          [required]="true"
-          >Mobile Phone</app-input
-        >
-        <app-input
-          inputId="contact-medium-create-fax"
-          class="d-flex align-items-center"
-          type="number"
-          placeholder=""
-          inputClasses="form-control contact-medium-create-input w-50"
-          labelClasses="login-screen-label w-25 text-end me-4 text-dark mb-2 fw-bolder text-xl"
-          >Fax</app-input
-        >
+  <form (submit)="onFormSubmit()" [formGroup]="form" class="h-100">
+    <div class="h-75">
+      <h2 class="customer-create-header">Contact Medium</h2>
+      <div class="content">
+        <div class="content-column h-50 my-auto justify-content-around">
+          <app-input
+            inputId="contact-medium-create-email"
+            class="d-flex align-items-center"
+            type="email"
+            placeholder=""
+            inputClasses="form-control contact-medium-create-input w-50"
+            labelClasses="login-screen-label w-25 text-end me-4 text-dark mb-2 fw-bolder text-xl"
+            [required]="true"
+            [control]="form.get('email')"
+          >
+            Email
+          </app-input>
+          <app-input
+            inputId="contact-medium-create-home-phone"
+            class="d-flex align-items-center"
+            type="number"
+            placeholder=""
+            inputClasses="form-control contact-medium-create-input w-50"
+            labelClasses="login-screen-label w-25 text-end me-4 text-dark mb-2 fw-bolder text-xl"
+            [control]="form.get('homePhone')"
+          >
+            Home Phone
+          </app-input>
+        </div>
+        <div class="content-column h-50 my-auto justify-content-around">
+          <app-input
+            inputId="contact-medium-create-mobile-phone"
+            class="d-flex align-items-center"
+            type="number"
+            placeholder=""
+            inputClasses="form-control contact-medium-create-input w-50"
+            labelClasses="login-screen-label w-25 text-end me-4 text-dark mb-2 fw-bolder text-xl"
+            [required]="true"
+            [control]="form.get('mobilePhone')"
+          >
+            Mobile Phone
+          </app-input>
+          <app-input
+            inputId="contact-medium-create-fax"
+            class="d-flex align-items-center"
+            type="number"
+            placeholder=""
+            inputClasses="form-control contact-medium-create-input w-50"
+            labelClasses="login-screen-label w-25 text-end me-4 text-dark mb-2 fw-bolder text-xl"
+            [control]="form.get('fax')"
+          >
+            Fax
+          </app-input>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="create-customer-button-section">
-    <app-button
-      [routerLink]="['/home/create-address']"
-      type="submit"
-      buttonClasses="general-button"
-      >Previous
-    </app-button>
-    <app-button [routerLink]="" type="submit" buttonClasses="general-button"
-      >Create
-    </app-button>
-  </div>
+    <div class="create-customer-button-section">
+      <app-button
+        (click)="goPrevious()"
+        type="button"
+        buttonClasses="general-button"
+        >Previous
+      </app-button>
+      <app-button [routerLink]="" type="submit" buttonClasses="general-button"
+        >Create
+      </app-button>
+    </div>
+  </form>
 </fieldset>
