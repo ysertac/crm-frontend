@@ -6,11 +6,13 @@ import { provideState, provideStore } from '@ngrx/store';
 import { individualCustomerReducer } from './shared/store/customers/individual-customer.reducer';
 import { customerAddressReducer } from './shared/store/addresses/customer-address.reducer';
 import { contactMediumReducer } from './shared/store/contactMedium/contact-medium.reducer';
+import { provideHttpClient } from '@angular/common/http';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
     provideStore(),
+    provideHttpClient(),
     provideState({
       name: 'individualCustomer',
       reducer: individualCustomerReducer,
