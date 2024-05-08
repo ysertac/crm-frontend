@@ -1,7 +1,7 @@
 import { createAction, props } from '@ngrx/store';
-import { CreateCustomerRequest } from '../../../features/customer/models/requests/create-customer-request';
+import { PostCustomerRequest } from '../../../features/customer/models/customer/post-customer-request';
 
 export const setIndividualCustomer = createAction(
   '[Individual Customer] set Individual Customer',
-  props<{ individualCustomer: CreateCustomerRequest }>()
+  props<{ individualCustomer: PostCustomerRequest }>()
 );

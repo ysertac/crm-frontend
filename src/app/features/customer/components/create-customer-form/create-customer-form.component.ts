@@ -10,10 +10,10 @@ import {
   Validators,
 } from '@angular/forms';
 import { CustomerApiService } from '../../services/customer-api.service';
-import { CreateCustomerRequest } from '../../models/requests/create-customer-request';
 import { Store, select } from '@ngrx/store';
 import { setIndividualCustomer } from '../../../../shared/store/customers/individual-customer.action';
 import { selectIndividualCustomer } from '../../../../shared/store/customers/individual-customer.selector';
+import { PostCustomerRequest } from '../../models/customer/post-customer-request';
 
 @Component({
   selector: 'app-create-customer-form',
@@ -29,7 +29,7 @@ export class CreateCustomerFormComponent implements OnInit {
     private fb: FormBuilder,
     private customerApiService: CustomerApiService,
     private router: Router,
-    private store: Store<{ individualCustomer: CreateCustomerRequest }>
+    private store: Store<{ individualCustomer: PostCustomerRequest }>
   ) {}
 
   ngOnInit(): void {
@@ -57,7 +57,7 @@ export class CreateCustomerFormComponent implements OnInit {
   }
 
   createCustomer() {
-    const individualCustomer: CreateCustomerRequest = {
+    const individualCustomer: PostCustomerRequest = {
       firstName: this.form.value.firstName,
       middleName: this.form.value.middleName,
       lastName: this.form.value.lastName,

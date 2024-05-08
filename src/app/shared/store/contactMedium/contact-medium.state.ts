@@ -1,11 +1,13 @@
-import { CreateContactMediumRequest } from '../../../features/customer/models/requests/create-contact-medium-request';
+import { PostContactMediumRequest } from "../../../features/customer/models/contact-medium/post-contact-medium-request";
+
 
 export interface ContactMediumState {
-  contactMedium: CreateContactMediumRequest;
+  contactMedium: PostContactMediumRequest;
 }
 
 export const initialContactMediumState: ContactMediumState = {
   contactMedium: {
+    customerId : null,
     email: '',
     homePhone: '',
     mobilePhone: '',

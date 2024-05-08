@@ -1,7 +1,8 @@
-import { CreateCustomerRequest } from '../../../features/customer/models/requests/create-customer-request';
+import { PostCustomerRequest } from "../../../features/customer/models/customer/post-customer-request";
+
 
 export interface IndividualCustomerState {
-  individualCustomer: CreateCustomerRequest;
+  individualCustomer: PostCustomerRequest;
 }
 
 export const initialIndividualCustomerState: IndividualCustomerState = {

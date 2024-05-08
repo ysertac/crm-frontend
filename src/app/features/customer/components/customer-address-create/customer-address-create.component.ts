@@ -10,9 +10,9 @@ import {
 } from '@angular/forms';
 import { Store, select } from '@ngrx/store';
 import { CustomerApiService } from '../../services/customer-api.service';
-import { CreateAddressRequest } from '../../models/requests/create-address-request';
 import { setCustomerAddress } from '../../../../shared/store/addresses/customer-address.action';
 import { selectCustomerAddress } from '../../../../shared/store/addresses/customer-address.selector';
+import { PostAddressRequest } from '../../models/address/post-address-request';
 
 @Component({
   selector: 'app-customer-address-create',
@@ -28,7 +28,7 @@ export class CustomerAddressCreateComponent {
     private fb: FormBuilder,
     private customerApiService: CustomerApiService,
     private router: Router,
-    private store: Store<{ customerAddress: CreateAddressRequest }>
+    private store: Store<{ customerAddress: PostAddressRequest }>
   ) {}
 
   ngOnInit(): void {
@@ -54,7 +54,8 @@ export class CustomerAddressCreateComponent {
   }
 
   createAddress() {
-    const customerAddress: CreateAddressRequest = {
+    const customerAddress: PostAddressRequest = {
+      customerId : null,
       city: this.form.value.city,
       neighbourhood: this.form.value.neighbourhood,
       houseNumber: this.form.value.houseNumber,
@@ -67,7 +68,8 @@ export class CustomerAddressCreateComponent {
   }
 
   goPrevious() {
-    const customerAddress: CreateAddressRequest = {
+    const customerAddress: PostAddressRequest = {
+      customerId :null,
       city: this.form.value.city,
       neighbourhood: this.form.value.neighbourhood,
       houseNumber: this.form.value.houseNumber,
