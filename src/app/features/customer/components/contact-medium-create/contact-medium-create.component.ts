@@ -1,3 +1,5 @@
+import { AddressApiService } from './../../services/address-api.service';
+import { ContactMediumApiService } from './../../services/contact-medium-api.service';
 import { Component } from '@angular/core';
 import { InputComponent } from '../../../../shared/components/input/input.component';
 import { ButtonComponent } from '../../../../shared/components/button/button.component';
@@ -10,10 +12,14 @@ import {
 } from '@angular/forms';
 import { CustomerApiService } from '../../services/customer-api.service';
 import { Store, select } from '@ngrx/store';
-import { CreateCustomerRequest } from '../../models/requests/create-customer-request';
-import { CreateContactMediumRequest } from '../../models/requests/create-contact-medium-request';
 import { selectContactMedium } from '../../../../shared/store/contactMedium/contact-medium.selector';
 import { setContactMedium } from '../../../../shared/store/contactMedium/contact-medium.action';
+import { selectIndividualCustomer } from '../../../../shared/store/customers/individual-customer.selector';
+import { selectCustomerAddress } from '../../../../shared/store/addresses/customer-address.selector';
+import { PostAddressRequest } from '../../models/address/post-address-request';
+import { PostContactMediumRequest } from '../../models/contact-medium/post-contact-medium-request';
+import { PostCustomerRequest } from '../../models/customer/post-customer-request';
+import { PostCustomerResponse } from '../../models/customer/post-customer-response';
 
 @Component({
   selector: 'app-contact-medium-create',
@@ -24,12 +30,15 @@ import { setContactMedium } from '../../../../shared/store/contactMedium/contact
 })
 export class ContactMediumCreateComponent {
   form!: FormGroup;
+  customerResponse: PostCustomerResponse;
 
   constructor(
     private fb: FormBuilder,
     private customerApiService: CustomerApiService,
+    private contactMediumApiService: ContactMediumApiService,
+    private addressApiService: AddressApiService,
     private router: Router,
-    private store: Store<{ individualCustomer: CreateCustomerRequest }>
+    private store: Store<{ individualCustomer: PostCustomerRequest }>
   ) {}
 
   ngOnInit(): void {
@@ -51,21 +60,32 @@ export class ContactMediumCreateComponent {
   }
 
   createContactMedium() {
-    const contactMedium: CreateContactMediumRequest = {
+    const contactMedium: PostContactMediumRequest = {
       email: this.form.value.email,
       homePhone: this.form.value.homePhone,
       mobilePhone: this.form.value.mobilePhone,
       fax: this.form.value.fax,
+      customerId : null,
     };
-    this.store.dispatch(setContactMedium({ contactMedium }));
+    this.createCustomer();
+    this.createAddress();
+    this.contactMediumApiService
+      .add(contactMedium)
+      .subscribe({
+        next: (response) => {
+          console.info('Response:', response);
+        },
+      })
+      .unsubscribe();
   }
 
   goPrevious() {
-    const contactMedium: CreateContactMediumRequest = {
+    const contactMedium: PostContactMediumRequest = {
       email: this.form.value.email,
       homePhone: this.form.value.homePhone,
       mobilePhone: this.form.value.mobilePhone,
       fax: this.form.value.fax,
+      customerId: null,
     };
     console.log(this.form.value);
 
@@ -74,12 +94,38 @@ export class ContactMediumCreateComponent {
   }
 
   onFormSubmit() {
-    console.log(this.form);
-
     if (this.form.invalid) {
       console.error('Form is invalid');
       return;
     }
     this.createContactMedium();
+  }
+
+  createCustomer() {
+    let customer: PostCustomerRequest;
+    this.store
+      .pipe(select(selectIndividualCustomer))
+      .subscribe((individualCustomer) => {
+        customer = individualCustomer;
+      });
+    this.customerApiService.add(customer).subscribe({
+      next: (response) => {
+        console.info('Response:', response);
+        this.customerResponse = response
+      },
+    });
+  }
+  createAddress() {
+    let address: PostAddressRequest;
+    this.store
+      .pipe(select(selectCustomerAddress))
+      .subscribe((customerAddress) => {
+        address = customerAddress;
+      });
+      this.addressApiService.add(address).subscribe({
+      next: (response) => {
+        console.info('Response:', response);
+      },
+    });
   }
 }

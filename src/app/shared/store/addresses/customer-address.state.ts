@@ -1,11 +1,13 @@
-import { CreateAddressRequest } from '../../../features/customer/models/requests/create-address-request';
+import { PostAddressRequest } from "../../../features/customer/models/address/post-address-request";
+
 
 export interface CustomerAddressState {
-  customerAddress: CreateAddressRequest;
+  customerAddress: PostAddressRequest;
 }
 
 export const initialCustomerAddressState: CustomerAddressState = {
   customerAddress: {
+    customerId : null,
     city: '',
     neighbourhood: '',
     houseNumber: '',
