@@ -30,7 +30,7 @@ import { PostCustomerResponse } from '../../models/customer/post-customer-respon
 })
 export class ContactMediumCreateComponent {
   form!: FormGroup;
-  customerResponse: PostCustomerResponse;
+  customerId: number;
 
   constructor(
     private fb: FormBuilder,
@@ -65,10 +65,11 @@ export class ContactMediumCreateComponent {
       homePhone: this.form.value.homePhone,
       mobilePhone: this.form.value.mobilePhone,
       fax: this.form.value.fax,
-      customerId : null,
+      customerId: null,
     };
     this.createCustomer();
     this.createAddress();
+    contactMedium.customerId = this.customerId;
     this.contactMediumApiService
       .add(contactMedium)
       .subscribe({
@@ -111,10 +112,11 @@ export class ContactMediumCreateComponent {
     this.customerApiService.add(customer).subscribe({
       next: (response) => {
         console.info('Response:', response);
-        this.customerResponse = response
+        this.customerId = response.customerId;
       },
     });
   }
+
   createAddress() {
     let address: PostAddressRequest;
     this.store
@@ -122,7 +124,8 @@ export class ContactMediumCreateComponent {
       .subscribe((customerAddress) => {
         address = customerAddress;
       });
-      this.addressApiService.add(address).subscribe({
+    address.customerId = this.customerId;
+    this.addressApiService.add(address).subscribe({
       next: (response) => {
         console.info('Response:', response);
       },

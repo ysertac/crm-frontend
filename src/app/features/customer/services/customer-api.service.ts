@@ -12,21 +12,29 @@ import { UpdateCustomerResponse } from '../models/customer/update-customer-respo
   providedIn: 'root',
 })
 export class CustomerApiService {
+  private apiUrl: string =
+    'http://localhost:8080/customerservice/api/v1/individualcustomers';
   constructor(private httpClient: HttpClient) {}
 
   get(): Observable<GetListResponse<CustomerListModel[]>> {
     return this.httpClient.get<GetListResponse<CustomerListModel[]>>('api-url');
   }
 
-  add(customer:PostCustomerRequest) :Observable<PostCustomerResponse>{
-    return this.httpClient.post<PostCustomerResponse>('api-url', customer);
+  add(customer: PostCustomerRequest): Observable<PostCustomerResponse> {
+    return this.httpClient.post<PostCustomerResponse>(this.apiUrl, customer);
   }
 
   delete(id: number) {
     this.httpClient.delete('api-url' + id);
   }
 
-  update(id: number, customer:UpdateCustomerRequest) : Observable<UpdateCustomerResponse>{
-    return this.httpClient.put < UpdateCustomerResponse>('api-url' + id, customer);
+  update(
+    id: number,
+    customer: UpdateCustomerRequest
+  ): Observable<UpdateCustomerResponse> {
+    return this.httpClient.put<UpdateCustomerResponse>(
+      'api-url' + id,
+      customer
+    );
   }
 }
