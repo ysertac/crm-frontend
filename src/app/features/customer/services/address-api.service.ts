@@ -19,7 +19,7 @@ export class AddressApiService {
   }
 
   add(address: PostAddressRequest): Observable<PostAddressResponse> {
-    return this.httpClient.post<PostAddressResponse>('api-url', address);
+    return this.httpClient.post<PostAddressResponse>('http://localhost:8080/customerservice/api/v1/addresses', address);
   }
 
   delete(id: number) {

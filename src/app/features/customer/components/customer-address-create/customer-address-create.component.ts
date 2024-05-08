@@ -38,30 +38,30 @@ export class CustomerAddressCreateComponent {
       .pipe(select(selectCustomerAddress))
       .subscribe((customerAddress) => {
         this.form.patchValue(customerAddress);
-        console.log('customerAddressState:', customerAddress);
+        console.log(customerAddress);
       });
   }
 
   createForm() {
     this.form = this.fb.group({
-      city: ['', Validators.required],
+      cityId: ['', Validators.required],
       neighbourhood: ['', Validators.required],
       houseNumber: ['', Validators.required],
       district: ['', Validators.required],
       street: ['', Validators.required],
-      addressDesc: ['', Validators.required],
+      description: ['', Validators.required],
     });
   }
 
   createAddress() {
     const customerAddress: PostAddressRequest = {
-      customerId : null,
-      city: this.form.value.city,
+      customerId : 0,
+      cityId: this.form.value.cityId,
       neighbourhood: this.form.value.neighbourhood,
       houseNumber: this.form.value.houseNumber,
       district: this.form.value.district,
       street: this.form.value.street,
-      addressDesc: this.form.value.addressDesc,
+      description: this.form.value.description,
     };
     this.store.dispatch(setCustomerAddress({ customerAddress }));
     this.router.navigate(['/home/create-address']);
@@ -69,23 +69,19 @@ export class CustomerAddressCreateComponent {
 
   goPrevious() {
     const customerAddress: PostAddressRequest = {
-      customerId :null,
-      city: this.form.value.city,
+      customerId : 0,
+      cityId: this.form.value.cityId,
       neighbourhood: this.form.value.neighbourhood,
       houseNumber: this.form.value.houseNumber,
       district: this.form.value.district,
       street: this.form.value.street,
-      addressDesc: this.form.value.addressDesc,
+      description: this.form.value.description,
     };
-    console.log(this.form.value);
-
     this.store.dispatch(setCustomerAddress({ customerAddress }));
     this.router.navigate(['/home/create-customer']);
   }
 
   onFormSubmit() {
-    console.log(this.form);
-
     if (this.form.invalid) {
       console.error('Form is invalid');
       return;

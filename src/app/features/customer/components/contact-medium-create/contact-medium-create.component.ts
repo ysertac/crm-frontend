@@ -20,6 +20,7 @@ import { PostAddressRequest } from '../../models/address/post-address-request';
 import { PostContactMediumRequest } from '../../models/contact-medium/post-contact-medium-request';
 import { PostCustomerRequest } from '../../models/customer/post-customer-request';
 import { PostCustomerResponse } from '../../models/customer/post-customer-response';
+import { setCustomerAddress } from '../../../../shared/store/addresses/customer-address.action';
 
 @Component({
   selector: 'app-contact-medium-create',
@@ -30,7 +31,8 @@ import { PostCustomerResponse } from '../../models/customer/post-customer-respon
 })
 export class ContactMediumCreateComponent {
   form!: FormGroup;
-  customerId: number;
+  createdCustomerResponse: PostCustomerResponse;
+  address: PostAddressRequest;
 
   constructor(
     private fb: FormBuilder,
@@ -46,7 +48,6 @@ export class ContactMediumCreateComponent {
 
     this.store.pipe(select(selectContactMedium)).subscribe((contactMedium) => {
       this.form.patchValue(contactMedium);
-      console.log('contactMediumState:', contactMedium);
     });
   }
 
@@ -60,21 +61,17 @@ export class ContactMediumCreateComponent {
   }
 
   createContactMedium() {
-    const contactMedium: PostContactMediumRequest = {
+    let contactMedium: PostContactMediumRequest = {
       email: this.form.value.email,
       homePhone: this.form.value.homePhone,
       mobilePhone: this.form.value.mobilePhone,
       fax: this.form.value.fax,
-      customerId: null,
+      customerId: this.createdCustomerResponse.customerId,
     };
-    this.createCustomer();
-    this.createAddress();
-    contactMedium.customerId = this.customerId;
     this.contactMediumApiService
       .add(contactMedium)
       .subscribe({
         next: (response) => {
-          console.info('Response:', response);
         },
       })
       .unsubscribe();
@@ -88,8 +85,6 @@ export class ContactMediumCreateComponent {
       fax: this.form.value.fax,
       customerId: null,
     };
-    console.log(this.form.value);
-
     this.store.dispatch(setContactMedium({ contactMedium }));
     this.router.navigate(['/home/create-address']);
   }
@@ -99,7 +94,7 @@ export class ContactMediumCreateComponent {
       console.error('Form is invalid');
       return;
     }
-    this.createContactMedium();
+    this.createCustomer();
   }
 
   createCustomer() {
@@ -111,23 +106,32 @@ export class ContactMediumCreateComponent {
       });
     this.customerApiService.add(customer).subscribe({
       next: (response) => {
-        console.info('Response:', response);
-        this.customerId = response.customerId;
+        this.createdCustomerResponse = response;
+        this.createAddress();
       },
     });
   }
 
   createAddress() {
-    let address: PostAddressRequest;
     this.store
       .pipe(select(selectCustomerAddress))
       .subscribe((customerAddress) => {
-        address = customerAddress;
+        //this.store.dispatch(setCustomerAddress({customerAddress.customerId:this.createdCustomerResponse.customerId}));
+        this.address = customerAddress;
       });
-    address.customerId = this.customerId;
-    this.addressApiService.add(address).subscribe({
+    let newAddress: PostAddressRequest = {
+      customerId: this.createdCustomerResponse.customerId,
+      cityId: this.address.cityId, 
+      neighbourhood: this.address.neighbourhood,
+      houseNumber: this.address.houseNumber,
+      district: this.address.district,
+      street: this.address.street,
+      description: this.address.description,
+    }
+    console.log(newAddress);
+    this.addressApiService.add(newAddress).subscribe({
       next: (response) => {
-        console.info('Response:', response);
+        this.createContactMedium();
       },
     });
   }

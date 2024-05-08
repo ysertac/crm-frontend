@@ -1,10 +1,10 @@
 export interface PostAddressResponse {
   id:number
   customerId: number;
-  city: string;
+  cityId: number;
   neighbourhood: string;
   houseNumber: string;
   district: string;
   street: string;
-  addressDesc: string;
+  description: string;
 }

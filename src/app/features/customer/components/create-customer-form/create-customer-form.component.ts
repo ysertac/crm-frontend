@@ -39,7 +39,7 @@ export class CreateCustomerFormComponent implements OnInit {
       .pipe(select(selectIndividualCustomer))
       .subscribe((individualCustomer) => {
         this.form.patchValue(individualCustomer);
-        console.log('individualCustomerState:', individualCustomer);
+        console.log(individualCustomer);
       });
   }
 
@@ -72,7 +72,6 @@ export class CreateCustomerFormComponent implements OnInit {
   }
 
   onFormSubmit() {
-    console.log(this.form);
 
     if (this.form.invalid) {
       console.error('Form is invalid');

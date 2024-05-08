@@ -8,11 +8,11 @@ export interface CustomerAddressState {
 export const initialCustomerAddressState: CustomerAddressState = {
   customerAddress: {
     customerId : null,
-    city: '',
+    cityId: 0,
     neighbourhood: '',
     houseNumber: '',
     district: '',
     street: '',
-    addressDesc: '',
+    description: '',
   },
 };

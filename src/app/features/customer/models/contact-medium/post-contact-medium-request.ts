@@ -1,5 +1,5 @@
 export interface PostContactMediumRequest {
-  customerId:number | null
+  customerId:number;
   email: string;
   homePhone: string;
   mobilePhone: string;

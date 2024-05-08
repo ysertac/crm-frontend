@@ -21,7 +21,7 @@ export class ContactMediumApiService {
   }
 
   add(contactMedium: PostContactMediumRequest): Observable<PostContactMediumResponse> {
-    return this.httpClient.post<PostContactMediumResponse>('api-url', contactMedium);
+    return this.httpClient.post<PostContactMediumResponse>('http://localhost:8080/customerservice/api/v1/contact-medium', contactMedium);
   }
 
   delete(id: number) {

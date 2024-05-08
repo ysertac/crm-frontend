@@ -1,9 +1,9 @@
 export interface PostAddressRequest {
-  customerId:number | null
-  city: string;
+  customerId: number;
+  cityId: number;
   neighbourhood: string;
   houseNumber: string;
   district: string;
   street: string;
-  addressDesc: string;
+  description: string;
 }
