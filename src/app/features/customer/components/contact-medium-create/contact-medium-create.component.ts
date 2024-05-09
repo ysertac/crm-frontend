@@ -21,6 +21,7 @@ import { PostContactMediumRequest } from '../../models/contact-medium/post-conta
 import { PostCustomerRequest } from '../../models/customer/post-customer-request';
 import { PostCustomerResponse } from '../../models/customer/post-customer-response';
 import { setCustomerAddress } from '../../../../shared/store/addresses/customer-address.action';
+import { concatMap, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-contact-medium-create',
@@ -51,6 +52,48 @@ export class ContactMediumCreateComponent {
     });
   }
 
+  makeRequests(){
+    let customerFromState: PostCustomerRequest;
+    let addressFromState: PostAddressRequest;
+    let customerIdFromFirstReq: number;
+    this.store
+      .pipe(select(selectIndividualCustomer))
+      .subscribe((individualCustomer) => {
+        customerFromState = individualCustomer;
+      });
+      this.store
+      .pipe(select(selectCustomerAddress))
+      .subscribe((customerAddress) => {
+        addressFromState = customerAddress;
+      });
+    this.customerApiService.add(customerFromState).pipe(
+      switchMap( response1 => {
+          console.log("deneme");
+          customerIdFromFirstReq = response1.customerId;
+          let newAddress: PostAddressRequest = {
+            customerId: response1.customerId,
+            cityId: addressFromState.cityId, 
+            neighbourhood: addressFromState.neighbourhood,
+            houseNumber: addressFromState.houseNumber,
+            district: addressFromState.district,
+            street: addressFromState.street,
+            description: addressFromState.description,
+          }
+          return this.addressApiService.add(newAddress).pipe(
+            switchMap(response2 => {
+              let contactMedium: PostContactMediumRequest = {
+                email: this.form.value.email,
+                homePhone: this.form.value.homePhone,
+                mobilePhone: this.form.value.mobilePhone,
+                fax: this.form.value.fax,
+                customerId: customerIdFromFirstReq,
+              }
+              return this.contactMediumApiService.add(contactMedium);
+            })
+          );
+      })).subscribe();
+  }
+
   createForm() {
     this.form = this.fb.group({
       email: ['', Validators.required],
@@ -58,23 +101,6 @@ export class ContactMediumCreateComponent {
       mobilePhone: ['', Validators.required],
       fax: ['', Validators.required],
     });
-  }
-
-  createContactMedium() {
-    let contactMedium: PostContactMediumRequest = {
-      email: this.form.value.email,
-      homePhone: this.form.value.homePhone,
-      mobilePhone: this.form.value.mobilePhone,
-      fax: this.form.value.fax,
-      customerId: this.createdCustomerResponse.customerId,
-    };
-    this.contactMediumApiService
-      .add(contactMedium)
-      .subscribe({
-        next: (response) => {
-        },
-      })
-      .unsubscribe();
   }
 
   goPrevious() {
@@ -94,45 +120,6 @@ export class ContactMediumCreateComponent {
       console.error('Form is invalid');
       return;
     }
-    this.createCustomer();
-  }
-
-  createCustomer() {
-    let customer: PostCustomerRequest;
-    this.store
-      .pipe(select(selectIndividualCustomer))
-      .subscribe((individualCustomer) => {
-        customer = individualCustomer;
-      });
-    this.customerApiService.add(customer).subscribe({
-      next: (response) => {
-        this.createdCustomerResponse = response;
-        this.createAddress();
-      },
-    });
-  }
-
-  createAddress() {
-    this.store
-      .pipe(select(selectCustomerAddress))
-      .subscribe((customerAddress) => {
-        //this.store.dispatch(setCustomerAddress({customerAddress.customerId:this.createdCustomerResponse.customerId}));
-        this.address = customerAddress;
-      });
-    let newAddress: PostAddressRequest = {
-      customerId: this.createdCustomerResponse.customerId,
-      cityId: this.address.cityId, 
-      neighbourhood: this.address.neighbourhood,
-      houseNumber: this.address.houseNumber,
-      district: this.address.district,
-      street: this.address.street,
-      description: this.address.description,
-    }
-    console.log(newAddress);
-    this.addressApiService.add(newAddress).subscribe({
-      next: (response) => {
-        this.createContactMedium();
-      },
-    });
+    this.makeRequests();
   }
 }
