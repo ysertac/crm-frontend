@@ -8,7 +8,6 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { CustomerApiService } from '../../services/customer-api.service';
 import { Store, select } from '@ngrx/store';
 import { setIndividualCustomer } from '../../../../shared/store/customers/individual-customer.action';
 import { selectIndividualCustomer } from '../../../../shared/store/customers/individual-customer.selector';
