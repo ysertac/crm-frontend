@@ -1,6 +1,6 @@
 export interface PostCustomerResponse {
-  id: number;
-  customerId: number;
+  id: string;
+  customerId: string;
   firstName: string;
   middleName: string;
   lastName: string;

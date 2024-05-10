@@ -1,5 +1,5 @@
 export interface ContactMediumListModel {
-  id: number;
+  id: string;
 
   email: string;
 

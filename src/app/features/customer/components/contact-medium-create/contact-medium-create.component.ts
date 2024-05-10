@@ -19,9 +19,7 @@ import { selectCustomerAddress } from '../../../../shared/store/addresses/custom
 import { PostAddressRequest } from '../../models/address/post-address-request';
 import { PostContactMediumRequest } from '../../models/contact-medium/post-contact-medium-request';
 import { PostCustomerRequest } from '../../models/customer/post-customer-request';
-import { PostCustomerResponse } from '../../models/customer/post-customer-response';
-import { setCustomerAddress } from '../../../../shared/store/addresses/customer-address.action';
-import { concatMap, switchMap } from 'rxjs';
+import { switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-contact-medium-create',
@@ -32,7 +30,6 @@ import { concatMap, switchMap } from 'rxjs';
 })
 export class ContactMediumCreateComponent {
   form!: FormGroup;
-  createdCustomerResponse: PostCustomerResponse;
   address: PostAddressRequest;
 
   constructor(
@@ -55,7 +52,7 @@ export class ContactMediumCreateComponent {
   makeRequests(){
     let customerFromState: PostCustomerRequest;
     let addressFromState: PostAddressRequest;
-    let customerIdFromFirstReq: number;
+    let customerIdFromFirstReq: string;
     this.store
       .pipe(select(selectIndividualCustomer))
       .subscribe((individualCustomer) => {
@@ -72,7 +69,7 @@ export class ContactMediumCreateComponent {
           customerIdFromFirstReq = response1.customerId;
           let newAddress: PostAddressRequest = {
             customerId: response1.customerId,
-            cityId: addressFromState.cityId, 
+            cityId: addressFromState.cityId,
             neighbourhood: addressFromState.neighbourhood,
             houseNumber: addressFromState.houseNumber,
             district: addressFromState.district,

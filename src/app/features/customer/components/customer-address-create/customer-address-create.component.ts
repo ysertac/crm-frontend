@@ -26,7 +26,6 @@ export class CustomerAddressCreateComponent {
 
   constructor(
     private fb: FormBuilder,
-    private customerApiService: CustomerApiService,
     private router: Router,
     private store: Store<{ customerAddress: PostAddressRequest }>
   ) {}
@@ -55,7 +54,7 @@ export class CustomerAddressCreateComponent {
 
   createAddress() {
     const customerAddress: PostAddressRequest = {
-      customerId : 0,
+      customerId : '',
       cityId: this.form.value.cityId,
       neighbourhood: this.form.value.neighbourhood,
       houseNumber: this.form.value.houseNumber,
@@ -69,7 +68,7 @@ export class CustomerAddressCreateComponent {
 
   goPrevious() {
     const customerAddress: PostAddressRequest = {
-      customerId : 0,
+      customerId : '',
       cityId: this.form.value.cityId,
       neighbourhood: this.form.value.neighbourhood,
       houseNumber: this.form.value.houseNumber,

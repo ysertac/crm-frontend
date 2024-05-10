@@ -4,7 +4,6 @@ import { ButtonComponent } from '../../../../shared/components/button/button.com
 import { Router, RouterLink } from '@angular/router';
 import {
   FormBuilder,
-  FormControl,
   FormGroup,
   ReactiveFormsModule,
   Validators,
@@ -27,7 +26,6 @@ export class CreateCustomerFormComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private customerApiService: CustomerApiService,
     private router: Router,
     private store: Store<{ individualCustomer: PostCustomerRequest }>
   ) {}

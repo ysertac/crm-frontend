@@ -1,6 +1,6 @@
 export interface PostContactMediumResponse {
-  id: number;
-  customerId: number;
+  id: string;
+  customerId: string;
   email: string;
   homePhone: string;
   mobilePhone: string;
