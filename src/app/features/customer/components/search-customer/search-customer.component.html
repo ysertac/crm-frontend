@@ -6,7 +6,11 @@
     class="search-filter border border-dark d-flex flex-column justify-content-around align-items-center"
   >
     <legend class="ms-4 px-2">Search Filter:</legend>
-    <form (submit)="onFormSubmit()" [formGroup]="form" class="h-100">
+    <form
+      (submit)="onFormSubmit()"
+      [formGroup]="form"
+      class="h-100 w-100 d-flex flex-column justify-content-around align-items-center"
+    >
       <app-input
         inputId="search-customer-customer-id-number"
         class="d-flex flex-column search-customer-input"
