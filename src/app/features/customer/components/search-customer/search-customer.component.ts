@@ -4,7 +4,12 @@ import { ButtonComponent } from '../../../../shared/components/button/button.com
 import { TableComponent } from '../../../../shared/components/table/table.component';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-search-customer',
@@ -17,7 +22,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
     TableComponent,
     CommonModule,
     RouterModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
 })
 export class SearchCustomerComponent {
@@ -36,21 +41,31 @@ export class SearchCustomerComponent {
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
-    // this.createForm();
+    this.createForm();
   }
 
-  // createForm() {
-  //   this.form = this.fb.group({
-  //     firstName: ['', Validators.required],
-  //     middleName: ['', Validators.required],
-  //     lastName: ['', Validators.required],
-  //     gender: ['', Validators.required],
-  //     motherName: ['', Validators.required],
-  //     fatherName: ['', Validators.required],
-  //     birthDate: ['', Validators.required],
-  //     nationalityId: ['', Validators.required],
-  //   });
-  // }
+  createForm() {
+    this.form = this.fb.group({
+      firstName: ['', Validators.required],
+      id: ['', Validators.required],
+      lastName: ['', Validators.required],
+      orderNumber: ['', Validators.required],
+      accountNumber: ['', Validators.required],
+      mobilePhone: ['', Validators.required],
+      nationalityId: ['', Validators.required],
+    });
+  }
 
   onFormSubmit() {}
+
+  customers = [
+    {
+      firstName: '',
+      middleName: '',
+      lastName: '',
+      role: '',
+      id: '',
+      customerId: '',
+    },
+  ];
 }

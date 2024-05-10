@@ -8,23 +8,24 @@
     <legend class="ms-4 px-2">Search Filter:</legend>
     <form (submit)="onFormSubmit()" [formGroup]="form" class="h-100">
       <app-input
-        inputId="search-customer-id-number"
-        class="d-flex flex-column search-customer-input"
-        type="text"
-        placeholder=""
-        inputClasses="search-customer-input-field"
-        labelClasses="login-screen-label text-dark fw-semibold "
-        >ID Number</app-input
-      >
-
-      <app-input
         inputId="search-customer-customer-id-number"
         class="d-flex flex-column search-customer-input"
         type="text"
         placeholder=""
         inputClasses="search-customer-input-field"
         labelClasses="login-screen-label text-dark fw-semibold "
+        [control]="form.get('id')"
         >Customer ID</app-input
+      >
+      <app-input
+        inputId="search-customer-id-number"
+        class="d-flex flex-column search-customer-input"
+        type="text"
+        placeholder=""
+        inputClasses="search-customer-input-field"
+        labelClasses="login-screen-label text-dark fw-semibold "
+        [control]="form.get('nationalityId')"
+        >ID Number</app-input
       >
 
       <app-input
@@ -34,6 +35,7 @@
         placeholder=""
         inputClasses="search-customer-input-field"
         labelClasses="login-screen-label text-dark fw-semibold "
+        [control]="form.get('accountNumber')"
         >Account Number</app-input
       >
 
@@ -44,6 +46,7 @@
         placeholder=""
         inputClasses="search-customer-input-field"
         labelClasses="login-screen-label text-dark fw-semibold "
+        [control]="form.get('mobilePhone')"
         >GSM Number</app-input
       >
 
@@ -54,6 +57,7 @@
         placeholder=""
         inputClasses="search-customer-input-field"
         labelClasses="login-screen-label text-dark fw-semibold "
+        [control]="form.get('firstName')"
         >First Name</app-input
       >
 
@@ -64,6 +68,7 @@
         placeholder=""
         inputClasses="search-customer-input-field"
         labelClasses="login-screen-label text-dark fw-semibold "
+        [control]="form.get('lastName')"
         >Last Name</app-input
       >
 
@@ -74,7 +79,8 @@
         placeholder=""
         inputClasses="search-customer-input-field"
         labelClasses="login-screen-label text-dark fw-semibold "
-        >Order Name</app-input
+        [control]="form.get('orderNumber')"
+        >Order Number</app-input
       >
 
       <div class="buttons d-flex">
@@ -93,6 +99,7 @@
       </div>
     </form>
   </fieldset>
+
   <fieldset
     class="search-result border border-dark d-flex flex-column justify-content-around align-items-center"
   >
