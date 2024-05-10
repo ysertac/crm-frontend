@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 import { PostCustomerResponse } from '../models/customer/post-customer-response';
 import { UpdateCustomerRequest } from '../models/customer/update-customer-request';
 import { UpdateCustomerResponse } from '../models/customer/update-customer-response';
+import { GetCustomerResponse } from '../models/customer/get-customer-response';
 
 @Injectable({
   providedIn: 'root',
@@ -18,6 +19,10 @@ export class CustomerApiService {
 
   get(): Observable<GetListResponse<CustomerListModel[]>> {
     return this.httpClient.get<GetListResponse<CustomerListModel[]>>('api-url');
+  }
+
+  getById(customerId:string) : Observable<GetCustomerResponse> {
+    return this.httpClient.get<GetCustomerResponse>(''+customerId)
   }
 
   add(customer: PostCustomerRequest): Observable<PostCustomerResponse> {
