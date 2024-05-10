@@ -10,6 +10,8 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { SearchCustomerApiService } from '../../services/search-customer-api.service';
+import { PostSearchCustomerRequest } from '../../models/search/post-search-customer-request';
 
 @Component({
   selector: 'app-search-customer',
@@ -37,25 +39,54 @@ export class SearchCustomerComponent {
     'ID Number',
   ];
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private searchCustomerApiService: SearchCustomerApiService
+  ) {}
 
   ngOnInit(): void {
     this.createForm();
   }
 
-  createForm() {
-    this.form = this.fb.group({
-      firstName: ['', Validators.required],
-      id: ['', Validators.required],
-      lastName: ['', Validators.required],
-      orderNumber: ['', Validators.required],
-      accountNumber: ['', Validators.required],
-      mobilePhone: ['', Validators.required],
-      nationalityId: ['', Validators.required],
+  searchRequest() {
+    const request: PostSearchCustomerRequest = {
+      customerId: this.form.value.id,
+      nationalityId: this.form.value.nationalityId,
+      accountNumber: this.form.value.accountNumber,
+      mobilePhone: this.form.value.mobilePhone,
+      firstName: this.form.value.firstName,
+      lastName: this.form.value.lastName,
+      orderNumber: this.form.value.orderNumber,
+    };
+    this.searchCustomerApiService.search(request).subscribe({
+      next: (response) => {
+        console.log('Response:' + response[0]);
+      },
+      error: (error) => {
+        console.log('Error:' + error);
+      },
+      complete: () => {
+        console.log('Completed');
+        this.form.reset();
+      },
     });
   }
 
-  onFormSubmit() {}
+  createForm() {
+    this.form = this.fb.group({
+      firstName: [''],
+      id: [''],
+      lastName: [''],
+      orderNumber: [''],
+      accountNumber: [''],
+      mobilePhone: [''],
+      nationalityId: [''],
+    });
+  }
+
+  onFormSubmit() {
+    this.searchRequest();
+  }
 
   customerCount: number = 1;
   customers: any[] = [
@@ -68,7 +99,7 @@ export class SearchCustomerComponent {
       middleName: 'abc',
       role: 'Customer',
       lastName: 'Doe',
-      orderName: 'Product A',
+      orderNumber: 'Product A',
     },
     {
       id: '123456789',
@@ -79,7 +110,7 @@ export class SearchCustomerComponent {
       middleName: '',
       role: 'Customer',
       lastName: 'Smith',
-      orderName: 'Product B',
+      orderNumber: 'Product B',
     },
     {
       id: '567890123',
@@ -90,7 +121,7 @@ export class SearchCustomerComponent {
       middleName: '',
       role: 'Customer',
       lastName: 'Johnson',
-      orderName: 'Product C',
+      orderNumber: 'Product C',
     },
     {
       id: '234567890',
@@ -101,7 +132,7 @@ export class SearchCustomerComponent {
       middleName: '',
       role: 'Customer',
       lastName: 'Brown',
-      orderName: 'Product D',
+      orderNumber: 'Product D',
     },
     {
       id: '890123456',
@@ -112,7 +143,7 @@ export class SearchCustomerComponent {
       middleName: '',
       role: 'Customer',
       lastName: 'Martinez',
-      orderName: 'Product E',
+      orderNumber: 'Product E',
     },
     {
       id: '456789012',
@@ -123,7 +154,7 @@ export class SearchCustomerComponent {
       middleName: 'abc',
       role: 'Customer',
       lastName: 'Garcia',
-      orderName: 'Product F',
+      orderNumber: 'Product F',
     },
     {
       id: '012345678',
@@ -134,7 +165,7 @@ export class SearchCustomerComponent {
       middleName: 'abc',
       role: 'Customer',
       lastName: 'Lopez',
-      orderName: 'Product G',
+      orderNumber: 'Product G',
     },
     {
       id: '345678901',
@@ -145,7 +176,7 @@ export class SearchCustomerComponent {
       middleName: '',
       role: 'Customer',
       lastName: 'Hernandez',
-      orderName: 'Product H',
+      orderNumber: 'Product H',
     },
     {
       id: '678901234',
@@ -156,7 +187,7 @@ export class SearchCustomerComponent {
       middleName: '',
       role: 'Customer',
       lastName: 'Perez',
-      orderName: 'Product I',
+      orderNumber: 'Product I',
     },
     {
       id: '901234567',
@@ -167,7 +198,7 @@ export class SearchCustomerComponent {
       middleName: '',
       role: 'Customer',
       lastName: 'Gonzalez',
-      orderName: 'Product J',
+      orderNumber: 'Product J',
     },
   ];
 }
