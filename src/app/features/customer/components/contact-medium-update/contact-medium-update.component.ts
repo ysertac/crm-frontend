@@ -50,13 +50,22 @@ export class ContactMediumUpdateComponent implements OnInit {
 
   updateContactMedium() {
     const contactMedium: UpdateContactMediumRequest = {
-      customerId: '',
+      customerId: '95f25ca7-2cb7-4d39-870e-46d7a0e487fa',
       email: this.form.value.email,
       homePhone: this.form.value.homePhone,
       mobilePhone: this.form.value.mobilePhone,
       fax: this.form.value.fax,
     };
-    this.store.dispatch(setContactMedium({ contactMedium }));
+    this.contactMediumApiService
+      .update('b1bea412-93a7-48ef-866d-e1963197d303', contactMedium)
+      .subscribe({
+        next: (response) => {
+          console.log(response);
+        },
+        error: (error) => {
+          console.error(error);
+        },
+      });
   }
 
   onFormSubmit() {

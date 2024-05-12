@@ -37,11 +37,11 @@ export class ContactMediumApiService {
   }
 
   update(
-    id: number,
+    id: string,
     contactmedium: UpdateContactMediumRequest
   ): Observable<UpdateContactMediumResponse> {
     return this.httpClient.put<UpdateContactMediumResponse>(
-      'api-url' + id,
+      this.apiUrl + '/' + id,
       contactmedium
     );
   }

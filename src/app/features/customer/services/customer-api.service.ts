@@ -39,7 +39,7 @@ export class CustomerApiService {
     id: string,
     customer: UpdateCustomerRequest
   ): Observable<UpdateCustomerResponse> {
-    let newUrl = this.apiUrl + '/' + '95f25ca7-2cb7-4d39-870e-46d7a0e487fa';
+    let newUrl = this.apiUrl + '/' + id;
     console.log(newUrl);
 
     return this.httpClient.put<UpdateCustomerResponse>(newUrl, customer);
