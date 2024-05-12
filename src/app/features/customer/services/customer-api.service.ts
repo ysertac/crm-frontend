@@ -21,8 +21,10 @@ export class CustomerApiService {
     return this.httpClient.get<GetListResponse<CustomerListModel[]>>('api-url');
   }
 
-  getById(customerId:string) : Observable<GetCustomerResponse> {
-    return this.httpClient.get<GetCustomerResponse>(this.apiUrl+"/"+customerId)
+  getById(customerId: string): Observable<GetCustomerResponse> {
+    return this.httpClient.get<GetCustomerResponse>(
+      this.apiUrl + '/' + customerId
+    );
   }
 
   add(customer: PostCustomerRequest): Observable<PostCustomerResponse> {
@@ -34,12 +36,12 @@ export class CustomerApiService {
   }
 
   update(
-    id: number,
+    id: string,
     customer: UpdateCustomerRequest
   ): Observable<UpdateCustomerResponse> {
-    return this.httpClient.put<UpdateCustomerResponse>(
-      'api-url' + id,
-      customer
-    );
+    let newUrl = this.apiUrl + '/' + '95f25ca7-2cb7-4d39-870e-46d7a0e487fa';
+    console.log(newUrl);
+
+    return this.httpClient.put<UpdateCustomerResponse>(newUrl, customer);
   }
 }

@@ -31,7 +31,7 @@ export class CustomerInfoComponent implements OnInit {
 
   getById() {
     this.customerApiService
-      .getById('b995ee6e-ec10-46cd-b134-33b9b188faf8')
+      .getById('95f25ca7-2cb7-4d39-870e-46d7a0e487fa')
       .subscribe({
         next: (response) => {
           this.customerDemographicInfo = response;
@@ -56,6 +56,5 @@ export class CustomerInfoComponent implements OnInit {
     };
     this.store.dispatch(setIndividualCustomer({ individualCustomer }));
     console.log(individualCustomer);
-
   }
 }

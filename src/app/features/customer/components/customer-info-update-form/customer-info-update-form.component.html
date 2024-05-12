@@ -1,5 +1,5 @@
 <div class="customer-update">
-  <form class="h-100" [formGroup]="form">
+  <form class="h-100" (submit)="onFormSubmit()" [formGroup]="form">
     <div class="h-75">
       <h2 class="customer-create-header">Customer Info Update</h2>
       <div class="content">
@@ -102,7 +102,7 @@
         Cancel
       </app-button>
       <app-button type="submit" buttonClasses="general-button">
-        Next
+        Save
       </app-button>
     </div>
   </form>

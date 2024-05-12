@@ -11,6 +11,8 @@ import { Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 import { PostCustomerRequest } from '../../models/customer/post-customer-request';
 import { selectIndividualCustomer } from '../../../../shared/store/customers/individual-customer.selector';
+import { CustomerApiService } from '../../services/customer-api.service';
+import { UpdateCustomerRequest } from '../../models/customer/update-customer-request';
 
 @Component({
   selector: 'app-customer-info-update-form',
@@ -24,11 +26,12 @@ export class CustomerInfoUpdateFormComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private store: Store<{ individualCustomer: PostCustomerRequest }>
+    private store: Store<{ individualCustomer: PostCustomerRequest }>,
+    private customerApiService: CustomerApiService
   ) {}
 
   ngOnInit(): void {
-   this.createForm();
+    this.createForm();
     this.store
       .pipe(select(selectIndividualCustomer))
       .subscribe((individualCustomer) => {
@@ -47,5 +50,28 @@ export class CustomerInfoUpdateFormComponent implements OnInit {
       birthDate: ['', Validators.required],
       nationalityId: ['', Validators.required],
     });
+  }
+
+  onFormSubmit() {
+    let updateCustomerRequest: UpdateCustomerRequest = {
+      firstName: this.form.value.firstName,
+      middleName: this.form.value.middleName,
+      lastName: this.form.value.lastName,
+      gender: this.form.value.gender,
+      motherName: this.form.value.motherName,
+      fatherName: this.form.value.fatherName,
+      birthDate: this.form.value.birthDate,
+      nationalityId: this.form.value.nationalityId,
+    };
+    this.customerApiService
+      .update('95f25ca7-2cb7-4d39-870e-46d7a0e487fa', updateCustomerRequest)
+      .subscribe({
+        next: (response) => {
+          console.log(response);
+        },
+        error: (error) => {
+          console.error(error);
+        },
+      });
   }
 }
