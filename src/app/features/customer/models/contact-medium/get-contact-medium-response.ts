@@ -1,4 +1,4 @@
-export interface UpdateContactMediumResponse {
+export interface GetContactMediumResponse {
   id: string;
   customerId: string;
   email: string;
