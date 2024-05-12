@@ -14,8 +14,13 @@ import { UpdateAddressResponse } from '../models/address/update-address-response
 export class AddressApiService {
   constructor(private httpClient: HttpClient) {}
 
-  get(): Observable<GetListResponse<AddressListModel[]>> {
-    return this.httpClient.get<GetListResponse<AddressListModel[]>>('api-url');
+  get(page: number,size: number,customerId: string | null): Observable<GetListResponse<AddressListModel>> {
+    if(customerId == null){
+      return this.httpClient.get<GetListResponse<AddressListModel>>('http://localhost:8080/customerservice/api/v1/addresses?page=' + page + '&size=' + size);
+    }
+    else{
+      return this.httpClient.get<GetListResponse<AddressListModel>>('http://localhost:8080/customerservice/api/v1/addresses?page=' + page + '&size=' + size + '&customerId=' + customerId);
+    }
   }
 
   add(address: PostAddressRequest): Observable<PostAddressResponse> {
@@ -29,4 +34,5 @@ export class AddressApiService {
   update(id: number, address: UpdateAddressRequest): Observable<UpdateAddressResponse> {
     return this.httpClient.put<UpdateAddressResponse>('api-url' + id, address);
   }
+
 }
