@@ -8,6 +8,9 @@ import {
 } from '@angular/forms';
 import { ButtonComponent } from '../../../../shared/components/button/button.component';
 import { Router } from '@angular/router';
+import { select, Store } from '@ngrx/store';
+import { PostCustomerRequest } from '../../models/customer/post-customer-request';
+import { selectIndividualCustomer } from '../../../../shared/store/customers/individual-customer.selector';
 
 @Component({
   selector: 'app-customer-info-update-form',
@@ -19,10 +22,18 @@ import { Router } from '@angular/router';
 export class CustomerInfoUpdateFormComponent implements OnInit {
   form!: FormGroup;
 
-  constructor(private fb: FormBuilder, private router: Router) {}
+  constructor(
+    private fb: FormBuilder,
+    private store: Store<{ individualCustomer: PostCustomerRequest }>
+  ) {}
 
   ngOnInit(): void {
-    this.createForm();
+   this.createForm();
+    this.store
+      .pipe(select(selectIndividualCustomer))
+      .subscribe((individualCustomer) => {
+        this.form.patchValue(individualCustomer);
+      });
   }
 
   createForm() {
