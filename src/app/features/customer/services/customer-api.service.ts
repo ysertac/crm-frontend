@@ -22,7 +22,7 @@ export class CustomerApiService {
   }
 
   getById(customerId:string) : Observable<GetCustomerResponse> {
-    return this.httpClient.get<GetCustomerResponse>(''+customerId)
+    return this.httpClient.get<GetCustomerResponse>(this.apiUrl+"/"+customerId)
   }
 
   add(customer: PostCustomerRequest): Observable<PostCustomerResponse> {
