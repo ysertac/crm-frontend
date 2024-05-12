@@ -7,11 +7,14 @@ import { UpdateContactMediumRequest } from '../models/contact-medium/update-cont
 import { UpdateContactMediumResponse } from '../models/contact-medium/update-contact-medium-response';
 import { PostContactMediumRequest } from '../models/contact-medium/post-contact-medium-request';
 import { PostContactMediumResponse } from '../models/contact-medium/post-contact-medium-response';
+import { GetContactMediumResponse } from '../models/contact-medium/get-contact-medium-response';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ContactMediumApiService {
+  private apiUrl: string =
+    'http://localhost:8080/customerservice/api/v1/contact-medium';
   constructor(private httpClient: HttpClient) {}
 
   get(): Observable<GetListResponse<ContactMediumListModel[]>> {
@@ -20,15 +23,32 @@ export class ContactMediumApiService {
     );
   }
 
-  add(contactMedium: PostContactMediumRequest): Observable<PostContactMediumResponse> {
-    return this.httpClient.post<PostContactMediumResponse>('http://localhost:8080/customerservice/api/v1/contact-medium', contactMedium);
+  add(
+    contactMedium: PostContactMediumRequest
+  ): Observable<PostContactMediumResponse> {
+    return this.httpClient.post<PostContactMediumResponse>(
+      this.apiUrl,
+      contactMedium
+    );
   }
 
   delete(id: number) {
     this.httpClient.delete('api-url' + id);
   }
 
-  update(id: number, contactmedium: UpdateContactMediumRequest): Observable<UpdateContactMediumResponse> {
-    return this.httpClient.put<UpdateContactMediumResponse>('api-url' + id, contactmedium);
+  update(
+    id: number,
+    contactmedium: UpdateContactMediumRequest
+  ): Observable<UpdateContactMediumResponse> {
+    return this.httpClient.put<UpdateContactMediumResponse>(
+      'api-url' + id,
+      contactmedium
+    );
+  }
+
+  getById(id: string): Observable<GetContactMediumResponse> {
+    return this.httpClient.get<GetContactMediumResponse>(
+      this.apiUrl + '/' + id
+    );
   }
 }
