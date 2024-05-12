@@ -9,6 +9,10 @@ import {
 } from '@angular/forms';
 import { ContactMediumApiService } from '../../services/contact-medium-api.service';
 import { UpdateContactMediumRequest } from '../../models/contact-medium/update-contact-medium-request';
+import { PostContactMediumRequest } from '../../models/contact-medium/post-contact-medium-request';
+import { Store, select } from '@ngrx/store';
+import { selectContactMedium } from '../../../../shared/store/contactMedium/contact-medium.selector';
+import { setContactMedium } from '../../../../shared/store/contactMedium/contact-medium.action';
 
 @Component({
   selector: 'app-contact-medium-update',
@@ -18,24 +22,33 @@ import { UpdateContactMediumRequest } from '../../models/contact-medium/update-c
   styleUrl: './contact-medium-update.component.scss',
 })
 export class ContactMediumUpdateComponent implements OnInit {
+  form!: FormGroup;
+
   constructor(
     private fb: FormBuilder,
-    private contactMediumApiService: ContactMediumApiService
+    private contactMediumApiService: ContactMediumApiService,
+    private store: Store<{ contactMedium: PostContactMediumRequest }>
   ) {}
 
   ngOnInit(): void {
-    //...
+    this.createForm();
+
+    this.store.pipe(select(selectContactMedium)).subscribe((contactMedium) => {
+      this.form.patchValue(contactMedium);
+      console.log(contactMedium);
+    });
   }
 
-  form: FormGroup = this.fb.group({
-    email: ['', Validators.required],
-    homePhone: ['', Validators.required],
-    mobilePhone: ['', Validators.required],
-    fax: ['', Validators.required],
-  });
+  createForm() {
+    this.form = this.fb.group({
+      email: ['', Validators.required],
+      homePhone: ['', Validators.required],
+      mobilePhone: ['', Validators.required],
+      fax: ['', Validators.required],
+    });
+  }
 
   updateContactMedium() {
-    //...
     const contactMedium: UpdateContactMediumRequest = {
       customerId: '',
       email: this.form.value.email,
@@ -43,6 +56,7 @@ export class ContactMediumUpdateComponent implements OnInit {
       mobilePhone: this.form.value.mobilePhone,
       fax: this.form.value.fax,
     };
+    this.store.dispatch(setContactMedium({ contactMedium }));
   }
 
   onFormSubmit() {

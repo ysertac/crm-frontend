@@ -8,21 +8,31 @@
     />
   </div>
   <div>
-    <div class="info-item d-flex justify-content-evenly align-items-center w-25">
+    <div
+      class="info-item d-flex justify-content-evenly align-items-center w-25"
+    >
       <span class="w-50">Email:</span>
-      <span class="w-50 text-start">{{ customer.email }}</span>
+      <span class="w-50 text-start">{{ contactMediumDetail?.email }}</span>
     </div>
-    <div class="info-item d-flex justify-content-between align-items-center w-25">
+    <div
+      class="info-item d-flex justify-content-between align-items-center w-25"
+    >
       <span class="w-50">Mobile Phone:</span>
-      <span class="w-50 text-start">{{ customer.mobilePhone }}</span>
+      <span class="w-50 text-start">{{
+        contactMediumDetail?.mobilePhone
+      }}</span>
     </div>
-    <div class="info-item d-flex justify-content-between align-items-center w-25">
+    <div
+      class="info-item d-flex justify-content-between align-items-center w-25"
+    >
       <span class="w-50">Home Phone:</span>
-      <span class="w-50 text-start">{{ customer.homePhone }}</span>
+      <span class="w-50 text-start">{{ contactMediumDetail?.homePhone }}</span>
     </div>
-    <div class="info-item d-flex justify-content-between align-items-center w-25">
+    <div
+      class="info-item d-flex justify-content-between align-items-center w-25"
+    >
       <span class="w-50">Fax:</span>
-      <span class="w-50 text-start">{{ customer.fax }}</span>
+      <span class="w-50 text-start">{{ contactMediumDetail?.fax }}</span>
     </div>
   </div>
 </div>

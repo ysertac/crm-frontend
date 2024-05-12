@@ -14,6 +14,7 @@
             inputClasses="form-control contact-medium-update-input w-50"
             labelClasses="login-screen-label w-25 text-end me-4 text-dark mb-2 fw-bolder text-xl"
             [required]="true"
+            [control]="form.get('email')"
             >Email</app-input
           >
         </div>
@@ -25,6 +26,7 @@
             placeholder=""
             inputClasses="form-control contact-medium-update-input w-50"
             labelClasses="login-screen-label w-25 text-end me-4 text-dark mb-2 fw-bolder text-xl"
+            [control]="form.get('homePhone')"
             >Home Phone</app-input
           >
         </div>
@@ -39,6 +41,7 @@
             inputClasses="form-control contact-medium-update-input w-50"
             labelClasses="login-screen-label w-25 text-end me-4 text-dark mb-2 fw-bolder text-xl"
             [required]="true"
+            [control]="form.get('mobilePhone')"
             >Mobile Phone</app-input
           >
         </div>
@@ -50,6 +53,7 @@
             placeholder=""
             inputClasses="form-control contact-medium-update-input w-50"
             labelClasses="login-screen-label w-25 text-end me-4 text-dark mb-2 fw-bolder text-xl"
+            [control]="form.get('fax')"
             >Fax</app-input
           >
         </div>
