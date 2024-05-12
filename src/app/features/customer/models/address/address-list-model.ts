@@ -1,18 +1,10 @@
-export interface CityModel {
-  id: string;
-  name: string;
-}
-
 export interface AddressListModel {
-  descripion: string;
-
+  id: string,
+  description: string;
   neighbourhood: string;
-
   houseNumber: string;
-
   district: string;
-
   street: string;
-
-  city: CityModel;
+  cityId: string;
+  customerId: string;
 }

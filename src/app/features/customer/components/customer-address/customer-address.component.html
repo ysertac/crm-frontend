@@ -1,24 +1,31 @@
 <p class="ms-4 mt-4 p-address">Address</p>
-<div class="row">
-    <div class="col-6">
-      <div class="box">
-            <div class="d-flex justify-content-between mt-2 ms-2 me-2">
-                <app-input class="d-flex flex-row-reverse" type="radio" inputId="radio">Select as a primary address</app-input>
-                <div class="">
-                    <img class="me-3" src="../../../../../assets/images/address-feature/addresspenicon.png" width="22" height="22">
-                    <img class="me-3" src="../../../../../assets/images/address-feature/addresstrashicon.png" width="22" height="22">
+<ng-template [ngIf]="customerAddresses">
+    <form [formGroup]="form">
+        <div class="deneme">
+            <div *ngFor="let item of getNumberArray()" class="row">
+                <div *ngFor="let customerAddresses of getAddresses()" class="col-6">
+                    <div class="box">
+                        <div class="d-flex justify-content-between mt-2 ms-2 me-2">
+                            <app-input class="d-flex flex-row-reverse" type="radio" inputId="radio" [control]="form.get('selectedAddress')">Select as a primary address</app-input>
+                            <div>
+                                <img class="me-3" src="../../../../../assets/images/address-feature/addresspenicon.png" width="22" height="22">
+                                <img class="me-3" src="../../../../../assets/images/address-feature/addresstrashicon.png" width="22" height="22">
+                            </div>
+                        </div>
+                        <div class="content d-flex justify-content-center">
+                            {{customerAddresses.id}} City, District, Neighborhood, Street Name,<br> 
+                            House/Flat Number<br>
+                            Address Description
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="content d-flex justify-content-center">
-                 City, District, Neighborhood, Street Name,<br> 
-                 House/Flat Number<br>
-                 Address Description
+        <!--<div class="col-6">
+            <div class="box d-flex justify-content-center align-items-center">
+                    <button class="b-add-address">Add New Address</button>
             </div>
+            </div>-->
         </div>
-    </div>
-    <div class="col-6">
-      <div class="box d-flex justify-content-center align-items-center">
-            <button class="b-add-address">Add New Address</button>
-      </div>
-    </div>
-</div>
+    </form>
+</ng-template>
+
