@@ -8,12 +8,12 @@ import { PostSearchCustomerResponse } from '../models/search/post-search-custome
   providedIn: 'root',
 })
 export class SearchCustomerApiService {
-  private apiUrl = 'http://localhost:51267/searchservice/api/v1/searchcustomer';
+  private apiUrl = 'http://localhost:8082/searchservice/api/v1/searchcustomer';
 
   constructor(private httpClient: HttpClient) {}
 
-  search(data: Object): Observable<Array<PostSearchCustomerResponse>> {
-    return this.httpClient.post<Array<PostSearchCustomerResponse>>(
+  search(data: PostSearchCustomerRequest): Observable<PostSearchCustomerResponse[]> {
+    return this.httpClient.post<PostSearchCustomerResponse[]>(
       this.apiUrl,
       data
     );
