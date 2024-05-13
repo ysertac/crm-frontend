@@ -17,6 +17,11 @@
           >
             Email
           </app-input>
+          <div class="mt-3" *ngIf="form.invalid && form.get('email')?.touched">
+            <p class="text-danger fw-bold">
+              {{ form.get("email")?.errors | errorMessages }}
+            </p>
+          </div>
           <app-input
             inputId="contact-medium-create-home-phone"
             class="d-flex align-items-center"
@@ -28,13 +33,21 @@
           >
             Home Phone
           </app-input>
+          <div
+            class="mt-3"
+            *ngIf="form.invalid && form.get('homePhone')?.touched"
+          >
+            <p class="text-danger fw-bold">
+              {{ form.get("homePhone")?.errors | errorMessages }}
+            </p>
+          </div>
         </div>
         <div class="content-column h-50 my-auto justify-content-around">
           <app-input
             inputId="contact-medium-create-mobile-phone"
             class="d-flex align-items-center"
             type="number"
-            placeholder=""
+            placeholder="(5xx)-xxx-xx-xx"
             inputClasses="form-control contact-medium-create-input w-50"
             labelClasses="login-screen-label w-25 text-end me-4 text-dark mb-2 fw-bolder text-xl"
             [required]="true"
@@ -42,6 +55,14 @@
           >
             Mobile Phone
           </app-input>
+          <div
+            class="mt-3"
+            *ngIf="form.invalid && form.get('mobilePhone')?.touched"
+          >
+            <p class="text-danger fw-bold">
+              {{ form.get("mobilePhone")?.errors | errorMessages }}
+            </p>
+          </div>
           <app-input
             inputId="contact-medium-create-fax"
             class="d-flex align-items-center"
@@ -53,6 +74,11 @@
           >
             Fax
           </app-input>
+          <div class="mt-3" *ngIf="form.invalid && form.get('fax')?.touched">
+            <p class="text-danger fw-bold">
+              {{ form.get("fax")?.errors | errorMessages }}
+            </p>
+          </div>
         </div>
       </div>
     </div>
