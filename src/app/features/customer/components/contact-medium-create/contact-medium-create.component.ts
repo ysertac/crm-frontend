@@ -20,11 +20,20 @@ import { PostAddressRequest } from '../../models/address/post-address-request';
 import { PostContactMediumRequest } from '../../models/contact-medium/post-contact-medium-request';
 import { PostCustomerRequest } from '../../models/customer/post-customer-request';
 import { switchMap } from 'rxjs';
+import { ErrorMessagesPipe } from '../../../../core/pipe/error-messages.pipe';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-contact-medium-create',
   standalone: true,
-  imports: [InputComponent, ButtonComponent, RouterLink, ReactiveFormsModule],
+  imports: [
+    InputComponent,
+    ButtonComponent,
+    RouterLink,
+    ReactiveFormsModule,
+    ErrorMessagesPipe,
+    CommonModule,
+  ],
   templateUrl: './contact-medium-create.component.html',
   styleUrl: './contact-medium-create.component.scss',
 })
@@ -49,7 +58,7 @@ export class ContactMediumCreateComponent {
     });
   }
 
-  makeRequests(){
+  makeRequests() {
     let customerFromState: PostCustomerRequest;
     let addressFromState: PostAddressRequest;
     let customerIdFromFirstReq: string;
@@ -58,14 +67,16 @@ export class ContactMediumCreateComponent {
       .subscribe((individualCustomer) => {
         customerFromState = individualCustomer;
       });
-      this.store
+    this.store
       .pipe(select(selectCustomerAddress))
       .subscribe((customerAddress) => {
         addressFromState = customerAddress;
       });
-    this.customerApiService.add(customerFromState).pipe(
-      switchMap( response1 => {
-          console.log("deneme");
+    this.customerApiService
+      .add(customerFromState)
+      .pipe(
+        switchMap((response1) => {
+          console.log('deneme');
           customerIdFromFirstReq = response1.customerId;
           let newAddress: PostAddressRequest = {
             customerId: response1.customerId,
@@ -75,28 +86,38 @@ export class ContactMediumCreateComponent {
             district: addressFromState.district,
             street: addressFromState.street,
             description: addressFromState.description,
-          }
+          };
           return this.addressApiService.add(newAddress).pipe(
-            switchMap(response2 => {
+            switchMap((response2) => {
               let contactMedium: PostContactMediumRequest = {
                 email: this.form.value.email,
                 homePhone: this.form.value.homePhone,
                 mobilePhone: this.form.value.mobilePhone,
                 fax: this.form.value.fax,
                 customerId: customerIdFromFirstReq,
-              }
+              };
               return this.contactMediumApiService.add(contactMedium);
             })
           );
-      })).subscribe();
+        })
+      )
+      .subscribe();
   }
 
   createForm() {
     this.form = this.fb.group({
-      email: ['', Validators.required],
-      homePhone: ['', Validators.required],
-      mobilePhone: ['', Validators.required],
-      fax: ['', Validators.required],
+      email: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern(
+            /\b[A-Za-z0-9._%+-]+@(?:[A-Za-z0-9-]+\.)+[A-Z|a-z]{2,}\b/
+          ),
+        ],
+      ],
+      homePhone: ['', [Validators.minLength(10), Validators.maxLength(10)]],
+      mobilePhone: ['', [Validators.required, Validators.pattern(/^5\d{9}$/)]],
+      fax: ['', [Validators.minLength(10), Validators.maxLength(10)]],
     });
   }
 

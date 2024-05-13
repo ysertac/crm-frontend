@@ -5,6 +5,8 @@ import { Router, RouterLink } from '@angular/router';
 import {
   FormBuilder,
   FormGroup,
+  FormsModule,
+  NgModel,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
@@ -12,16 +14,28 @@ import { Store, select } from '@ngrx/store';
 import { setIndividualCustomer } from '../../../../shared/store/customers/individual-customer.action';
 import { selectIndividualCustomer } from '../../../../shared/store/customers/individual-customer.selector';
 import { PostCustomerRequest } from '../../models/customer/post-customer-request';
+import { CommonModule } from '@angular/common';
+import { ErrorMessagesPipe } from '../../../../core/pipe/error-messages.pipe';
 
 @Component({
   selector: 'app-create-customer-form',
   standalone: true,
-  imports: [InputComponent, ButtonComponent, RouterLink, ReactiveFormsModule],
+  imports: [
+    InputComponent,
+    ButtonComponent,
+    RouterLink,
+    ReactiveFormsModule,
+    ErrorMessagesPipe,
+    CommonModule,
+    FormsModule,
+  ],
   templateUrl: './create-customer-form.component.html',
   styleUrl: './create-customer-form.component.scss',
 })
 export class CreateCustomerFormComponent implements OnInit {
   form!: FormGroup;
+  selectedOption: string = '';
+  options: string[] = ['Male', 'Female'];
 
   constructor(
     private fb: FormBuilder,
@@ -42,14 +56,48 @@ export class CreateCustomerFormComponent implements OnInit {
 
   createForm() {
     this.form = this.fb.group({
-      firstName: ['', Validators.required],
-      middleName: ['', Validators.required],
-      lastName: ['', Validators.required],
+      firstName: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(30),
+        ],
+      ],
+      middleName: ['', Validators.maxLength(30)],
+      lastName: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(30),
+        ],
+      ],
       gender: ['', Validators.required],
-      motherName: ['', Validators.required],
-      fatherName: ['', Validators.required],
+      motherName: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(30),
+        ],
+      ],
+      fatherName: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(30),
+        ],
+      ],
       birthDate: ['', Validators.required],
-      nationalityId: ['', Validators.required],
+      nationalityId: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern('^[1-9]{1}[0-9]{9}[02468]{1}$'),
+        ],
+      ],
     });
   }
 
@@ -69,11 +117,16 @@ export class CreateCustomerFormComponent implements OnInit {
   }
 
   onFormSubmit() {
-
     if (this.form.invalid) {
       console.error('Form is invalid');
+      console.error(this.form.get('firstName').hasError('required'));
+      console.error(this.form.get('firstName').hasError('minlength'));
+      console.error(this.form.get('nationalityId').hasError('pattern'));
       return;
     }
     this.createCustomer();
   }
+
+  //inputlarda hata giderildiğinde hata mesajının bulunduğu boşluğun olmaması gerekiyor.
+  //birthdate inputunun DD/MM/YYYY formatında olması gerekiyor.
 }

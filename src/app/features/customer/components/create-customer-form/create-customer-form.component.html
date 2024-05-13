@@ -17,6 +17,14 @@
           >
             First Name
           </app-input>
+          <div
+            class="mt-3"
+            *ngIf="form.invalid && form.get('firstName')?.touched"
+          >
+            <p class="text-danger fw-bold">
+              {{ form.get("firstName")?.errors | errorMessages }}
+            </p>
+          </div>
           <app-input
             inputId="mName"
             class="d-flex w-100 justify-content-between mt-4 align-items-center"
@@ -24,11 +32,18 @@
             placeholder=""
             inputClasses="form-control customer-create-input"
             labelClasses="font-inter fw-bolder text-xl"
-            [required]="true"
             [control]="form.get('middleName')"
           >
             Middle Name
           </app-input>
+          <div
+            class="mt-3"
+            *ngIf="form.invalid && form.get('middleName')?.touched"
+          >
+            <p class="text-danger fw-bold">
+              {{ form.get("middleName")?.errors | errorMessages }}
+            </p>
+          </div>
           <app-input
             inputId="lName"
             class="d-flex w-100 justify-content-between mt-4 align-items-center"
@@ -41,7 +56,15 @@
           >
             Last Name
           </app-input>
-          <app-input
+          <div
+            class="mt-3"
+            *ngIf="form.invalid && form.get('lastName')?.touched"
+          >
+            <p class="text-danger fw-bold">
+              {{ form.get("lastName")?.errors | errorMessages }}
+            </p>
+          </div>
+          <!-- <app-input
             inputId="gender"
             class="d-flex w-100 justify-content-between mt-4 align-items-center"
             type="text"
@@ -52,7 +75,29 @@
             [control]="form.get('gender')"
           >
             Gender
-          </app-input>
+          </app-input> -->
+
+          <div
+            class="d-flex w-100 justify-content-between mt-4 align-items-center"
+          >
+            <label class="font-inter fw-bolder text-xl w-25" for="gender"
+              >Gender *</label
+            ><select
+              class="customer-create-input"
+              id="gender"
+              [(ngModel)]="selectedOption"
+              formControlName="gender"
+            >
+              <option *ngFor="let option of options" [value]="option">
+                {{ option }}
+              </option>
+            </select>
+          </div>
+          <div class="mt-3" *ngIf="form.invalid && form.get('gender')?.touched">
+            <p class="text-danger fw-bold">
+              {{ form.get("gender")?.errors | errorMessages }}
+            </p>
+          </div>
         </div>
         <div class="d-flex flex-column justify-content-around content-column">
           <app-input
@@ -67,6 +112,14 @@
           >
             Mother Name
           </app-input>
+          <div
+            class="mt-3"
+            *ngIf="form.invalid && form.get('motherName')?.touched"
+          >
+            <p class="text-danger fw-bold">
+              {{ form.get("motherName")?.errors | errorMessages }}
+            </p>
+          </div>
           <app-input
             inputId="fatherName"
             class="d-flex w-100 justify-content-between mt-4 align-items-center"
@@ -79,6 +132,14 @@
           >
             Father Name
           </app-input>
+          <div
+            class="mt-3"
+            *ngIf="form.invalid && form.get('fatherName')?.touched"
+          >
+            <p class="text-danger fw-bold">
+              {{ form.get("fatherName")?.errors | errorMessages }}
+            </p>
+          </div>
           <app-input
             inputId="bDate"
             class="d-flex w-100 justify-content-between mt-4 align-items-center"
@@ -103,6 +164,14 @@
           >
             Nationality ID
           </app-input>
+          <div
+            class="mt-3"
+            *ngIf="form.invalid && form.get('nationalityId')?.touched"
+          >
+            <p class="text-danger fw-bold">
+              {{ form.get("nationalityId")?.errors | errorMessages }}
+            </p>
+          </div>
         </div>
       </div>
     </div>
