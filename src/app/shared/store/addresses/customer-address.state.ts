@@ -3,6 +3,7 @@ import { PostAddressRequest } from "../../../features/customer/models/address/po
 
 export interface CustomerAddressState {
   customerAddress: PostAddressRequest;
+  customerAddresses: PostAddressRequest[];
 }
 
 export const initialCustomerAddressState: CustomerAddressState = {
@@ -15,4 +16,5 @@ export const initialCustomerAddressState: CustomerAddressState = {
     street: '',
     description: '',
   },
+  customerAddresses: []
 };

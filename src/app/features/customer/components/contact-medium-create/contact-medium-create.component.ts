@@ -61,7 +61,7 @@ export class ContactMediumCreateComponent {
       this.store
       .pipe(select(selectCustomerAddress))
       .subscribe((customerAddress) => {
-        addressFromState = customerAddress;
+        //addressFromState = customerAddress;
       });
     this.customerApiService.add(customerFromState).pipe(
       switchMap( response1 => {
