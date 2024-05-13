@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { initialCustomerAddressState } from './customer-address.state';
-import { setCustomerAddress } from './customer-address.action';
+import { setCustomerAddress, setCustomerAddresses } from './customer-address.action';
 
 export const customerAddressReducer = createReducer(
   initialCustomerAddressState,
@@ -9,5 +9,9 @@ export const customerAddressReducer = createReducer(
     customerAddress: {
       ...customerAddress,
     },
+  })),
+  on(setCustomerAddresses, (state, {customerAddresses}) => ({
+    ...state,
+    customerAddresses: [...customerAddresses],
   }))
 );

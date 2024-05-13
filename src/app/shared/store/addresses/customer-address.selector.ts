@@ -8,5 +8,6 @@ const selectCustomerAddressState =
 // Seçiciyi kullanarak individualCustomer alanını seçelim
 export const selectCustomerAddress = createSelector(
   selectCustomerAddressState,
-  (state: CustomerAddressState) => state.customerAddress
+  (state: CustomerAddressState) => ({customerAddress: state.customerAddress, customerAddresses: state.customerAddresses})
 );
+

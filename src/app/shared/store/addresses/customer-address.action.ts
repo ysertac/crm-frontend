@@ -5,3 +5,8 @@ export const setCustomerAddress = createAction(
   '[Customer Address] set Customer Address',
   props<{ customerAddress: PostAddressRequest }>()
 );
+
+export const setCustomerAddresses = createAction(
+  '[Customer Addresses] set Customer Addresses',
+  props<{customerAddresses: PostAddressRequest[]}>()
+);

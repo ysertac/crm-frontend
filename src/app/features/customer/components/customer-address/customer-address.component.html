@@ -1,7 +1,7 @@
 <p class="ms-4 mt-4 p-address">Address</p>
 <ng-template [ngIf]="customerAddresses">
     <form [formGroup]="form">
-        <div class="deneme">
+        <div class="row-height">
             <div *ngFor="let item of getNumberArray()" class="row">
                 <div *ngFor="let customerAddresses of getAddresses()" class="col-6">
                     <div class="box">
@@ -12,7 +12,7 @@
                                 <img class="me-3" src="../../../../../assets/images/address-feature/addresstrashicon.png" width="22" height="22">
                             </div>
                         </div>
-                        <div class="content d-flex justify-content-center">
+                        <div class="box-content d-flex justify-content-center">
                             {{customerAddresses.id}} City, District, Neighborhood, Street Name,<br> 
                             House/Flat Number<br>
                             Address Description

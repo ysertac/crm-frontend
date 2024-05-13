@@ -2,24 +2,73 @@
   <legend class="ms-4 px-2">Create Customer:</legend>
 
   <div class="h-75">
-    <h2 class="customer-create-header">Address Info</h2>
-    <div class="content">
-      <div
-        class="box d-flex justify-content-center align-items-center align-self-end"
-      >
-        <button
-          type="button"
-          class="b-add-address"
-          data-bs-toggle="modal"
-          data-bs-target="#exampleModal"
-        >
-          Add New Address
-        </button>
-      </div>
-      <div
-        class="box d-flex justify-content-center align-items-center align-self-end"
-      ></div>
+    <div *ngIf="addressesToShow.length < 2">
+      <form [formGroup]="form2">
+        <h2 class="customer-create-header">Address Info</h2>
+        <div class="row">
+          <div *ngFor="let item of addressesToShow" class="col-6">
+            <div class="box">
+              <div class="d-flex justify-content-between mt-2 ms-2 me-2">
+                <app-input class="d-flex flex-row-reverse" type="radio" inputId="radio" [control]="form2.get('selectedAddress')">Select as a primary address</app-input>
+                <div>
+                    <img class="me-3" src="../../../../../assets/images/address-feature/addresspenicon.png" width="22" height="22">
+                    <img class="me-3" src="../../../../../assets/images/address-feature/addresstrashicon.png" width="22" height="22">
+                </div>
+              </div>
+              <div class="box-content d-flex justify-content-center">
+                  City, District, Neighborhood, Street Name,<br> 
+                  House/Flat Number<br>
+                  Address Description
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+              <div
+                class="box d-flex justify-content-center align-items-center align-self-end">
+                <button
+                  type="button"
+                  class="b-add-address"
+                  data-bs-toggle="modal"
+                  data-bs-target="#exampleModal"
+                >
+                  Add New Address
+                </button>
+              </div>
+            </div>
+        </div>
+      </form>
     </div>
+    <ng-template [ngIf]="addressesToShow">
+      <div *ngIf="addressesToShow.length >= 2">
+        <form [formGroup]="form2">
+          <div class="d-flex mt-4">
+            <h2 class="customer-header ms-4 me-4">Address Info</h2>
+            <button class="b-add-address2" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Add new Address</button>
+          </div>
+          <div class="row-height">
+            <div *ngFor="let item of getNumberArray()" class="row">
+                <div *ngFor="let item2 of getAddresses()" class="col-6">
+                    <div class="box">
+                        <div class="d-flex justify-content-between mt-2 ms-2 me-2">
+                            <app-input class="d-flex flex-row-reverse" type="radio" inputId="radio" [control]="form2.get('selectedAddress')">Select as a primary address</app-input>
+                            <div>
+                                <img class="me-3" src="../../../../../assets/images/address-feature/addresspenicon.png" width="22" height="22">
+                                <img class="me-3" src="../../../../../assets/images/address-feature/addresstrashicon.png" width="22" height="22">
+                            </div>
+                        </div>
+                        <div class="box-content d-flex justify-content-center">
+                            City, District, Neighborhood, Street Name,<br> 
+                            House/Flat Number<br>
+                            Address Description
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </ng-template>
+    
   </div>
   <div class="create-customer-button-section">
     <app-button
@@ -31,9 +80,10 @@
     >
     <app-button
       [routerLink]="['/home/contact-medium-create']"
-      type="submit"
+      type="button"
       buttonClasses="general-button"
       class=""
+      (click)="goNext()"
       >Next</app-button
     >
   </div>
@@ -125,7 +175,7 @@
           </div>
         </div>
         <div class="modal-footer d-flex justify-content-evenly">
-          <button type="submit" class="b-popup" data-bs-dismiss="modal">
+          <button type="button" class="b-popup" data-bs-dismiss="modal">
             Cancel
           </button>
           <button type="submit" class="b-popup" data-bs-dismiss="modal">
