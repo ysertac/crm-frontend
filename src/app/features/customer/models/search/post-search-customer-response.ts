@@ -1,9 +1,8 @@
 export interface PostSearchCustomerResponse {
   customerId: string;
   nationalityId: string;
-  accountNumber: string;
-  mobilePhone: string;
   firstName: string;
+  middleName: string;
+  role: string;
   lastName: string;
-  orderNumber: string;
 }

@@ -8,7 +8,7 @@ import { PostSearchCustomerResponse } from '../models/search/post-search-custome
   providedIn: 'root',
 })
 export class SearchCustomerApiService {
-  private apiUrl = 'http://localhost:8082/searchservice/api/v1/searchcustomer?';
+  apiUrl = 'http://localhost:8082/searchservice/api/v1/searchcustomer?';
 
   constructor(private httpClient: HttpClient) {}
 

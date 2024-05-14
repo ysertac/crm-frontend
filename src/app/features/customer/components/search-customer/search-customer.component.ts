@@ -1,15 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { InputComponent } from '../../../../shared/components/input/input.component';
 import { ButtonComponent } from '../../../../shared/components/button/button.component';
 import { TableComponent } from '../../../../shared/components/table/table.component';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import {
-  FormBuilder,
-  FormGroup,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { SearchCustomerApiService } from '../../services/search-customer-api.service';
 import { PostSearchCustomerRequest } from '../../models/search/post-search-customer-request';
 import { PostSearchCustomerResponse } from '../../models/search/post-search-customer-response';
@@ -28,10 +23,11 @@ import { PostSearchCustomerResponse } from '../../models/search/post-search-cust
     ReactiveFormsModule,
   ],
 })
-export class SearchCustomerComponent {
+export class SearchCustomerComponent implements OnInit {
   form!: FormGroup;
   filteredCustomers: PostSearchCustomerResponse[] = [];
   customerCount: number = 1;
+  stopSubmit: boolean = true;
   headers = [
     'Customer ID',
     'First Name',
@@ -48,6 +44,10 @@ export class SearchCustomerComponent {
 
   ngOnInit(): void {
     this.createForm();
+    this.form.valueChanges.subscribe(() => {
+      console.log();
+      this.checkAvailablityForSearch();
+    });
   }
 
   searchRequest() {
@@ -63,15 +63,36 @@ export class SearchCustomerComponent {
     this.searchCustomerApiService.search(request).subscribe({
       next: (response) => {
         this.filteredCustomers = response;
+        if (response.length < 1) {
+          this.customerCount = 0;
+        }
       },
       error: (error) => {
         console.log('Error:' + error);
       },
       complete: () => {
         console.log('Completed');
-        this.form.reset();
+        this.searchCustomerApiService.apiUrl =
+          'http://localhost:8082/searchservice/api/v1/searchcustomer?';
       },
     });
+  }
+
+  clear() {
+    this.form.reset();
+    this.stopSubmit = true;
+  }
+
+  checkAvailablityForSearch() {
+    for (let controlName in this.form.controls) {
+      if (this.form.get(controlName).value != '') {
+        this.stopSubmit = false;
+        break;
+      } else {
+        this.stopSubmit = true;
+      }
+    }
+    console.log(this.stopSubmit);
   }
 
   createForm() {

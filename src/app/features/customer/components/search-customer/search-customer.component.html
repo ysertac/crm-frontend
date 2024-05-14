@@ -90,7 +90,8 @@
 
       <div class="buttons d-flex">
         <app-button
-          type="submit"
+          type="button"
+          (click)="clear()"
           buttonClasses="search-customer-button fw-bolder"
           class="d-flex justify-content-center w-75"
           >Clear</app-button
@@ -99,6 +100,7 @@
           type="submit"
           buttonClasses="search-customer-button fw-bolder"
           class="d-flex justify-content-center w-75"
+          [disabled]="stopSubmit"
           >Search</app-button
         >
       </div>
@@ -111,7 +113,7 @@
     <legend class="ms-4 px-2">Search Result:</legend>
     <div
       class="d-flex align-items-center"
-      *ngIf="customerCount < 1; else notFoundCustomer"
+      *ngIf="filteredCustomers.length < 1; else notFoundCustomer"
     >
       <p class="customer-not-found-header">
         No customer found! Would you like to create the customer?
@@ -135,11 +137,11 @@
               customer.customerId
             }}</a>
           </td>
-          <td>{{ customer.firstName }}</td>
-          <td>{{ customer.accountNumber }}</td>
-          <td>{{ customer.lastName }}</td>
-          <td>{{ customer.mobilePhone }}</td>
-          <td>{{ customer.orderNumber }}</td>
+          <td>{{ customer.firstName || "-" }}</td>
+          <td>{{ customer.middleName || "-" }}</td>
+          <td>{{ customer.lastName || "-" }}</td>
+          <td>{{ customer.role || "-" }}</td>
+          <td>{{ customer.nationalityId || "-" }}</td>
         </tr>
       </app-table>
     </ng-template>
