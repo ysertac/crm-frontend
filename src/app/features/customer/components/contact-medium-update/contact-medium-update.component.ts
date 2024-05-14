@@ -13,11 +13,19 @@ import { PostContactMediumRequest } from '../../models/contact-medium/post-conta
 import { Store, select } from '@ngrx/store';
 import { selectContactMedium } from '../../../../shared/store/contactMedium/contact-medium.selector';
 import { setContactMedium } from '../../../../shared/store/contactMedium/contact-medium.action';
+import { ErrorMessagesPipe } from '../../../../core/pipe/error-messages.pipe';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-contact-medium-update',
   standalone: true,
-  imports: [InputComponent, ButtonComponent, ReactiveFormsModule],
+  imports: [
+    InputComponent,
+    ButtonComponent,
+    ReactiveFormsModule,
+    ErrorMessagesPipe,
+    CommonModule,
+  ],
   templateUrl: './contact-medium-update.component.html',
   styleUrl: './contact-medium-update.component.scss',
 })
@@ -41,10 +49,18 @@ export class ContactMediumUpdateComponent implements OnInit {
 
   createForm() {
     this.form = this.fb.group({
-      email: ['', Validators.required],
-      homePhone: ['', Validators.required],
-      mobilePhone: ['', Validators.required],
-      fax: ['', Validators.required],
+      email: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern(
+            /\b[A-Za-z0-9._%+-]+@(?:[A-Za-z0-9-]+\.)+[A-Z|a-z]{2,}\b/
+          ),
+        ],
+      ],
+      homePhone: ['', [Validators.minLength(10), Validators.maxLength(10)]],
+      mobilePhone: ['', [Validators.required, Validators.pattern(/^5\d{9}$/)]],
+      fax: ['', [Validators.minLength(10), Validators.maxLength(10)]],
     });
   }
 
