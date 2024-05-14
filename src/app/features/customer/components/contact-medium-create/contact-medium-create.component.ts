@@ -19,7 +19,7 @@ import { selectCustomerAddress } from '../../../../shared/store/addresses/custom
 import { PostAddressRequest } from '../../models/address/post-address-request';
 import { PostContactMediumRequest } from '../../models/contact-medium/post-contact-medium-request';
 import { PostCustomerRequest } from '../../models/customer/post-customer-request';
-import { switchMap } from 'rxjs';
+import { Observable, forkJoin, switchMap } from 'rxjs';
 import { ErrorMessagesPipe } from '../../../../core/pipe/error-messages.pipe';
 import { CommonModule } from '@angular/common';
 
@@ -59,8 +59,8 @@ export class ContactMediumCreateComponent {
   }
 
   makeRequests() {
-    let customerFromState: PostCustomerRequest;
-    let addressFromState: PostAddressRequest;
+    let customerFromState: any;
+    let addressesFromState: any[];
     let customerIdFromFirstReq: string;
     this.store
       .pipe(select(selectIndividualCustomer))
@@ -70,7 +70,7 @@ export class ContactMediumCreateComponent {
     this.store
       .pipe(select(selectCustomerAddress))
       .subscribe((customerAddress) => {
-        //addressFromState = customerAddress;
+        addressesFromState = customerAddress.customerAddresses;
       });
     this.customerApiService
       .add(customerFromState)
@@ -78,7 +78,14 @@ export class ContactMediumCreateComponent {
         switchMap((response1) => {
           console.log('deneme');
           customerIdFromFirstReq = response1.customerId;
-          let newAddress: PostAddressRequest = {
+          let newAddresses = addressesFromState.map(address => {
+            return {...address,customerId: response1.customerId}
+          })
+          let addressRequests: Observable<any>[] = [];
+          newAddresses.forEach((address) => {
+            addressRequests.push(this.addressApiService.add(address));
+          })
+          /*let newAddress: PostAddressRequest = {
             customerId: response1.customerId,
             cityId: addressFromState.cityId,
             neighbourhood: addressFromState.neighbourhood,
@@ -86,8 +93,8 @@ export class ContactMediumCreateComponent {
             district: addressFromState.district,
             street: addressFromState.street,
             description: addressFromState.description,
-          };
-          return this.addressApiService.add(newAddress).pipe(
+          };*/
+          return forkJoin(addressRequests).pipe(
             switchMap((response2) => {
               let contactMedium: PostContactMediumRequest = {
                 email: this.form.value.email,
