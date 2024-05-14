@@ -19,7 +19,10 @@
           </app-input>
           <div
             class="mt-3"
-            *ngIf="form.invalid && form.get('firstName')?.touched"
+            *ngIf="
+              form.controls['firstName'].errors !== null &&
+              form.get('firstName')?.touched
+            "
           >
             <p class="text-danger fw-bold">
               {{ form.get("firstName")?.errors | errorMessages }}
@@ -38,7 +41,10 @@
           </app-input>
           <div
             class="mt-3"
-            *ngIf="form.invalid && form.get('middleName')?.touched"
+            *ngIf="
+              form.controls['middleName'].errors !== null &&
+              form.get('middleName')?.touched
+            "
           >
             <p class="text-danger fw-bold">
               {{ form.get("middleName")?.errors | errorMessages }}
@@ -58,7 +64,10 @@
           </app-input>
           <div
             class="mt-3"
-            *ngIf="form.invalid && form.get('lastName')?.touched"
+            *ngIf="
+              form.controls['lastName'].errors !== null &&
+              form.get('lastName')?.touched
+            "
           >
             <p class="text-danger fw-bold">
               {{ form.get("lastName")?.errors | errorMessages }}
@@ -93,7 +102,13 @@
               </option>
             </select>
           </div>
-          <div class="mt-3" *ngIf="form.invalid && form.get('gender')?.touched">
+          <div
+            class="mt-3"
+            *ngIf="
+              form.controls['gender'].errors !== null &&
+              form.get('gender')?.touched
+            "
+          >
             <p class="text-danger fw-bold">
               {{ form.get("gender")?.errors | errorMessages }}
             </p>
@@ -114,7 +129,10 @@
           </app-input>
           <div
             class="mt-3"
-            *ngIf="form.invalid && form.get('motherName')?.touched"
+            *ngIf="
+              form.controls['motherName'].errors !== null &&
+              form.get('motherName')?.touched
+            "
           >
             <p class="text-danger fw-bold">
               {{ form.get("motherName")?.errors | errorMessages }}
@@ -134,7 +152,10 @@
           </app-input>
           <div
             class="mt-3"
-            *ngIf="form.invalid && form.get('fatherName')?.touched"
+            *ngIf="
+              form.controls['fatherName'].errors !== null &&
+              form.get('fatherName')?.touched
+            "
           >
             <p class="text-danger fw-bold">
               {{ form.get("fatherName")?.errors | errorMessages }}
@@ -166,7 +187,10 @@
           </app-input>
           <div
             class="mt-3"
-            *ngIf="form.invalid && form.get('nationalityId')?.touched"
+            *ngIf="
+              form.controls['nationalityId'].errors !== null &&
+              form.get('nationalityId')?.touched
+            "
           >
             <p class="text-danger fw-bold">
               {{ form.get("nationalityId")?.errors | errorMessages }}

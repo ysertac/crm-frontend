@@ -118,6 +118,8 @@ export class CreateCustomerFormComponent implements OnInit {
 
   onFormSubmit() {
     if (this.form.invalid) {
+      console.log(this.form.controls);
+
       console.error('Form is invalid');
       console.error(this.form.get('firstName').hasError('required'));
       console.error(this.form.get('firstName').hasError('minlength'));
