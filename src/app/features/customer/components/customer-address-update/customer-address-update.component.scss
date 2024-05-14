@@ -1,0 +1,71 @@
+.box {
+  background-color: #ffcda4;
+  border: 0.05rem solid;
+  margin: 1.5rem;
+  height: 50vh;
+  overflow-y: auto;
+}
+
+.b-add-address {
+  background-color: #f38022;
+  color: #ffffff;
+  font-family: "inter", sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  width: 17.8vw;
+  height: 10vh;
+  //width: 21.4rem;
+  //height: 4.6rem;
+}
+
+.modal-content {
+  background-color: #f6e0ce;
+}
+
+.b-popup {
+  background-color: #f38022;
+  font-family: "inter", sans-serif;
+  font-size: 1rem;
+  width: 7rem;
+}
+
+.customer-address-textarea {
+  width: 90%;
+  height: 10rem;
+}
+
+.modal-body {
+  .address-modal-inputs {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin: 0 auto;
+    .form-column {
+      width: 50%;
+    }
+  }
+}
+
+.box-content {
+  padding-top: 14vh;
+}
+
+.row-height {
+  height: 60vh;
+  overflow-y: auto;
+}
+
+.b-add-address2 {
+  background-color: #f38022;
+  color: #ffffff;
+  font-family: "inter", sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  width: 13vw;
+  height: 5vh;
+}
+
+.customer-header {
+  font-family: "inter", sans-serif;
+  color: #f38022;
+}

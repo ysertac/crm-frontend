@@ -15,6 +15,7 @@ import { CreateCustomerFormComponent } from './features/customer/components/crea
 import { ProductConfigurationFormComponent } from './features/product/components/product-configuration-form/product-configuration-form.component';
 import { SalesLayoutComponent } from './shared/layouts/sales-layout/sales-layout.component';
 import { CreateBillingAccountComponent } from './features/billing/components/create-billing-account/create-billing-account.component';
+import { CustomerAddressUpdateComponent } from './features/customer/components/customer-address-update/customer-address-update.component';
 
 export const routes: Routes = [
   {
@@ -54,7 +55,7 @@ export const routes: Routes = [
       },
       {
         path: 'product-configuration',
-        component:ProductConfigurationFormComponent
+        component: ProductConfigurationFormComponent,
       },
       {
         path: 'create-billing-account',
@@ -84,6 +85,10 @@ export const routes: Routes = [
           {
             path: 'address',
             component: CustomerAddressComponent,
+          },
+          {
+            path: 'address/update',
+            component: CustomerAddressUpdateComponent,
           },
           {
             path: 'contact-medium',
