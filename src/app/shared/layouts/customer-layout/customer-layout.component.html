@@ -1,20 +1,39 @@
 <div class="d-flex justify-content-center customer-layout mb-3">
-  <ul class="list-group list-group-horizontal w-100">
-    <li [routerLink]="['info']" routerLinkActive="selected" class="list-group-item w-25 text-center fs-5 py-3">
-      Customer Info
-    </li>
-    <li [routerLink]="['account']" routerLinkActive="selected"class="list-group-item w-25 text-center fs-5 py-3">
-      Customer Account
-    </li>
-    <li [routerLink]="['address']" routerLinkActive="selected" class="list-group-item w-25 text-center fs-5 py-3">
-      Address
-    </li>
-    <li
-      [routerLink]="['contact-medium']" routerLinkActive="selected"
-      class="list-group-item w-25 text-center fs-5 py-3"
-    >
-      Contact Medium
-    </li>
-  </ul>
+  <div class="d-flex justify-content-between w-100 align-items-center mb-3">
+    <ul class="list-group list-group-horizontal">
+      <li
+        [routerLink]="['info']"
+        routerLinkActive="selected"
+        class="list-group-item w-25 text-center fs-5 py-3"
+      >
+        Customer Info
+      </li>
+      <li
+        [routerLink]="['account']"
+        routerLinkActive="selected"
+        class="list-group-item w-25 text-center fs-5 py-3"
+      >
+        Customer Account
+      </li>
+      <li
+        [routerLink]="['address']"
+        routerLinkActive="selected"
+        class="list-group-item w-25 text-center fs-5 py-3"
+      >
+        Address
+      </li>
+      <li
+        [routerLink]="['contact-medium']"
+        routerLinkActive="selected"
+        class="list-group-item w-25 text-center fs-5 py-3"
+      >
+        Contact Medium
+      </li>
+    </ul>
+    <img
+      src="../../../../assets/images/customer-layout/ion_trash-sharp.png"
+      class=""
+    />
+  </div>
 </div>
 <router-outlet></router-outlet>

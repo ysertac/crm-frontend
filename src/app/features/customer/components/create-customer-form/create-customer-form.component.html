@@ -34,7 +34,7 @@
             type="text"
             placeholder=""
             inputClasses="form-control customer-create-input"
-            labelClasses="font-inter fw-bolder text-xl"
+            labelClasses="font-inter fw-bolder text-xl customer-create-label"
             [control]="form.get('middleName')"
           >
             Middle Name
@@ -56,7 +56,7 @@
             type="text"
             placeholder=""
             inputClasses="form-control customer-create-input"
-            labelClasses="font-inter fw-bolder text-xl"
+            labelClasses="font-inter fw-bolder text-xl customer-create-label"
             [required]="true"
             [control]="form.get('lastName')"
           >
@@ -94,7 +94,6 @@
             ><select
               class="customer-create-input"
               id="gender"
-              [(ngModel)]="selectedOption"
               formControlName="gender"
             >
               <option *ngFor="let option of options" [value]="option">
@@ -114,14 +113,14 @@
             </p>
           </div>
         </div>
-        <div class="d-flex flex-column justify-content-around content-column">
+        <div class="justify-content-around content-column">
           <app-input
             inputId="motherName"
             class="d-flex w-100 justify-content-between mt-4 align-items-center"
             type="text"
             placeholder=""
             inputClasses="form-control customer-create-input"
-            labelClasses="font-inter fw-bolder text-xl"
+            labelClasses="font-inter fw-bolder text-xl customer-create-label"
             [required]="true"
             [control]="form.get('motherName')"
           >
@@ -144,7 +143,7 @@
             type="text"
             placeholder=""
             inputClasses="form-control customer-create-input"
-            labelClasses="font-inter fw-bolder text-xl"
+            labelClasses="font-inter fw-bolder text-xl customer-create-label"
             [required]="true"
             [control]="form.get('fatherName')"
           >
@@ -167,7 +166,7 @@
             type="date"
             placeholder=""
             inputClasses="form-control customer-create-input"
-            labelClasses="font-inter fw-bolder text-xl"
+            labelClasses="font-inter fw-bolder text-xl customer-create-label"
             [required]="true"
             [control]="form.get('birthDate')"
           >
@@ -179,7 +178,7 @@
             type="text"
             placeholder=""
             inputClasses="form-control customer-create-input"
-            labelClasses="font-inter fw-bolder text-xl"
+            labelClasses="font-inter fw-bolder text-xl customer-create-label"
             [required]="true"
             [control]="form.get('nationalityId')"
           >
@@ -206,7 +205,11 @@
         buttonClasses="general-button"
         >Cancel</app-button
       >
-      <app-button type="submit" buttonClasses="general-button">
+      <app-button
+        type="submit"
+        buttonClasses="general-button"
+        [disabled]="form.invalid"
+      >
         Next
       </app-button>
     </div>

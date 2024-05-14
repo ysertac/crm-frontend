@@ -3,14 +3,15 @@
 <div class="main login-form">
   <div class="container d-flex justify-content-center align-items-center">
     <div class="border-end w-50">
-      <img
-        src="../../../assets/images/login-screen/crmlogo.png"
-        class=""
-      />
+      <img src="../../../assets/images/login-screen/crmlogo.png" class="" />
     </div>
     <div class="w-50 d-flex flex-column">
       <p class="login-text ms-5">{{ title }}</p>
-      <form class="d-flex flex-column align-items-start w-75 mx-auto">
+      <form
+        (submit)="(onFormSubmit)"
+        [formGroup]="form"
+        class="d-flex flex-column align-items-start w-75 mx-auto"
+      >
         <app-input
           inputId="email"
           class="w-75 mt-4"
@@ -19,6 +20,7 @@
           inputClasses="form-control"
           labelClasses="login-screen-label text-white mb-2 fw-bolder text-xl"
           [required]="true"
+          [control]="form.get('email')"
           >E-mail</app-input
         >
         <app-input
@@ -29,6 +31,7 @@
           inputClasses="form-control"
           labelClasses="login-screen-label text-white mb-2 fw-bolder text-xl"
           [required]="true"
+          [control]="form.get('password')"
         >
           Password
         </app-input>
@@ -39,6 +42,7 @@
           inputClasses="form-check-input"
           labelClasses="login-screen-label form-check-label text-white"
           autocomplete="off"
+          [control]="form.get('rememberMe')"
         >
           Remember me!
         </app-input>

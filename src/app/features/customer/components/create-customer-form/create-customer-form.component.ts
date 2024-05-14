@@ -6,7 +6,6 @@ import {
   FormBuilder,
   FormGroup,
   FormsModule,
-  NgModel,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
@@ -34,7 +33,7 @@ import { ErrorMessagesPipe } from '../../../../core/pipe/error-messages.pipe';
 })
 export class CreateCustomerFormComponent implements OnInit {
   form!: FormGroup;
-  selectedOption: string = '';
+  selectedOption: string;
   options: string[] = ['Male', 'Female'];
 
   constructor(
@@ -50,6 +49,7 @@ export class CreateCustomerFormComponent implements OnInit {
       .pipe(select(selectIndividualCustomer))
       .subscribe((individualCustomer) => {
         this.form.patchValue(individualCustomer);
+        this.selectedOption = individualCustomer.gender;
         console.log(individualCustomer);
       });
   }
@@ -118,8 +118,6 @@ export class CreateCustomerFormComponent implements OnInit {
 
   onFormSubmit() {
     if (this.form.invalid) {
-      console.log(this.form.controls);
-
       console.error('Form is invalid');
       console.error(this.form.get('firstName').hasError('required'));
       console.error(this.form.get('firstName').hasError('minlength'));
