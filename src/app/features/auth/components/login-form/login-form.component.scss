@@ -47,17 +47,26 @@ img {
   cursor: pointer;
 }
 
-.capslockOn {
-  background-color: rgba(230, 106, 106, 0.66);
-  font-family: "Inter", sans-serif;
-  font-size: 1rem;
-  font-weight: 600;
-  color: #fff;
-  margin-left: 1rem;
-  border-radius: 0.5rem;
-  padding: 0 0.5rem;
+.capslock-on-main {
+  display: flex;
+  align-items: center;
+  label {
+    cursor: pointer;
+  }
+  .capslockOn {
+    background-color: rgba(230, 106, 106, 0.66);
+    font-family: "Inter", sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    margin-left: 1rem;
+    border-radius: 0.5rem;
+    padding: 0 0.5rem;
+    display: flex;
+    align-items: center;
 
-  img {
-    width: 1rem;
+    img {
+      width: 1rem;
+    }
   }
 }
