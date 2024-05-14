@@ -43,33 +43,24 @@ export class LoginFormComponent implements OnInit {
 
   createForm() {
     this.form = this.fb.group({
-      email: [
-        '',
-        [
-          Validators.required,
-          Validators.pattern(
-            /\b[A-Za-z0-9._%+-]+@(?:[A-Za-z0-9-]+\.)+[A-Z|a-z]{2,}\b/
-          ),
-          Validators.maxLength(30),
-        ],
-      ],
-      password: ['', [Validators.required, Validators.maxLength(30)]],
+      username: ['', [Validators.maxLength(30)]],
+      password: ['', [Validators.maxLength(30)]],
       rememberMe: [''],
     });
   }
 
   login() {
     const loginRequest: Login = {
-      email: this.form.value.email,
+      username: this.form.value.username,
       password: this.form.value.password,
       rememberMe: this.form.value.rememberMe,
     };
-    if (loginRequest.email == '' || loginRequest.password == '') {
+    if (loginRequest.username == '' || loginRequest.password == '') {
       this.showLoginError = true;
       this.loginErrorMessage = 'Please fill in the required fields!';
     } else {
       if (
-        loginRequest.email === 'admin@admin.com' &&
+        loginRequest.username === 'admin' &&
         loginRequest.password === 'admin'
       ) {
         this.router.navigate(['/home/search-customer']);
@@ -92,25 +83,12 @@ export class LoginFormComponent implements OnInit {
 
   onFormSubmit() {
     this.login();
-    console.log(this.form);
   }
-  /* @HostListener('document:keydown', ['$event'])
-  handleKeyboardEvent(event: KeyboardEvent) {
-    if (event.getModifierState && event.getModifierState('CapsLock')) {
-      console.log('Caps Lock açık!');
-      this.capslockIsActive = true;
-    } else {
-      console.log('Caps Lock kapalı.');
-      this.capslockIsActive = false;
-    }
-  } */
 
   onKeyDown(event: KeyboardEvent) {
     if (event.getModifierState && event.getModifierState('CapsLock')) {
-      console.log('Caps Lock açık!');
       this.capslockIsActive = true;
     } else {
-      console.log('Caps Lock kapalı.');
       this.capslockIsActive = false;
     }
   }

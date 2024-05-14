@@ -38,7 +38,7 @@ export class SearchCustomerComponent {
     'Middle Name',
     'Last Name',
     'Role',
-    'ID Number',
+    'Nationality ID',
   ];
 
   constructor(

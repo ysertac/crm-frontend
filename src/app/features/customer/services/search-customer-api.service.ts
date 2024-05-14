@@ -8,14 +8,36 @@ import { PostSearchCustomerResponse } from '../models/search/post-search-custome
   providedIn: 'root',
 })
 export class SearchCustomerApiService {
-  private apiUrl = 'http://localhost:8082/searchservice/api/v1/searchcustomer';
+  private apiUrl = 'http://localhost:8082/searchservice/api/v1/searchcustomer?';
 
   constructor(private httpClient: HttpClient) {}
 
-  search(data: PostSearchCustomerRequest): Observable<PostSearchCustomerResponse[]> {
-    return this.httpClient.post<PostSearchCustomerResponse[]>(
-      this.apiUrl,
-      data
-    );
+  search(
+    data: PostSearchCustomerRequest
+  ): Observable<PostSearchCustomerResponse[]> {
+    if (data.customerId != null && !!data.customerId) {
+      this.apiUrl = this.apiUrl + 'customerId=' + data.customerId + '&';
+    }
+    if (data.nationalityId != null && !!data.nationalityId) {
+      this.apiUrl = this.apiUrl + 'nationalityId=' + data.nationalityId + '&';
+    }
+    if (data.accountNumber != null && !!data.accountNumber) {
+      this.apiUrl = this.apiUrl + 'accountNumber=' + data.accountNumber + '&';
+    }
+    if (data.mobilePhone != null && !!data.mobilePhone) {
+      this.apiUrl = this.apiUrl + 'mobilePhone=' + data.mobilePhone + '&';
+    }
+    if (data.firstName != null && !!data.firstName) {
+      this.apiUrl = this.apiUrl + 'firstName=' + data.firstName + '&';
+    }
+    if (data.lastName != null && !!data.lastName) {
+      this.apiUrl = this.apiUrl + 'lastName=' + data.lastName + '&';
+    }
+    if (data.orderNumber != null && !!data.orderNumber) {
+      this.apiUrl = this.apiUrl + 'orderNumber=' + data.orderNumber + '&';
+    }
+
+    console.log(this.apiUrl);
+    return this.httpClient.get<PostSearchCustomerResponse[]>(this.apiUrl);
   }
 }

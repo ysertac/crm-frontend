@@ -12,6 +12,17 @@
       class="h-100 w-100 d-flex flex-column justify-content-around align-items-center"
     >
       <app-input
+        inputId="search-customer-id-number"
+        class="d-flex flex-column search-customer-input"
+        type="text"
+        placeholder=""
+        inputClasses="search-customer-input-field"
+        labelClasses="login-screen-label text-dark fw-semibold "
+        [control]="form.get('nationalityId')"
+        >Nationality ID</app-input
+      >
+
+      <app-input
         inputId="search-customer-customer-id-number"
         class="d-flex flex-column search-customer-input"
         type="text"
@@ -20,17 +31,6 @@
         labelClasses="login-screen-label text-dark fw-semibold "
         [control]="form.get('id')"
         >Customer ID</app-input
-      >
-
-      <app-input
-        inputId="search-customer-id-number"
-        class="d-flex flex-column search-customer-input"
-        type="text"
-        placeholder=""
-        inputClasses="search-customer-input-field"
-        labelClasses="login-screen-label text-dark fw-semibold "
-        [control]="form.get('nationalityId')"
-        >ID Number</app-input
       >
 
       <app-input
