@@ -25,6 +25,7 @@ export class InputComponent {
   @Input() required: boolean = false;
   @Input() inputId: string = '';
   @Input() checked: boolean = false;
+  @Input() maxLength!: number;
   @Input() control: FormControl | any | null;
 
   //@Input() control: FormControl = new FormControl();

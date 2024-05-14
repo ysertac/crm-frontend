@@ -1,7 +1,7 @@
 import { CustomerApiService } from './../../services/customer-api.service';
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { GetCustomerResponse } from '../../models/customer/get-customer-response';
 import { setIndividualCustomer } from '../../../../shared/store/customers/individual-customer.action';
 import { Store } from '@ngrx/store';
@@ -15,32 +15,30 @@ import { PostCustomerRequest } from '../../models/customer/post-customer-request
   styleUrl: './customer-info.component.scss',
 })
 export class CustomerInfoComponent implements OnInit {
-  customerId: string;
   customerDemographicInfo: GetCustomerResponse;
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private customerApiService: CustomerApiService,
     private store: Store<{ individualCustomer: PostCustomerRequest }>
   ) {}
 
   ngOnInit(): void {
-    // this.customerId = this.route.snapshot.paramMap.get('id');
-    this.getById();
+    const customerId = this.router.url.split('/')[3];
+    this.getById(customerId);
   }
 
-  getById() {
-    this.customerApiService
-      .getById('95f25ca7-2cb7-4d39-870e-46d7a0e487fa')
-      .subscribe({
-        next: (response) => {
-          this.customerDemographicInfo = response;
-          this.createCustomer(response);
-        },
-        error: (error) => {
-          console.error('Error:', error);
-        },
-      });
+  getById(customerId: string) {
+    this.customerApiService.getById(customerId).subscribe({
+      next: (response) => {
+        this.customerDemographicInfo = response;
+        this.createCustomer(response);
+      },
+      error: (error) => {
+        console.error('Error:', error);
+      },
+    });
   }
 
   createCustomer(response: GetCustomerResponse) {
