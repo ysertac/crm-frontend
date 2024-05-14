@@ -15,6 +15,17 @@
             [control]="form.get('firstName')"
             >First Name
           </app-input>
+          <div
+            class="mt-3"
+            *ngIf="
+              form.controls['firstName'].errors !== null &&
+              form.get('firstName')?.touched
+            "
+          >
+            <p class="text-danger fw-bold">
+              {{ form.get("firstName")?.errors | errorMessages }}
+            </p>
+          </div>
           <app-input
             inputId="mName"
             class="d-flex w-75 justify-content-between mt-4 align-items-center"
@@ -26,6 +37,17 @@
             [control]="form.get('middleName')"
             >Middle Name
           </app-input>
+          <div
+            class="mt-3"
+            *ngIf="
+              form.controls['middleName'].errors !== null &&
+              form.get('middleName')?.touched
+            "
+          >
+            <p class="text-danger fw-bold">
+              {{ form.get("middleName")?.errors | errorMessages }}
+            </p>
+          </div>
           <app-input
             inputId="lName"
             class="d-flex w-75 justify-content-between mt-4 align-items-center"
@@ -37,6 +59,17 @@
             [control]="form.get('lastName')"
             >Last Name
           </app-input>
+          <div
+            class="mt-3"
+            *ngIf="
+              form.controls['lastName'].errors !== null &&
+              form.get('lastName')?.touched
+            "
+          >
+            <p class="text-danger fw-bold">
+              {{ form.get("lastName")?.errors | errorMessages }}
+            </p>
+          </div>
           <app-input
             inputId="gender"
             class="d-flex w-75 justify-content-between mt-4 align-items-center"
@@ -48,6 +81,17 @@
             [control]="form.get('gender')"
             >Gender
           </app-input>
+          <div
+            class="mt-3"
+            *ngIf="
+              form.controls['gender'].errors !== null &&
+              form.get('gender')?.touched
+            "
+          >
+            <p class="text-danger fw-bold">
+              {{ form.get("gender")?.errors | errorMessages }}
+            </p>
+          </div>
         </div>
         <div class="content-column justify-content-around">
           <app-input
@@ -61,6 +105,17 @@
             [control]="form.get('motherName')"
             >Mother Name
           </app-input>
+          <div
+            class="mt-3"
+            *ngIf="
+              form.controls['motherName'].errors !== null &&
+              form.get('motherName')?.touched
+            "
+          >
+            <p class="text-danger fw-bold">
+              {{ form.get("motherName")?.errors | errorMessages }}
+            </p>
+          </div>
           <app-input
             inputId="fatherName"
             class="d-flex w-75 justify-content-between mt-4 align-items-center"
@@ -72,10 +127,21 @@
             [control]="form.get('fatherName')"
             >Father Name
           </app-input>
+          <div
+            class="mt-3"
+            *ngIf="
+              form.controls['fatherName'].errors !== null &&
+              form.get('fatherName')?.touched
+            "
+          >
+            <p class="text-danger fw-bold">
+              {{ form.get("fatherName")?.errors | errorMessages }}
+            </p>
+          </div>
           <app-input
             inputId="bDate"
             class="d-flex w-75 justify-content-between mt-4 align-items-center"
-            type="text"
+            type="date"
             placeholder=""
             inputClasses="form-control customer-info-update-input"
             labelClasses="font-inter w-25 fw-bolder text-xl"
@@ -94,6 +160,17 @@
             [control]="form.get('nationalityId')"
             >Nationality ID
           </app-input>
+          <div
+            class="mt-3"
+            *ngIf="
+              form.controls['nationalityId'].errors !== null &&
+              form.get('nationalityId')?.touched
+            "
+          >
+            <p class="text-danger fw-bold">
+              {{ form.get("nationalityId")?.errors | errorMessages }}
+            </p>
+          </div>
         </div>
       </div>
     </div>

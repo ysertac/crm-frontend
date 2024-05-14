@@ -13,11 +13,19 @@ import { PostCustomerRequest } from '../../models/customer/post-customer-request
 import { selectIndividualCustomer } from '../../../../shared/store/customers/individual-customer.selector';
 import { CustomerApiService } from '../../services/customer-api.service';
 import { UpdateCustomerRequest } from '../../models/customer/update-customer-request';
+import { ErrorMessagesPipe } from '../../../../core/pipe/error-messages.pipe';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-customer-info-update-form',
   standalone: true,
-  imports: [InputComponent, ButtonComponent, ReactiveFormsModule],
+  imports: [
+    InputComponent,
+    ButtonComponent,
+    ReactiveFormsModule,
+    ErrorMessagesPipe,
+    CommonModule,
+  ],
   templateUrl: './customer-info-update-form.component.html',
   styleUrl: './customer-info-update-form.component.scss',
 })
@@ -41,14 +49,48 @@ export class CustomerInfoUpdateFormComponent implements OnInit {
 
   createForm() {
     this.form = this.fb.group({
-      firstName: ['', Validators.required],
-      middleName: ['', Validators.required],
-      lastName: ['', Validators.required],
+      firstName: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(30),
+        ],
+      ],
+      middleName: ['', Validators.maxLength(30)],
+      lastName: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(30),
+        ],
+      ],
       gender: ['', Validators.required],
-      motherName: ['', Validators.required],
-      fatherName: ['', Validators.required],
+      motherName: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(30),
+        ],
+      ],
+      fatherName: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(30),
+        ],
+      ],
       birthDate: ['', Validators.required],
-      nationalityId: ['', Validators.required],
+      nationalityId: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern('^[1-9]{1}[0-9]{9}[02468]{1}$'),
+        ],
+      ],
     });
   }
 
