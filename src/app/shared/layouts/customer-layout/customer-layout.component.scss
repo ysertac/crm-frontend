@@ -1,4 +1,6 @@
 .list-group {
+  width: 95%;
+
   .list-group-item {
     -webkit-text-fill-color: white;
     -webkit-text-stroke-width: 0.4px;
@@ -15,4 +17,9 @@
 
 .customer-layout {
   width: 84vw;
+
+  img {
+    width: 2rem;
+    height: 2rem;
+  }
 }
