@@ -13,9 +13,9 @@ export class ErrorMessagesPipe implements PipeTransform {
       if (errors['required']) {
         return 'This field is required';
       } else if (errors['minlength']) {
-        return `This field must has minimum ${errors['minlength'].requiredLength} characters`;
+        return `This field must have minimum ${errors['minlength'].requiredLength} characters`;
       } else if (errors['maxlength']) {
-        return `This field must has maximum ${errors['maxlength'].requiredLength} characters`;
+        return `This field must have maximum ${errors['maxlength'].requiredLength} characters`;
       } else if (errors['pattern']) {
         return 'This field is invalid';
       } else {

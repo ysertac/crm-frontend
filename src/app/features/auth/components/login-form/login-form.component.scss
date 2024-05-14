@@ -1,43 +1,63 @@
 .login-text {
-    color: #fff;
-    font-family: "inter", sans-serif;
-    font-weight: 400;
-    font-size: 1.25rem;
-    line-height: 1.5rem;
-    box-shadow: #f38022;
-    text-shadow: #f38022;
-      
+  color: #fff;
+  font-family: "inter", sans-serif;
+  font-weight: 400;
+  font-size: 1.25rem;
+  line-height: 1.5rem;
+  box-shadow: #f38022;
+  text-shadow: #f38022;
+}
+
+.login-button {
+  background-color: #f38022;
+  width: 6rem;
+  height: 2.5rem;
+  color: #fff;
+  font-weight: 400;
+  font-size: 1.25rem;
+  line-height: 1.5rem;
+}
+
+.eye-icon {
+  width: 2rem;
+  cursor: pointer;
+}
+
+.main {
+  background-color: #242342;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+img {
+  width: 100%;
+}
+
+@media screen and (max-width: 1750px) {
+  img {
+    width: 75%;
   }
-  
-  .login-button {
-    background-color: #f38022;
-    width: 6rem;
-    height: 2.5rem;
-    color: #fff;
-    font-weight: 400;
-    font-size: 1.25rem;
-    line-height: 1.5rem;
-  }
-  
-  .eye-icon {
-    width: 2rem;
-    cursor: pointer;
-  }
-  
-  .main {
-    background-color: #242342;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+}
+
+.show-password-icon {
+  width: 1.5rem;
+  background-color: white;
+  cursor: pointer;
+}
+
+.capslockOn {
+  background-color: rgba(230, 106, 106, 0.66);
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  margin-left: 1rem;
+  border-radius: 0.5rem;
+  padding: 0 0.5rem;
 
   img {
-    width: 100%;
+    width: 1rem;
   }
-
-  @media screen and (max-width: 1750px) {
-    img {
-      width: 75%;
-    }
-  }
+}
