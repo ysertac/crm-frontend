@@ -1,4 +1,4 @@
-export interface PostSearchCustomerResponse {
+export interface GetAllSearchCustomerResponse {
   customerId: string;
   customerNumber: number;
   nationalityId: string;

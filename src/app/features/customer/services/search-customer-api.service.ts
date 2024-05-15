@@ -2,7 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { PostSearchCustomerRequest } from '../models/search/post-search-customer-request';
-import { PostSearchCustomerResponse } from '../models/search/post-search-customer-response';
+import { GetAllSearchCustomerResponse } from '../models/search/get-all-search-customer-response';
+import { GetListResponse } from '../../../shared/models/getListResponse';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +15,7 @@ export class SearchCustomerApiService {
 
   search(
     data: PostSearchCustomerRequest
-  ): Observable<PostSearchCustomerResponse[]> {
+  ): Observable<GetListResponse<GetAllSearchCustomerResponse>> {
     if (data.customerNumber != null && !!data.customerNumber) {
       this.apiUrl = this.apiUrl + 'customerNumber=' + data.customerNumber + '&';
     }
@@ -36,8 +37,16 @@ export class SearchCustomerApiService {
     if (data.orderNumber != null && !!data.orderNumber) {
       this.apiUrl = this.apiUrl + 'orderNumber=' + data.orderNumber + '&';
     }
+    if (data.page >= 0) {
+      this.apiUrl = this.apiUrl + 'page=' + data.page + '&';
+    }
+    if (data.size >= 0) {
+      this.apiUrl = this.apiUrl + 'size=' + data.size + '&';
+    }
 
     console.log(this.apiUrl);
-    return this.httpClient.get<PostSearchCustomerResponse[]>(this.apiUrl);
+    return this.httpClient.get<GetListResponse<GetAllSearchCustomerResponse>>(
+      this.apiUrl
+    );
   }
 }

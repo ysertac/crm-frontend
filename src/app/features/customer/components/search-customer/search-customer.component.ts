@@ -7,7 +7,8 @@ import { RouterModule } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { SearchCustomerApiService } from '../../services/search-customer-api.service';
 import { PostSearchCustomerRequest } from '../../models/search/post-search-customer-request';
-import { PostSearchCustomerResponse } from '../../models/search/post-search-customer-response';
+import { GetListResponse } from '../../../../shared/models/getListResponse';
+import { GetAllSearchCustomerResponse } from '../../models/search/get-all-search-customer-response';
 
 @Component({
   selector: 'app-search-customer',
@@ -26,10 +27,15 @@ import { PostSearchCustomerResponse } from '../../models/search/post-search-cust
 export class SearchCustomerComponent implements OnInit {
   form!: FormGroup;
   isFirtstRender: boolean = false;
-  filteredCustomers: PostSearchCustomerResponse[] = [];
+  filteredCustomers: GetListResponse<GetAllSearchCustomerResponse>;
   customerCount: number = 0;
   stopSubmit: boolean = true;
   maxValue: number = 30;
+  page: number = 0;
+  hasPrevious: boolean;
+  hasNext: boolean;
+  activePage: number = 1;
+  totalPage: number;
   headers = [
     'Customer ID',
     'First Name',
@@ -53,6 +59,8 @@ export class SearchCustomerComponent implements OnInit {
 
   searchRequest() {
     const request: PostSearchCustomerRequest = {
+      size: 5,
+      page: this.page,
       customerNumber: this.form.value.id,
       nationalityId: this.form.value.nationalityId,
       accountNumber: this.form.value.accountNumber,
@@ -65,12 +73,15 @@ export class SearchCustomerComponent implements OnInit {
       next: (response) => {
         this.isFirtstRender = true;
         this.filteredCustomers = response;
-        console.log(response[0]);
-
-        if (response.length < 1) {
+        this.hasPrevious = this.filteredCustomers.hasPrevious;
+        this.hasNext = this.filteredCustomers.hasNext;
+        console.log(response);
+        this.activePage = request.page + 1;
+        this.totalPage = response.totalPage;
+        if (response.items.length < 1) {
           this.customerCount = 0;
         } else {
-          this.customerCount = response.length;
+          this.customerCount = response.items.length;
         }
       },
       error: (error) => {
@@ -115,5 +126,24 @@ export class SearchCustomerComponent implements OnInit {
 
   onFormSubmit() {
     this.searchRequest();
+  }
+
+  goToPreviousPage() {
+    this.page -= 1;
+    this.searchRequest();
+  }
+
+  goToNextPage() {
+    this.page += 1;
+    this.searchRequest();
+  }
+
+  goToPage(activePage: number) {
+    this.page = activePage - 1;
+    this.searchRequest();
+  }
+
+  isActivePage(activePage: number) {
+    return activePage === this.activePage ? true : false;
   }
 }

@@ -6,4 +6,6 @@ export interface PostSearchCustomerRequest {
   firstName: string;
   lastName: string;
   orderNumber: string;
+  page: number;
+  size: number;
 }
