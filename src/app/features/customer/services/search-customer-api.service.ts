@@ -15,8 +15,8 @@ export class SearchCustomerApiService {
   search(
     data: PostSearchCustomerRequest
   ): Observable<PostSearchCustomerResponse[]> {
-    if (data.customerId != null && !!data.customerId) {
-      this.apiUrl = this.apiUrl + 'customerId=' + data.customerId + '&';
+    if (data.customerNumber != null && !!data.customerNumber) {
+      this.apiUrl = this.apiUrl + 'customerNumber=' + data.customerNumber + '&';
     }
     if (data.nationalityId != null && !!data.nationalityId) {
       this.apiUrl = this.apiUrl + 'nationalityId=' + data.nationalityId + '&';

@@ -1,5 +1,5 @@
 export interface PostSearchCustomerRequest {
-  customerId: string;
+  customerNumber: number;
   nationalityId: string;
   accountNumber: string;
   mobilePhone: string;

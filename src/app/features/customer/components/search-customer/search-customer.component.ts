@@ -53,7 +53,7 @@ export class SearchCustomerComponent implements OnInit {
 
   searchRequest() {
     const request: PostSearchCustomerRequest = {
-      customerId: this.form.value.id,
+      customerNumber: this.form.value.id,
       nationalityId: this.form.value.nationalityId,
       accountNumber: this.form.value.accountNumber,
       mobilePhone: this.form.value.mobilePhone,
@@ -65,6 +65,8 @@ export class SearchCustomerComponent implements OnInit {
       next: (response) => {
         this.isFirtstRender = true;
         this.filteredCustomers = response;
+        console.log(response[0]);
+
         if (response.length < 1) {
           this.customerCount = 0;
         } else {

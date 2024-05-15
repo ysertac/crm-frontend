@@ -141,7 +141,7 @@
         <tr *ngFor="let customer of filteredCustomers">
           <td>
             <a [routerLink]="['/home/customer/' + customer.customerId]">{{
-              customer.customerId
+              customer.customerNumber
             }}</a>
           </td>
           <td>{{ customer.firstName || "-" }}</td>

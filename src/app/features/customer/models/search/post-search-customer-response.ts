@@ -1,5 +1,6 @@
 export interface PostSearchCustomerResponse {
   customerId: string;
+  customerNumber: number;
   nationalityId: string;
   firstName: string;
   middleName: string;
