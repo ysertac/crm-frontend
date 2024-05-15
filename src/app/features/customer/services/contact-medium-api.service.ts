@@ -7,7 +7,7 @@ import { UpdateContactMediumRequest } from '../models/contact-medium/update-cont
 import { UpdateContactMediumResponse } from '../models/contact-medium/update-contact-medium-response';
 import { PostContactMediumRequest } from '../models/contact-medium/post-contact-medium-request';
 import { PostContactMediumResponse } from '../models/contact-medium/post-contact-medium-response';
-import { GetContactMediumResponse } from '../models/contact-medium/get-contact-medium-response';
+import { GetContactMediumByCustomerIdResponse } from '../models/contact-medium/get-contact-medium-by-customer-id-response';
 
 @Injectable({
   providedIn: 'root',
@@ -46,9 +46,11 @@ export class ContactMediumApiService {
     );
   }
 
-  getById(id: string): Observable<GetContactMediumResponse> {
-    return this.httpClient.get<GetContactMediumResponse>(
-      this.apiUrl + '/' + id
+  getById(
+    customerId: string
+  ): Observable<GetContactMediumByCustomerIdResponse> {
+    return this.httpClient.get<GetContactMediumByCustomerIdResponse>(
+      this.apiUrl + '/customerid/' + customerId
     );
   }
 }
