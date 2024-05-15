@@ -7,6 +7,7 @@ import { PostAddressRequest } from '../models/address/post-address-request';
 import { PostAddressResponse } from '../models/address/post-address-response';
 import { UpdateAddressRequest } from '../models/address/update-address-request';
 import { UpdateAddressResponse } from '../models/address/update-address-response';
+import { GetByCustomerIdAddressResponse } from '../models/address/getbycustomerid-address-response';
 
 @Injectable({
   providedIn: 'root',
@@ -59,5 +60,9 @@ export class AddressApiService {
       this.apiUrl + '/' + id,
       address
     );
+  }
+
+  getByCustomerId(customerId: string): Observable<GetByCustomerIdAddressResponse[]>{
+    return this.httpClient.get<GetByCustomerIdAddressResponse[]>('http://localhost:8080/customerservice/api/v1/addresses/customerid/' + customerId);
   }
 }

@@ -10,7 +10,8 @@ import { AddressApiService } from '../../services/address-api.service';
 import { AddressListModel } from '../../models/address/address-list-model';
 import { GetListResponse } from '../../../../shared/models/getListResponse';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { GetByCustomerIdAddressResponse } from '../../models/address/getbycustomerid-address-response';
 
 @Component({
   selector: 'app-customer-address',
@@ -21,7 +22,7 @@ import { RouterLink } from '@angular/router';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CustomerAddressComponent implements OnInit {
-  customerAddresses: GetListResponse<AddressListModel>;
+  customerAddresses: GetByCustomerIdAddressResponse[] = [];
   customerId: string;
   form: FormGroup;
   loopArray: number[] = [];
@@ -30,31 +31,37 @@ export class CustomerAddressComponent implements OnInit {
   constructor(
     private addressApiService: AddressApiService,
     private change: ChangeDetectorRef,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
     this.form = this.fb.group({
       selectedAddress: [''],
     });
-    this.customerId = '95f25ca7-2cb7-4d39-870e-46d7a0e487fa';
-    this.addressApiService.get(0, 2, this.customerId).subscribe({
-      next: (response) => {
-        this.customerAddresses = response;
-        this.change.markForCheck();
-        console.log(this.customerAddresses.items);
-      },
-    });
+
+    const customerId = this.router.url.split('/')[3];
+    this.getById(customerId);
   }
 
   getNumberArray(): number[] {
-    return new Array(Math.ceil(this.customerAddresses.items.length / 2)).fill(
+    return new Array(Math.ceil(this.customerAddresses.length / 2)).fill(
       0
     );
   }
 
-  getAddresses(): AddressListModel[] {
+  getAddresses(): GetByCustomerIdAddressResponse[] {
     this.index += 2;
-    return this.customerAddresses.items.slice(this.index, this.index + 2);
+    return this.customerAddresses.slice(this.index, this.index + 2);
+  }
+
+  getById(customerId: string) {
+    this.addressApiService.getByCustomerId(customerId).subscribe({
+      next: (response) => {
+        this.customerAddresses = response;
+        this.change.markForCheck();
+        console.log(this.customerAddresses);
+      },
+    });
   }
 }
