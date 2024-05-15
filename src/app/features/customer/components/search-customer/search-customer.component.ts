@@ -25,8 +25,9 @@ import { PostSearchCustomerResponse } from '../../models/search/post-search-cust
 })
 export class SearchCustomerComponent implements OnInit {
   form!: FormGroup;
+  isFirtstRender: boolean = false;
   filteredCustomers: PostSearchCustomerResponse[] = [];
-  customerCount: number = 1;
+  customerCount: number = 0;
   stopSubmit: boolean = true;
   maxValue: number = 30;
   headers = [
@@ -47,9 +48,6 @@ export class SearchCustomerComponent implements OnInit {
     this.createForm();
     this.form.valueChanges.subscribe(() => {
       this.checkAvailablityForSearch();
-      if (this.form.value.accountNumber > this.maxValue) {
-        this.form.value.accountNumber.value = this.maxValue;
-      }
     });
   }
 
@@ -65,9 +63,12 @@ export class SearchCustomerComponent implements OnInit {
     };
     this.searchCustomerApiService.search(request).subscribe({
       next: (response) => {
+        this.isFirtstRender = true;
         this.filteredCustomers = response;
         if (response.length < 1) {
           this.customerCount = 0;
+        } else {
+          this.customerCount = response.length;
         }
       },
       error: (error) => {

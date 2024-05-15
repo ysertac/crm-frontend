@@ -119,12 +119,13 @@
     <legend class="ms-4 px-2">Search Result:</legend>
     <div
       class="d-flex align-items-center"
-      *ngIf="filteredCustomers.length < 1; else notFoundCustomer"
+      *ngIf="customerCount < 1; else notFoundCustomer"
     >
-      <p class="customer-not-found-header">
+      <p class="customer-not-found-header" *ngIf="isFirtstRender">
         No customer found! Would you like to create the customer?
       </p>
       <app-button
+        *ngIf="isFirtstRender"
         [routerLink]="['/home/create-customer/']"
         type="button"
         buttonClasses="search-create-customer-button"
