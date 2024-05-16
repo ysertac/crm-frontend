@@ -74,22 +74,8 @@ export class CreateCustomerFormComponent implements OnInit {
         ],
       ],
       gender: ['', Validators.required],
-      motherName: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(3),
-          Validators.maxLength(30),
-        ],
-      ],
-      fatherName: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(3),
-          Validators.maxLength(30),
-        ],
-      ],
+      motherName: ['', [Validators.minLength(3), Validators.maxLength(30)]],
+      fatherName: ['', [Validators.minLength(3), Validators.maxLength(30)]],
       birthDate: ['', Validators.required],
       nationalityId: [
         '',
