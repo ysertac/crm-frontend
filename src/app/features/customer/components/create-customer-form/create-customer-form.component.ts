@@ -35,6 +35,7 @@ import { OnlyNumbersPipe } from '../../../../core/pipe/only-numbers.pipe';
 })
 export class CreateCustomerFormComponent implements OnInit {
   form!: FormGroup;
+  nId: string = '';
   selectedOption: string;
   options: string[] = ['Male', 'Female'];
 
@@ -56,30 +57,24 @@ export class CreateCustomerFormComponent implements OnInit {
       });
   }
 
+  checkNationalityId() {
+    this.nId = this.form.value.nationalityId.replace(/\D/g, '');
+    this.form.patchValue({
+      nationalityId: this.nId,
+    });
+    console.log(this.form);
+  }
+
   createForm() {
     this.form = this.fb.group({
-      firstName: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(3),
-          Validators.maxLength(30),
-        ],
-      ],
-      middleName: ['', Validators.maxLength(30)],
-      lastName: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(3),
-          Validators.maxLength(30),
-        ],
-      ],
+      firstName: ['', [Validators.required]],
+      middleName: [''],
+      lastName: ['', [Validators.required]],
       gender: ['', Validators.required],
-      motherName: ['', [Validators.minLength(3), Validators.maxLength(30)]],
-      fatherName: ['', [Validators.minLength(3), Validators.maxLength(30)]],
+      motherName: [''],
+      fatherName: [''],
       birthDate: ['', Validators.required],
-      nationalityId: ['', [Validators.required]],
+      nationalityId: [this.nId, [Validators.required]],
     });
   }
 

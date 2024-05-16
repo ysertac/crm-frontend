@@ -157,7 +157,7 @@ export class CustomerAddressCreateComponent implements OnInit {
 
     this.addressesToShow = [...this.addressesToShow, customerAddress];
     this.change.markForCheck();
-    //this.form.reset();
+    this.form.reset();
     this.index = -2;
   }
 

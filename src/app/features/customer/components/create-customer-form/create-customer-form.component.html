@@ -14,6 +14,7 @@
             labelClasses="font-inter fw-bolder text-xl customer-create-label"
             [required]="true"
             [control]="form.get('firstName')"
+            [maxLength]="30"
           >
             First Name
           </app-input>
@@ -36,6 +37,7 @@
             inputClasses="form-control customer-create-input"
             labelClasses="font-inter fw-bolder text-xl customer-create-label"
             [control]="form.get('middleName')"
+            [maxLength]="30"
           >
             Middle Name
           </app-input>
@@ -59,6 +61,7 @@
             labelClasses="font-inter fw-bolder text-xl customer-create-label"
             [required]="true"
             [control]="form.get('lastName')"
+            [maxLength]="30"
           >
             Last Name
           </app-input>
@@ -110,6 +113,7 @@
             inputClasses="form-control customer-create-input"
             labelClasses="font-inter fw-bolder text-xl customer-create-label"
             [control]="form.get('motherName')"
+            [maxLength]="30"
           >
             Mother Name
           </app-input>
@@ -132,6 +136,7 @@
             inputClasses="form-control customer-create-input"
             labelClasses="font-inter fw-bolder text-xl customer-create-label"
             [control]="form.get('fatherName')"
+            [maxLength]="30"
           >
             Father Name
           </app-input>
@@ -167,6 +172,8 @@
             labelClasses="font-inter fw-bolder text-xl customer-create-label"
             [required]="true"
             [control]="form.get('nationalityId')"
+            [change]="checkNationalityId()"
+            [maxLength]="11"
           >
             Nationality ID
           </app-input>
