@@ -1,9 +1,9 @@
 .box {
-    background-color: #FFCDA4;
-    border: 0.05rem solid;
-    margin: 1.5rem;
-    height: 50vh;
-    overflow-y: auto;
+  background-color: #ffcda4;
+  border: 0.05rem solid;
+  margin: 1.5rem;
+  height: 50vh;
+  overflow-y: auto;
 }
 
 .b-add-address {
@@ -46,16 +46,16 @@
   }
 }
 
-.box-content{
+.box-content {
   padding-top: 14vh;
 }
 
-.row-height{
+.row-height {
   height: 60vh;
   overflow-y: auto;
 }
 
-.b-add-address2{
+.b-add-address2 {
   background-color: #f38022;
   color: #ffffff;
   font-family: "inter", sans-serif;
@@ -65,7 +65,19 @@
   height: 5vh;
 }
 
-.customer-header{
+.customer-header {
   font-family: "inter", sans-serif;
   color: #f38022;
+}
+
+.address-modal-label {
+  width: 35%;
+}
+
+.customer-create-input {
+  width: 60%;
+
+  cursor: pointer;
+  border-radius: 0.4rem;
+  height: 37.6px;
 }

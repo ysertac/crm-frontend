@@ -1,4 +1,10 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  OnDestroy,
+  OnInit,
+} from '@angular/core';
 import { InputComponent } from '../../../../shared/components/input/input.component';
 import { ButtonComponent } from '../../../../shared/components/button/button.component';
 import { Router, RouterLink } from '@angular/router';
@@ -10,7 +16,10 @@ import {
 } from '@angular/forms';
 import { Store, select } from '@ngrx/store';
 import { CustomerApiService } from '../../services/customer-api.service';
-import { setCustomerAddress, setCustomerAddresses } from '../../../../shared/store/addresses/customer-address.action';
+import {
+  setCustomerAddress,
+  setCustomerAddresses,
+} from '../../../../shared/store/addresses/customer-address.action';
 import { selectCustomerAddress } from '../../../../shared/store/addresses/customer-address.selector';
 import { PostAddressRequest } from '../../models/address/post-address-request';
 import { CommonModule, Location } from '@angular/common';
@@ -19,27 +28,38 @@ import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-customer-address-create',
   standalone: true,
-  imports: [InputComponent, ButtonComponent, RouterLink, ReactiveFormsModule,CommonModule],
+  imports: [
+    InputComponent,
+    ButtonComponent,
+    RouterLink,
+    ReactiveFormsModule,
+    CommonModule,
+  ],
   templateUrl: './customer-address-create.component.html',
   styleUrl: './customer-address-create.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CustomerAddressCreateComponent implements OnInit{
+export class CustomerAddressCreateComponent implements OnInit {
   form!: FormGroup;
+  selectedCityOption: string;
+  cityOptions: string[] = ['Hatay', 'Ankara', 'İzmir'];
+  selectedDistrictOption: string;
+  districtOptions: string[] = ['Antakya', 'Etimesgut', 'Urla'];
+  selectedCountryOption: string;
+  countryOptions: string[] = ['Türkiye', 'KKTC'];
   addressesToShow: PostAddressRequest[];
   form2: FormGroup;
   index: number = -2;
-  
 
   constructor(
     private fb: FormBuilder,
     private router: Router,
     private store: Store<{ customerAddress: PostAddressRequest }>,
-    private change: ChangeDetectorRef,
+    private change: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
-    console.log("a");
+    console.log('a');
     this.createForm();
     this.store
       .pipe(select(selectCustomerAddress))
@@ -49,12 +69,14 @@ export class CustomerAddressCreateComponent implements OnInit{
           this.addressesToShow = customerAddress.customerAddresses;
           this.change.markForCheck();
           console.log(customerAddress);
-        }
-      }).unsubscribe();
+        },
+      })
+      .unsubscribe();
   }
 
   createForm() {
     this.form = this.fb.group({
+      country: [''],
       cityId: ['', Validators.required],
       neighbourhood: ['', Validators.required],
       houseNumber: ['', Validators.required],
@@ -69,49 +91,58 @@ export class CustomerAddressCreateComponent implements OnInit{
 
   createAddress() {
     const customerAddress: PostAddressRequest = {
-      customerId : '',
-      cityId: this.form.value.cityId,
+      customerId: '',
       neighbourhood: this.form.value.neighbourhood,
       houseNumber: this.form.value.houseNumber,
-      district: this.form.value.district,
+      countryId: this.form.value.country,
+      cityId: this.form.value.cityId,
+      districtId: this.form.value.district,
       street: this.form.value.street,
       description: this.form.value.description,
     };
-   this.addressesToShow = [...this.addressesToShow, customerAddress];
-   //this.store.dispatch(setCustomerAddress({ customerAddress }));
-   //this.store.dispatch(setCustomerAddresses({ customerAddresses: this.addressesToShow}));
-   this.change.markForCheck();
-   this.form.reset();
-   this.index = -2;
+    console.log(customerAddress);
+
+    this.addressesToShow = [...this.addressesToShow, customerAddress];
+    //this.store.dispatch(setCustomerAddress({ customerAddress }));
+    //this.store.dispatch(setCustomerAddresses({ customerAddresses: this.addressesToShow}));
+    this.change.markForCheck();
+    this.form.reset();
+    this.index = -2;
   }
 
   goPrevious() {
     const customerAddress: PostAddressRequest = {
-      customerId : '',
+      countryId: '',
+      customerId: '',
       cityId: this.form.value.cityId,
       neighbourhood: this.form.value.neighbourhood,
       houseNumber: this.form.value.houseNumber,
-      district: this.form.value.district,
+      districtId: this.form.value.district,
       street: this.form.value.street,
       description: this.form.value.description,
     };
     this.store.dispatch(setCustomerAddress({ customerAddress }));
-   this.store.dispatch(setCustomerAddresses({ customerAddresses: this.addressesToShow}));
+    this.store.dispatch(
+      setCustomerAddresses({ customerAddresses: this.addressesToShow })
+    );
     this.router.navigate(['/home/create-customer']);
   }
 
-  goNext(){
+  goNext() {
     const customerAddress: PostAddressRequest = {
-      customerId : '',
+      countryId: '',
+      customerId: '',
       cityId: this.form.value.cityId,
       neighbourhood: this.form.value.neighbourhood,
       houseNumber: this.form.value.houseNumber,
-      district: this.form.value.district,
+      districtId: this.form.value.district,
       street: this.form.value.street,
       description: this.form.value.description,
     };
     this.store.dispatch(setCustomerAddress({ customerAddress }));
-   this.store.dispatch(setCustomerAddresses({ customerAddresses: this.addressesToShow}));
+    this.store.dispatch(
+      setCustomerAddresses({ customerAddresses: this.addressesToShow })
+    );
     this.router.navigate(['/home/contact-medium-create']);
   }
 

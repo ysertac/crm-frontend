@@ -1,5 +1,4 @@
-import { PostAddressRequest } from "../../../features/customer/models/address/post-address-request";
-
+import { PostAddressRequest } from '../../../features/customer/models/address/post-address-request';
 
 export interface CustomerAddressState {
   customerAddress: PostAddressRequest;
@@ -8,13 +7,14 @@ export interface CustomerAddressState {
 
 export const initialCustomerAddressState: CustomerAddressState = {
   customerAddress: {
-    customerId : '',
+    countryId: '',
+    customerId: '',
     cityId: '',
     neighbourhood: '',
     houseNumber: '',
-    district: '',
+    districtId: '',
     street: '',
     description: '',
   },
-  customerAddresses: []
+  customerAddresses: [],
 };
