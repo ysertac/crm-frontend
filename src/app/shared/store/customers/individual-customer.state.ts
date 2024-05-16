@@ -1,5 +1,4 @@
-import { PostCustomerRequest } from "../../../features/customer/models/customer/post-customer-request";
-
+import { PostCustomerRequest } from '../../../features/customer/models/customer/post-customer-request';
 
 export interface IndividualCustomerState {
   individualCustomer: PostCustomerRequest;

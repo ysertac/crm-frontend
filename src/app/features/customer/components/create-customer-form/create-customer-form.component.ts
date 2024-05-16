@@ -15,6 +15,7 @@ import { selectIndividualCustomer } from '../../../../shared/store/customers/ind
 import { PostCustomerRequest } from '../../models/customer/post-customer-request';
 import { CommonModule } from '@angular/common';
 import { ErrorMessagesPipe } from '../../../../core/pipe/error-messages.pipe';
+import { OnlyNumbersPipe } from '../../../../core/pipe/only-numbers.pipe';
 
 @Component({
   selector: 'app-create-customer-form',
@@ -27,6 +28,7 @@ import { ErrorMessagesPipe } from '../../../../core/pipe/error-messages.pipe';
     ErrorMessagesPipe,
     CommonModule,
     FormsModule,
+    OnlyNumbersPipe,
   ],
   templateUrl: './create-customer-form.component.html',
   styleUrl: './create-customer-form.component.scss',
@@ -77,13 +79,7 @@ export class CreateCustomerFormComponent implements OnInit {
       motherName: ['', [Validators.minLength(3), Validators.maxLength(30)]],
       fatherName: ['', [Validators.minLength(3), Validators.maxLength(30)]],
       birthDate: ['', Validators.required],
-      nationalityId: [
-        '',
-        [
-          Validators.required,
-          Validators.pattern('^[1-9]{1}[0-9]{9}[02468]{1}$'),
-        ],
-      ],
+      nationalityId: ['', [Validators.required]],
     });
   }
 

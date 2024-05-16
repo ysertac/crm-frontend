@@ -71,6 +71,7 @@ export class ContactMediumCreateComponent {
       .pipe(select(selectCustomerAddress))
       .subscribe((customerAddress) => {
         addressesFromState = customerAddress.customerAddresses;
+        console.log(addressesFromState);
       });
     this.customerApiService
       .add(customerFromState)
@@ -78,13 +79,13 @@ export class ContactMediumCreateComponent {
         switchMap((response1) => {
           console.log('deneme');
           customerIdFromFirstReq = response1.customerId;
-          let newAddresses = addressesFromState.map(address => {
-            return {...address,customerId: response1.customerId}
-          })
+          let newAddresses = addressesFromState.map((address) => {
+            return { ...address, customerId: response1.customerId };
+          });
           let addressRequests: Observable<any>[] = [];
           newAddresses.forEach((address) => {
             addressRequests.push(this.addressApiService.add(address));
-          })
+          });
           /*let newAddress: PostAddressRequest = {
             customerId: response1.customerId,
             cityId: addressFromState.cityId,
