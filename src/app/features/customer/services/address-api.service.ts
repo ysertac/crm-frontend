@@ -15,6 +15,7 @@ import { GetByCustomerIdAddressResponse } from '../models/address/getbycustomeri
 export class AddressApiService {
   private apiUrl: string =
     'http://localhost:8080/customerservice/api/v1/addresses';
+
   constructor(private httpClient: HttpClient) {}
 
   get(
@@ -62,7 +63,12 @@ export class AddressApiService {
     );
   }
 
-  getByCustomerId(customerId: string): Observable<GetByCustomerIdAddressResponse[]>{
-    return this.httpClient.get<GetByCustomerIdAddressResponse[]>('http://localhost:8080/customerservice/api/v1/addresses/customerid/' + customerId);
+  getByCustomerId(
+    customerId: string
+  ): Observable<GetByCustomerIdAddressResponse[]> {
+    return this.httpClient.get<GetByCustomerIdAddressResponse[]>(
+      'http://localhost:8080/customerservice/api/v1/addresses/customerid/' +
+        customerId
+    );
   }
 }

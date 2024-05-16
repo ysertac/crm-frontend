@@ -1,8 +1,12 @@
+.box-upper {
+  width: 40%;
+}
+
 .box {
   background-color: #ffcda4;
   border: 0.05rem solid;
-  margin: 1.5rem;
   height: 50vh;
+  width: 100%;
   overflow-y: auto;
 }
 
