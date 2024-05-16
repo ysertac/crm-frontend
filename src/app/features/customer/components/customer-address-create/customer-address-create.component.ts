@@ -48,7 +48,6 @@ import { OnlyNumbersPipe } from '../../../../core/pipe/only-numbers.pipe';
 })
 export class CustomerAddressCreateComponent implements OnInit {
   form!: FormGroup;
-  isCountryNotChoosen: boolean = true;
   selectedCityOption: string;
   cityOptions: GetAllCityByCountryIdResponse[];
   selectedDistrictOption: string;
@@ -73,21 +72,20 @@ export class CustomerAddressCreateComponent implements OnInit {
     this.cityApiService.getByCountryId(this.form.value.country).subscribe({
       next: (response) => {
         this.cityOptions = response;
+        this.form.get('city').enable();
       },
       complete: () => {
         this.change.markForCheck();
-        this.isCountryNotChoosen = false;
       },
     });
     console.log(this.form.value.country);
-    this.form.value.city.disabled = false;
-    console.log(this.isCountryNotChoosen);
   }
 
   chooseCity() {
     this.districtApiService.getByCityId(this.form.value.city).subscribe({
       next: (response) => {
         this.districtOptions = response;
+        this.form.get('district').enable();
       },
       complete: () => {
         this.change.markForCheck();
@@ -124,13 +122,10 @@ export class CustomerAddressCreateComponent implements OnInit {
   createForm() {
     this.form = this.fb.group({
       country: ['', Validators.required],
-      city: [
-        { value: '', disabled: !this.isCountryNotChoosen },
-        Validators.required,
-      ],
+      city: [{ value: '', disabled: true }, Validators.required],
       neighbourhood: ['', Validators.required],
       houseNumber: ['', Validators.required],
-      district: ['', Validators.required],
+      district: [{ value: '', disabled: true }, Validators.required],
       street: ['', Validators.required],
       description: ['', Validators.required],
     });
