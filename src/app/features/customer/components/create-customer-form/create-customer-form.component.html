@@ -73,18 +73,6 @@
               {{ form.get("lastName")?.errors | errorMessages }}
             </p>
           </div>
-          <!-- <app-input
-            inputId="gender"
-            class="d-flex w-100 justify-content-between mt-4 align-items-center"
-            type="text"
-            placeholder=""
-            inputClasses="form-control customer-create-input"
-            labelClasses="font-inter fw-bolder text-xl"
-            [required]="true"
-            [control]="form.get('gender')"
-          >
-            Gender
-          </app-input> -->
 
           <div
             class="d-flex w-100 justify-content-between mt-4 align-items-center"
@@ -121,7 +109,6 @@
             placeholder=""
             inputClasses="form-control customer-create-input"
             labelClasses="font-inter fw-bolder text-xl customer-create-label"
-            [required]="true"
             [control]="form.get('motherName')"
           >
             Mother Name
@@ -144,7 +131,6 @@
             placeholder=""
             inputClasses="form-control customer-create-input"
             labelClasses="font-inter fw-bolder text-xl customer-create-label"
-            [required]="true"
             [control]="form.get('fatherName')"
           >
             Father Name
@@ -175,7 +161,7 @@
           <app-input
             inputId="nId"
             class="d-flex w-100 justify-content-between mt-4 align-items-center"
-            type="text"
+            type="number"
             placeholder=""
             inputClasses="form-control customer-create-input"
             labelClasses="font-inter fw-bolder text-xl customer-create-label"
