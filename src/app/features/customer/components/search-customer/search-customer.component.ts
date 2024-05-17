@@ -26,6 +26,11 @@ import { GetAllSearchCustomerResponse } from '../../models/search/get-all-search
 })
 export class SearchCustomerComponent implements OnInit {
   form!: FormGroup;
+  nId: string = '';
+  cId: string = '';
+  accountNumber: string = '';
+  mobilePhone: string = '';
+  orderNumber: string = '';
   isFirtstRender: boolean = false;
   filteredCustomers: GetListResponse<GetAllSearchCustomerResponse>;
   customerCount: number = 0;
@@ -115,12 +120,12 @@ export class SearchCustomerComponent implements OnInit {
   createForm() {
     this.form = this.fb.group({
       firstName: [''],
-      id: [''],
+      id: [this.cId],
       lastName: [''],
-      orderNumber: [''],
-      accountNumber: [''],
-      mobilePhone: [''],
-      nationalityId: [''],
+      orderNumber: [this.orderNumber],
+      accountNumber: [this.accountNumber],
+      mobilePhone: [this.mobilePhone],
+      nationalityId: [this.nId],
     });
   }
 
@@ -145,5 +150,40 @@ export class SearchCustomerComponent implements OnInit {
 
   isActivePage(activePage: number) {
     return activePage === this.activePage ? true : false;
+  }
+
+  checkNationalityId() {
+    this.nId = this.form.value.nationalityId.replace(/\D/g, '');
+    this.form.patchValue({
+      nationalityId: this.nId,
+    });
+  }
+
+  checkCustomerId() {
+    this.cId = this.form.value.id.replace(/\D/g, '');
+    this.form.patchValue({
+      id: this.cId,
+    });
+  }
+
+  checkAccountNumber() {
+    this.accountNumber = this.form.value.accountNumber.replace(/\D/g, '');
+    this.form.patchValue({
+      accountNumber: this.accountNumber,
+    });
+  }
+
+  checkMobilePhone() {
+    this.mobilePhone = this.form.value.mobilePhone.replace(/\D/g, '');
+    this.form.patchValue({
+      mobilePhone: this.mobilePhone,
+    });
+  }
+
+  checkOrderNumber() {
+    this.orderNumber = this.form.value.orderNumber.replace(/\D/g, '');
+    this.form.patchValue({
+      orderNumber: this.orderNumber,
+    });
   }
 }
