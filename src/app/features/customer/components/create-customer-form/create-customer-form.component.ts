@@ -112,8 +112,15 @@ export class CreateCustomerFormComponent implements OnInit {
       birthDate: this.form.value.birthDate,
       nationalityId: this.form.value.nationalityId,
     };
+    let fullName = '';
+    if (individualCustomer.middleName !== '') {
+      fullName =
+        individualCustomer.firstName + ' ' + individualCustomer.middleName;
+    } else {
+      fullName = individualCustomer.firstName;
+    }
     const checkMernis: CheckMernisRequest = {
-      firstName: individualCustomer.firstName,
+      firstName: fullName,
       lastName: individualCustomer.lastName,
       birthDate: individualCustomer.birthDate,
       nationalityId: individualCustomer.nationalityId,
@@ -128,7 +135,8 @@ export class CreateCustomerFormComponent implements OnInit {
           this.router.navigate(['/home/create-address']);
         } else {
           this.hasNationalityIdError = true;
-          this.nationalityIdError = 'Nationality ID could not be verified!';
+          this.nationalityIdError =
+            'Identity information could not be verified!';
         }
       },
     });
