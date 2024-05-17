@@ -31,14 +31,18 @@ import { CommonModule } from '@angular/common';
 })
 export class CustomerInfoUpdateFormComponent implements OnInit {
   form!: FormGroup;
+  options: string[] = ['Male', 'Female'];
+  customerId: string;
 
   constructor(
     private fb: FormBuilder,
+    private router: Router,
     private store: Store<{ individualCustomer: PostCustomerRequest }>,
     private customerApiService: CustomerApiService
   ) {}
 
   ngOnInit(): void {
+    this.customerId = this.router.url.split('/')[3];
     this.createForm();
     this.store
       .pipe(select(selectIndividualCustomer))
@@ -49,40 +53,12 @@ export class CustomerInfoUpdateFormComponent implements OnInit {
 
   createForm() {
     this.form = this.fb.group({
-      firstName: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(3),
-          Validators.maxLength(30),
-        ],
-      ],
+      firstName: ['', [Validators.required, Validators.maxLength(30)]],
       middleName: ['', Validators.maxLength(30)],
-      lastName: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(3),
-          Validators.maxLength(30),
-        ],
-      ],
+      lastName: ['', [Validators.required, Validators.maxLength(30)]],
       gender: ['', Validators.required],
-      motherName: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(3),
-          Validators.maxLength(30),
-        ],
-      ],
-      fatherName: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(3),
-          Validators.maxLength(30),
-        ],
-      ],
+      motherName: ['', [Validators.required, Validators.maxLength(30)]],
+      fatherName: ['', [Validators.required, Validators.maxLength(30)]],
       birthDate: ['', Validators.required],
       nationalityId: [
         '',
@@ -105,8 +81,9 @@ export class CustomerInfoUpdateFormComponent implements OnInit {
       birthDate: this.form.value.birthDate,
       nationalityId: this.form.value.nationalityId,
     };
+
     this.customerApiService
-      .update('95f25ca7-2cb7-4d39-870e-46d7a0e487fa', updateCustomerRequest)
+      .update(this.customerId, updateCustomerRequest)
       .subscribe({
         next: (response) => {
           console.log(response);

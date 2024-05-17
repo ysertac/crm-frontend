@@ -70,7 +70,7 @@
               {{ form.get("lastName")?.errors | errorMessages }}
             </p>
           </div>
-          <app-input
+          <!-- <app-input
             inputId="gender"
             class="d-flex w-75 justify-content-between mt-4 align-items-center"
             type="text"
@@ -80,7 +80,22 @@
             [required]="true"
             [control]="form.get('gender')"
             >Gender
-          </app-input>
+          </app-input> -->
+          <div
+            class="d-flex w-75 justify-content-between mt-4 align-items-center"
+          >
+            <label class="font-inter fw-bolder text-xl" for="gender"
+              >Gender *</label
+            ><select
+              class="customer-create-input"
+              id="gender"
+              formControlName="gender"
+            >
+              <option *ngFor="let option of options" [value]="option">
+                {{ option }}
+              </option>
+            </select>
+          </div>
           <div
             class="mt-3"
             *ngIf="

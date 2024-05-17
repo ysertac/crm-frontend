@@ -9,6 +9,7 @@ import { UpdateCustomerRequest } from '../models/customer/update-customer-reques
 import { UpdateCustomerResponse } from '../models/customer/update-customer-response';
 import { GetCustomerResponse } from '../models/customer/get-customer-response';
 import { CheckMernisRequest } from '../models/customer/check-mernis-request';
+import { DeletedCustomerResponse } from '../models/customer/delete-customer-response';
 
 @Injectable({
   providedIn: 'root',
@@ -40,8 +41,9 @@ export class CustomerApiService {
     return this.httpClient.post<PostCustomerResponse>(this.apiUrl, customer);
   }
 
-  delete(id: number) {
-    this.httpClient.delete('api-url' + id);
+  delete(id: string) : Observable<DeletedCustomerResponse> {
+    const url = `${this.apiUrl}/${id}`;
+    return this.httpClient.delete<DeletedCustomerResponse>(url);
   }
 
   update(
