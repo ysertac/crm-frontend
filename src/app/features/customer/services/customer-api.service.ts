@@ -8,6 +8,7 @@ import { PostCustomerResponse } from '../models/customer/post-customer-response'
 import { UpdateCustomerRequest } from '../models/customer/update-customer-request';
 import { UpdateCustomerResponse } from '../models/customer/update-customer-response';
 import { GetCustomerResponse } from '../models/customer/get-customer-response';
+import { CheckMernisRequest } from '../models/customer/check-mernis-request';
 
 @Injectable({
   providedIn: 'root',
@@ -27,6 +28,14 @@ export class CustomerApiService {
     );
   }
 
+  isIndividualCustomerExistsByNationalityId(
+    nationalityId: string
+  ): Observable<boolean> {
+    return this.httpClient.get<boolean>(
+      this.apiUrl + '/nationalityid?nationalityId=' + nationalityId
+    );
+  }
+
   add(customer: PostCustomerRequest): Observable<PostCustomerResponse> {
     return this.httpClient.post<PostCustomerResponse>(this.apiUrl, customer);
   }
@@ -43,5 +52,9 @@ export class CustomerApiService {
     console.log(newUrl);
 
     return this.httpClient.put<UpdateCustomerResponse>(newUrl, customer);
+  }
+
+  checkMernis(data: CheckMernisRequest): Observable<boolean> {
+    return this.httpClient.post<boolean>(this.apiUrl + '/checkmernis', data);
   }
 }

@@ -19,6 +19,7 @@
         inputClasses="search-customer-input-field"
         labelClasses="login-screen-label text-dark fw-semibold "
         [control]="form.get('nationalityId')"
+        [change]="checkNationalityId()"
         [maxLength]="30"
         >Nationality ID</app-input
       >
@@ -31,6 +32,8 @@
         inputClasses="search-customer-input-field"
         labelClasses="login-screen-label text-dark fw-semibold "
         [control]="form.get('id')"
+        [change]="checkCustomerId()"
+        [maxLength]="30"
         >Customer ID</app-input
       >
 
@@ -42,6 +45,7 @@
         inputClasses="search-customer-input-field"
         labelClasses="login-screen-label text-dark fw-semibold "
         [control]="form.get('accountNumber')"
+        [change]="checkAccountNumber()"
         [maxLength]="30"
         >Account Number</app-input
       >
@@ -54,6 +58,7 @@
         inputClasses="search-customer-input-field"
         labelClasses="login-screen-label text-dark fw-semibold "
         [control]="form.get('mobilePhone')"
+        [change]="checkMobilePhone()"
         [maxLength]="30"
         >GSM Number</app-input
       >
@@ -90,6 +95,7 @@
         inputClasses="search-customer-input-field"
         labelClasses="login-screen-label text-dark fw-semibold "
         [control]="form.get('orderNumber')"
+        [change]="checkOrderNumber()"
         [maxLength]="30"
         >Order Number</app-input
       >
