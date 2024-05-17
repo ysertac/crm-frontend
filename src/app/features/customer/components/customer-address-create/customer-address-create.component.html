@@ -73,10 +73,10 @@
           </div>
           <div class="row-height">
             <div
-              *ngFor="let item of getNumberArray()"
+              *ngFor="let item of [].constructor(outerLoop); let i = index"
               class="d-flex justify-content-around mx-auto mt-3"
             >
-              <div *ngFor="let item2 of getAddresses()" class="box-upper">
+              <div *ngFor="let item2 of this.addressesToShow.slice(2*(i+1)-2,2*(i+1))" class="box-upper">
                 <div class="box">
                   <div class="d-flex justify-content-between mt-2 ms-2 me-2">
                     <app-input

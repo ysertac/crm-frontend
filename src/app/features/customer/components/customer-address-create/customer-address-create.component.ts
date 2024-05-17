@@ -44,7 +44,6 @@ import { OnlyNumbersPipe } from '../../../../core/pipe/only-numbers.pipe';
   ],
   templateUrl: './customer-address-create.component.html',
   styleUrl: './customer-address-create.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CustomerAddressCreateComponent implements OnInit {
   form!: FormGroup;
@@ -56,7 +55,7 @@ export class CustomerAddressCreateComponent implements OnInit {
   countryOptions: GetAllCountryResponse[];
   addressesToShow: any[];
   form2: FormGroup;
-  index: number = -2;
+  outerLoop: number;
 
   constructor(
     private fb: FormBuilder,
@@ -75,10 +74,9 @@ export class CustomerAddressCreateComponent implements OnInit {
         this.form.get('city').enable();
       },
       complete: () => {
-        this.change.markForCheck();
+        //this.change.markForCheck();
       },
     });
-    console.log(this.form.value.country);
   }
 
   chooseCity() {
@@ -88,21 +86,19 @@ export class CustomerAddressCreateComponent implements OnInit {
         this.form.get('district').enable();
       },
       complete: () => {
-        this.change.markForCheck();
+        //this.change.markForCheck();
       },
     });
-    console.log(this.form.value.city);
   }
 
   ngOnInit(): void {
-    console.log('a');
     this.createForm();
     this.countryApiService.get().subscribe({
       next: (response) => {
         this.countryOptions = response;
       },
       complete: () => {
-        this.change.markForCheck();
+        //this.change.markForCheck();
       },
     });
 
@@ -112,8 +108,8 @@ export class CustomerAddressCreateComponent implements OnInit {
         next: (customerAddress) => {
           this.form.patchValue(customerAddress.customerAddress);
           this.addressesToShow = customerAddress.customerAddresses;
-          this.change.markForCheck();
-          console.log(customerAddress);
+          this.outerLoop = this.outerLoop = Math.ceil(this.addressesToShow.length / 2);
+          //this.change.markForCheck();
         },
       })
       .unsubscribe();
@@ -153,12 +149,11 @@ export class CustomerAddressCreateComponent implements OnInit {
       street: this.form.value.street,
       description: this.form.value.description,
     };
-    console.log(customerAddress);
 
     this.addressesToShow = [...this.addressesToShow, customerAddress];
-    this.change.markForCheck();
+    //this.change.markForCheck();
     this.form.reset();
-    this.index = -2;
+    this.outerLoop = Math.ceil(this.addressesToShow.length / 2)
   }
 
   goPrevious() {
@@ -195,7 +190,6 @@ export class CustomerAddressCreateComponent implements OnInit {
       setCustomerAddresses({ customerAddresses: this.addressesToShow })
     );
     this.router.navigate(['/home/contact-medium-create']);
-    console.log(customerAddress);
   }
 
   onFormSubmit() {
@@ -204,14 +198,5 @@ export class CustomerAddressCreateComponent implements OnInit {
       return;
     }
     this.createAddress();
-  }
-
-  getNumberArray(): number[] {
-    return new Array(Math.ceil(this.addressesToShow.length / 2)).fill(0);
-  }
-
-  getAddresses(): any[] {
-    this.index += 2;
-    return this.addressesToShow.slice(this.index, this.index + 2);
   }
 }
