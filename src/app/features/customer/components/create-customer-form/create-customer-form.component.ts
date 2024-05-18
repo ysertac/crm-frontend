@@ -86,7 +86,7 @@ export class CreateCustomerFormComponent implements OnInit {
     const eighteenYearsAgo = new Date(
       today.getFullYear() - 18,
       today.getMonth(),
-      today.getDate()
+      today.getDate() + 1
     );
 
     if (new Date(birthDate) > eighteenYearsAgo) {
