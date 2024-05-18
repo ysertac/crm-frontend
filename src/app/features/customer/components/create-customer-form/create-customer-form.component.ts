@@ -42,6 +42,10 @@ import { CheckMernisRequest } from '../../models/customer/check-mernis-request';
 })
 export class CreateCustomerFormComponent implements OnInit {
   form!: FormGroup;
+  minDate!: string;
+  maxDate!: string;
+  isUnderage: boolean = false;
+  isAboveage: boolean = false;
   nId: string = '';
   isNotTurkishCitizen = false;
   nIdMaxLength: number | null = 11;
@@ -55,7 +59,14 @@ export class CreateCustomerFormComponent implements OnInit {
     private router: Router,
     private store: Store<{ individualCustomer: PostCustomerRequest }>,
     private customerApiService: CustomerApiService
-  ) {}
+  ) {
+    const minDate = new Date();
+    minDate.setFullYear(minDate.getFullYear() - 130);
+    this.minDate = this.formatDate(minDate);
+    const maxDate = new Date();
+    maxDate.setFullYear(maxDate.getFullYear() - 18);
+    this.maxDate = this.formatDate(maxDate);
+  }
 
   ngOnInit(): void {
     this.createForm();
@@ -67,6 +78,47 @@ export class CreateCustomerFormComponent implements OnInit {
         this.selectedOption = individualCustomer.gender;
         console.log(individualCustomer);
       });
+  }
+
+  checkAgeMinOnInput() {
+    const birthDate = this.form.value.birthDate;
+    const today = new Date();
+    const eighteenYearsAgo = new Date(
+      today.getFullYear() - 18,
+      today.getMonth(),
+      today.getDate()
+    );
+
+    if (new Date(birthDate) > eighteenYearsAgo) {
+      this.isUnderage = true;
+    } else {
+      this.isUnderage = false;
+    }
+  }
+
+  checkAgeMaxOnInput() {
+    const birthDate = this.form.value.birthDate;
+    const today = new Date();
+    const oneHundredThirtyYearsAgo = new Date(
+      today.getFullYear() - 130,
+      today.getMonth(),
+      today.getDate()
+    );
+    if (
+      new Date(birthDate) > today ||
+      new Date(birthDate) < oneHundredThirtyYearsAgo
+    ) {
+      this.isAboveage = true;
+    } else {
+      this.isAboveage = false;
+    }
+  }
+
+  formatDate(date: Date): string {
+    const day = ('0' + date.getDate()).slice(-2);
+    const month = ('0' + (date.getMonth() + 1)).slice(-2);
+    const year = date.getFullYear();
+    return `${year}-${month}-${day}`;
   }
 
   toggleTurkishCitizen() {

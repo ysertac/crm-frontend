@@ -160,9 +160,21 @@
             labelClasses="font-inter fw-bolder text-xl customer-create-label"
             [required]="true"
             [control]="form.get('birthDate')"
+            [min]="minDate"
+            [max]="maxDate"
+            (input)="checkAgeMinOnInput()"
+            (input)="checkAgeMaxOnInput()"
           >
             Birth Date
           </app-input>
+          <div *ngIf="isUnderage && form.get('birthDate').touched">
+            <p class="text-danger fw-bold">
+              Customer must be over 18 years old.
+            </p>
+          </div>
+          <div *ngIf="isAboveage && form.get('birthDate').touched">
+            <p class="text-danger fw-bold">Please enter a valid date.</p>
+          </div>
           <app-input
             inputId="nId"
             class="d-flex w-100 justify-content-between mt-4 align-items-center"
@@ -217,10 +229,21 @@
         buttonClasses="general-button"
         >Cancel</app-button
       >
+      <!-- BURASI FR5 TE ACC23 VE 22 OLURSA EKLENECEKTİR AKSİ TAKDİRDE SİLİNEBİLİR
+        <app-button
+        type="submit"
+        buttonClasses="general-button"
+        [disabled]="
+          form.invalid || isUnderage || isAboveage || hasNationalityIdError
+        "
+      >
+        Next
+      </app-button>
+      -->
       <app-button
         type="submit"
         buttonClasses="general-button"
-        [disabled]="form.invalid"
+        [disabled]="form.invalid || isUnderage || isAboveage"
       >
         Next
       </app-button>
