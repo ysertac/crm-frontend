@@ -8,13 +8,15 @@ import { UpdateContactMediumResponse } from '../models/contact-medium/update-con
 import { PostContactMediumRequest } from '../models/contact-medium/post-contact-medium-request';
 import { PostContactMediumResponse } from '../models/contact-medium/post-contact-medium-response';
 import { GetContactMediumByCustomerIdResponse } from '../models/contact-medium/get-contact-medium-by-customer-id-response';
+import { environment } from '../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ContactMediumApiService {
-  private apiUrl: string =
-    'http://localhost:8080/customerservice/api/v1/contact-medium';
+  private apiUrl =
+    environment.apiUrl + '/customerservice/api/v1/contact-medium';
+
   constructor(private httpClient: HttpClient) {}
 
   get(): Observable<GetListResponse<ContactMediumListModel[]>> {

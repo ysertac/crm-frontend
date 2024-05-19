@@ -8,13 +8,13 @@ import { PostAddressResponse } from '../models/address/post-address-response';
 import { UpdateAddressRequest } from '../models/address/update-address-request';
 import { UpdateAddressResponse } from '../models/address/update-address-response';
 import { GetByCustomerIdAddressResponse } from '../models/address/getbycustomerid-address-response';
+import { environment } from '../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AddressApiService {
-  private apiUrl: string =
-    'http://localhost:8080/customerservice/api/v1/addresses';
+  private apiUrl = `${environment.apiUrl}/customerservice/api/v1/addresses`;
 
   constructor(private httpClient: HttpClient) {}
 
@@ -25,14 +25,12 @@ export class AddressApiService {
   ): Observable<GetListResponse<AddressListModel>> {
     if (customerId == null) {
       return this.httpClient.get<GetListResponse<AddressListModel>>(
-        'http://localhost:8080/customerservice/api/v1/addresses?page=' +
-          page +
-          '&size=' +
-          size
+        this.apiUrl + '?page=' + page + '&size=' + size
       );
     } else {
       return this.httpClient.get<GetListResponse<AddressListModel>>(
-        'http://localhost:8080/customerservice/api/v1/addresses?page=' +
+        this.apiUrl +
+          '?page=' +
           page +
           '&size=' +
           size +
@@ -43,10 +41,7 @@ export class AddressApiService {
   }
 
   add(address: PostAddressRequest): Observable<PostAddressResponse> {
-    return this.httpClient.post<PostAddressResponse>(
-      'http://localhost:8080/customerservice/api/v1/addresses',
-      address
-    );
+    return this.httpClient.post<PostAddressResponse>(this.apiUrl, address);
   }
 
   delete(id: number) {
@@ -67,8 +62,7 @@ export class AddressApiService {
     customerId: string
   ): Observable<GetByCustomerIdAddressResponse[]> {
     return this.httpClient.get<GetByCustomerIdAddressResponse[]>(
-      'http://localhost:8080/customerservice/api/v1/addresses/customerid/' +
-        customerId
+      this.apiUrl + '/customerid/' + customerId
     );
   }
 }

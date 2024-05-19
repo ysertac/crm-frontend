@@ -10,13 +10,14 @@ import { UpdateCustomerResponse } from '../models/customer/update-customer-respo
 import { GetCustomerResponse } from '../models/customer/get-customer-response';
 import { CheckMernisRequest } from '../models/customer/check-mernis-request';
 import { DeletedCustomerResponse } from '../models/customer/delete-customer-response';
+import { environment } from '../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CustomerApiService {
-  private apiUrl: string =
-    'http://localhost:8080/customerservice/api/v1/individualcustomers';
+  private apiUrl = `${environment.apiUrl}/customerservice/api/v1/individualcustomers`;
+
   constructor(private httpClient: HttpClient) {}
 
   get(): Observable<GetListResponse<CustomerListModel[]>> {
@@ -41,7 +42,7 @@ export class CustomerApiService {
     return this.httpClient.post<PostCustomerResponse>(this.apiUrl, customer);
   }
 
-  delete(id: string) : Observable<DeletedCustomerResponse> {
+  delete(id: string): Observable<DeletedCustomerResponse> {
     const url = `${this.apiUrl}/${id}`;
     return this.httpClient.delete<DeletedCustomerResponse>(url);
   }
