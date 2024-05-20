@@ -47,6 +47,9 @@ export class CreateCustomerFormComponent implements OnInit {
   isUnderage: boolean = false;
   isAboveage: boolean = false;
   nId: string = '';
+  fName: string = '';
+  mName: string = '';
+  lName: string = '';
   isNotTurkishCitizen = false;
   nIdMaxLength: number | null = 11;
   hasNationalityIdError: boolean = false;
@@ -141,6 +144,27 @@ export class CreateCustomerFormComponent implements OnInit {
     } else {
       this.nIdMaxLength = null;
     }
+  }
+
+  checkFirstName() {
+    this.fName = this.form.value.firstName.replace(/[^a-zA-ZğüşöçİĞÜŞÖÇ\s]*/g, '');
+    this.form.patchValue({
+      firstName: this.fName,
+    });
+  }
+
+  checkMiddleName() {
+    this.mName = this.form.value.middleName.replace(/[^a-zA-ZğüşöçİĞÜŞÖÇ\s]*/g, '');
+    this.form.patchValue({
+      middleName: this.mName,
+    });
+  }
+
+  checkLastName() {
+    this.lName = this.form.value.lastName.replace(/[^a-zA-ZğüşöçİĞÜŞÖÇ\s]*/g, '');
+    this.form.patchValue({
+      lastName: this.lName,
+    });
   }
 
   createForm() {
@@ -259,6 +283,5 @@ export class CreateCustomerFormComponent implements OnInit {
     this.store4.dispatch(setContactMedium({ contactMedium }));
     this.router.navigate(['/home/search-customer']);
   }
-  //inputlarda hata giderildiğinde hata mesajının bulunduğu boşluğun olmaması gerekiyor.
-  //birthdate inputunun DD/MM/YYYY formatında olması gerekiyor.
+
 }

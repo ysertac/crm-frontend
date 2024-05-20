@@ -15,6 +15,7 @@
             [required]="true"
             [control]="form.get('firstName')"
             [maxLength]="30"
+            [change]="checkFirstName()"
           >
             First Name
           </app-input>
@@ -38,6 +39,7 @@
             labelClasses="font-inter fw-bolder text-xl customer-create-label"
             [control]="form.get('middleName')"
             [maxLength]="30"
+            [change]="checkMiddleName()"
           >
             Middle Name
           </app-input>
@@ -62,6 +64,7 @@
             [required]="true"
             [control]="form.get('lastName')"
             [maxLength]="30"
+            [change]="checkLastName()"
           >
             Last Name
           </app-input>

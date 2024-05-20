@@ -29,6 +29,8 @@ export class SearchCustomerComponent implements OnInit {
   form!: FormGroup;
   nId: string = '';
   cId: string = '';
+  fName: string = '';
+  lName: string = '';
   accountNumber: string = '';
   mobilePhone: string = '';
   orderNumber: string = '';
@@ -62,6 +64,7 @@ export class SearchCustomerComponent implements OnInit {
       this.checkAvailablityForSearch();
     });
   }
+  
 
   searchRequest() {
     const request: PostSearchCustomerRequest = {
@@ -134,6 +137,7 @@ export class SearchCustomerComponent implements OnInit {
     this.searchRequest();
   }
 
+
   goToPreviousPage() {
     this.page -= 1;
     this.searchRequest();
@@ -152,6 +156,7 @@ export class SearchCustomerComponent implements OnInit {
   isActivePage(activePage: number) {
     return activePage === this.activePage ? true : false;
   }
+
 
   checkNationalityId() {
     this.nId = this.form.value.nationalityId.replace(/\D/g, '');
@@ -185,6 +190,20 @@ export class SearchCustomerComponent implements OnInit {
     this.orderNumber = this.form.value.orderNumber.replace(/\D/g, '');
     this.form.patchValue({
       orderNumber: this.orderNumber,
+    });
+  }
+
+  checkFirstName() {
+    this.fName = this.form.value.firstName.replace(/[^a-zA-ZğüşöçİĞÜŞÖÇ\s]*/g, '');
+    this.form.patchValue({
+      firstName: this.fName,
+    });
+  }
+
+  checkLastName() {
+    this.lName = this.form.value.lastName.replace(/[^a-zA-ZğüşöçİĞÜŞÖÇ\s]*/g, '');
+    this.form.patchValue({
+      lastName: this.lName,
     });
   }
 }

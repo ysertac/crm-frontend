@@ -71,6 +71,7 @@
         inputClasses="search-customer-input-field"
         labelClasses="login-screen-label text-dark fw-semibold "
         [control]="form.get('firstName')"
+        [change]="checkFirstName()"
         [maxLength]="30"
         >First Name</app-input
       >
@@ -83,6 +84,7 @@
         inputClasses="search-customer-input-field"
         labelClasses="login-screen-label text-dark fw-semibold "
         [control]="form.get('lastName')"
+        [change]="checkLastName()"
         [maxLength]="30"
         >Last Name</app-input
       >
