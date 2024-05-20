@@ -17,7 +17,10 @@ import { CommonModule } from '@angular/common';
 import { ErrorMessagesPipe } from '../../../../core/pipe/error-messages.pipe';
 import { OnlyNumbersPipe } from '../../../../core/pipe/only-numbers.pipe';
 import { selectCustomerAddress } from '../../../../shared/store/addresses/customer-address.selector';
-import { setCustomerAddress, setCustomerAddresses } from '../../../../shared/store/addresses/customer-address.action';
+import {
+  setCustomerAddress,
+  setCustomerAddresses,
+} from '../../../../shared/store/addresses/customer-address.action';
 import { PostAddressRequest } from '../../models/address/post-address-request';
 import { PostContactMediumRequest } from '../../models/contact-medium/post-contact-medium-request';
 import { setContactMedium } from '../../../../shared/store/contactMedium/contact-medium.action';
@@ -82,7 +85,6 @@ export class CreateCustomerFormComponent implements OnInit {
       .subscribe((individualCustomer) => {
         this.form.patchValue(individualCustomer);
         this.selectedOption = individualCustomer.gender;
-        console.log(individualCustomer);
       });
   }
 
@@ -147,21 +149,30 @@ export class CreateCustomerFormComponent implements OnInit {
   }
 
   checkFirstName() {
-    this.fName = this.form.value.firstName.replace(/[^a-zA-ZğüşöçİĞÜŞÖÇ\s]*/g, '');
+    this.fName = this.form.value.firstName.replace(
+      /[^a-zA-ZğüşöçİĞÜŞÖÇ\s]*/g,
+      ''
+    );
     this.form.patchValue({
       firstName: this.fName,
     });
   }
 
   checkMiddleName() {
-    this.mName = this.form.value.middleName.replace(/[^a-zA-ZğüşöçİĞÜŞÖÇ\s]*/g, '');
+    this.mName = this.form.value.middleName.replace(
+      /[^a-zA-ZğüşöçİĞÜŞÖÇ\s]*/g,
+      ''
+    );
     this.form.patchValue({
       middleName: this.mName,
     });
   }
 
   checkLastName() {
-    this.lName = this.form.value.lastName.replace(/[^a-zA-ZğüşöçİĞÜŞÖÇ\s]*/g, '');
+    this.lName = this.form.value.lastName.replace(
+      /[^a-zA-ZğüşöçİĞÜŞÖÇ\s]*/g,
+      ''
+    );
     this.form.patchValue({
       lastName: this.lName,
     });
@@ -204,12 +215,9 @@ export class CreateCustomerFormComponent implements OnInit {
       birthDate: individualCustomer.birthDate,
       nationalityId: individualCustomer.nationalityId,
     };
-    console.log(checkMernis);
     this.customerApiService.checkMernis(checkMernis).subscribe({
       next: (response) => {
         if (response) {
-          console.log(response);
-
           this.store1.dispatch(setIndividualCustomer({ individualCustomer }));
           this.router.navigate(['/home/create-address']);
         } else {
@@ -271,7 +279,7 @@ export class CreateCustomerFormComponent implements OnInit {
     this.store2.dispatch(setCustomerAddress({ customerAddress }));
 
     const customerAddresses: PostAddressRequest[] = [];
-    this.store3.dispatch(setCustomerAddresses({customerAddresses}))
+    this.store3.dispatch(setCustomerAddresses({ customerAddresses }));
 
     const contactMedium: PostContactMediumRequest = {
       customerId: '',
@@ -283,5 +291,4 @@ export class CreateCustomerFormComponent implements OnInit {
     this.store4.dispatch(setContactMedium({ contactMedium }));
     this.router.navigate(['/home/search-customer']);
   }
-
 }

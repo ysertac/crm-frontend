@@ -64,7 +64,6 @@ export class SearchCustomerComponent implements OnInit {
       this.checkAvailablityForSearch();
     });
   }
-  
 
   searchRequest() {
     const request: PostSearchCustomerRequest = {
@@ -84,7 +83,6 @@ export class SearchCustomerComponent implements OnInit {
         this.filteredCustomers = response;
         this.hasPrevious = this.filteredCustomers.hasPrevious;
         this.hasNext = this.filteredCustomers.hasNext;
-        console.log(response);
         this.activePage = request.page + 1;
         this.totalPage = response.totalPage;
         if (response.items.length < 1) {
@@ -97,9 +95,8 @@ export class SearchCustomerComponent implements OnInit {
         console.log('Error:' + error);
       },
       complete: () => {
-        console.log('Completed');
         this.searchCustomerApiService.apiUrl =
-        environment.apiUrl + "/searchservice/api/v1/searchcustomer?";
+          environment.apiUrl + '/searchservice/api/v1/searchcustomer?';
       },
     });
   }
@@ -118,7 +115,6 @@ export class SearchCustomerComponent implements OnInit {
         this.stopSubmit = true;
       }
     }
-    console.log(this.stopSubmit);
   }
 
   createForm() {
@@ -136,7 +132,6 @@ export class SearchCustomerComponent implements OnInit {
   onFormSubmit() {
     this.searchRequest();
   }
-
 
   goToPreviousPage() {
     this.page -= 1;
@@ -156,7 +151,6 @@ export class SearchCustomerComponent implements OnInit {
   isActivePage(activePage: number) {
     return activePage === this.activePage ? true : false;
   }
-
 
   checkNationalityId() {
     this.nId = this.form.value.nationalityId.replace(/\D/g, '');
@@ -194,14 +188,20 @@ export class SearchCustomerComponent implements OnInit {
   }
 
   checkFirstName() {
-    this.fName = this.form.value.firstName.replace(/[^a-zA-ZğüşöçİĞÜŞÖÇ\s]*/g, '');
+    this.fName = this.form.value.firstName.replace(
+      /[^a-zA-ZğüşöçİĞÜŞÖÇ\s]*/g,
+      ''
+    );
     this.form.patchValue({
       firstName: this.fName,
     });
   }
 
   checkLastName() {
-    this.lName = this.form.value.lastName.replace(/[^a-zA-ZğüşöçİĞÜŞÖÇ\s]*/g, '');
+    this.lName = this.form.value.lastName.replace(
+      /[^a-zA-ZğüşöçİĞÜŞÖÇ\s]*/g,
+      ''
+    );
     this.form.patchValue({
       lastName: this.lName,
     });
