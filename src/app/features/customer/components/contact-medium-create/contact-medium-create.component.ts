@@ -22,6 +22,8 @@ import { PostCustomerRequest } from '../../models/customer/post-customer-request
 import { Observable, forkJoin, switchMap } from 'rxjs';
 import { ErrorMessagesPipe } from '../../../../core/pipe/error-messages.pipe';
 import { CommonModule } from '@angular/common';
+import { setIndividualCustomer } from '../../../../shared/store/customers/individual-customer.action';
+import { setCustomerAddress, setCustomerAddresses } from '../../../../shared/store/addresses/customer-address.action';
 
 @Component({
   selector: 'app-contact-medium-create',
@@ -109,7 +111,13 @@ export class ContactMediumCreateComponent {
           );
         })
       )
-      .subscribe();
+      .subscribe({
+        next: (response) => {
+          this.router.navigate([`/home/customer/${customerIdFromFirstReq}/info`])
+        },
+        complete: () => {
+        }
+      });
   }
 
   createForm() {
@@ -148,4 +156,5 @@ export class ContactMediumCreateComponent {
     }
     this.makeRequests();
   }
+
 }

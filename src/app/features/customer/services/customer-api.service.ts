@@ -16,7 +16,7 @@ import { environment } from '../../../../environments/environment';
   providedIn: 'root',
 })
 export class CustomerApiService {
-  private apiUrl = `${environment.apiUrl}/customerservice/api/v1/individualcustomers`;
+  private apiUrl = environment.apiUrl + "/customerservice/api/v1/individualcustomers"
 
   constructor(private httpClient: HttpClient) {}
 

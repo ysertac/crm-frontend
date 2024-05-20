@@ -4,12 +4,14 @@ import { Observable } from 'rxjs';
 import { PostSearchCustomerRequest } from '../models/search/post-search-customer-request';
 import { GetAllSearchCustomerResponse } from '../models/search/get-all-search-customer-response';
 import { GetListResponse } from '../../../shared/models/getListResponse';
+import { environment } from '../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SearchCustomerApiService {
-  apiUrl = 'http://localhost:8082/searchservice/api/v1/searchcustomer?';
+  apiUrl = environment.apiUrl + "/searchservice/api/v1/searchcustomer?";
+  
 
   constructor(private httpClient: HttpClient) {}
 

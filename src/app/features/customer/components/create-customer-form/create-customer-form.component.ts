@@ -17,7 +17,7 @@ import { CommonModule } from '@angular/common';
 import { ErrorMessagesPipe } from '../../../../core/pipe/error-messages.pipe';
 import { OnlyNumbersPipe } from '../../../../core/pipe/only-numbers.pipe';
 import { selectCustomerAddress } from '../../../../shared/store/addresses/customer-address.selector';
-import { setCustomerAddress } from '../../../../shared/store/addresses/customer-address.action';
+import { setCustomerAddress, setCustomerAddresses } from '../../../../shared/store/addresses/customer-address.action';
 import { PostAddressRequest } from '../../models/address/post-address-request';
 import { PostContactMediumRequest } from '../../models/contact-medium/post-contact-medium-request';
 import { setContactMedium } from '../../../../shared/store/contactMedium/contact-medium.action';
@@ -57,7 +57,10 @@ export class CreateCustomerFormComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private store: Store<{ individualCustomer: PostCustomerRequest }>,
+    private store1: Store<{ individualCustomer: PostCustomerRequest }>,
+    private store2: Store<{ customerAddress: PostAddressRequest }>,
+    private store3: Store<{ customerAddresses: PostAddressRequest[] }>,
+    private store4: Store<{ contactMedium: PostContactMediumRequest }>,
     private customerApiService: CustomerApiService
   ) {
     const minDate = new Date();
@@ -71,7 +74,7 @@ export class CreateCustomerFormComponent implements OnInit {
   ngOnInit(): void {
     this.createForm();
 
-    this.store
+    this.store1
       .pipe(select(selectIndividualCustomer))
       .subscribe((individualCustomer) => {
         this.form.patchValue(individualCustomer);
@@ -183,7 +186,7 @@ export class CreateCustomerFormComponent implements OnInit {
         if (response) {
           console.log(response);
 
-          this.store.dispatch(setIndividualCustomer({ individualCustomer }));
+          this.store1.dispatch(setIndividualCustomer({ individualCustomer }));
           this.router.navigate(['/home/create-address']);
         } else {
           this.hasNationalityIdError = true;
@@ -228,7 +231,7 @@ export class CreateCustomerFormComponent implements OnInit {
       birthDate: null,
       nationalityId: '',
     };
-    this.store.dispatch(setIndividualCustomer({ individualCustomer }));
+    this.store1.dispatch(setIndividualCustomer({ individualCustomer }));
 
     const customerAddress: PostAddressRequest = {
       countryId: '',
@@ -241,7 +244,10 @@ export class CreateCustomerFormComponent implements OnInit {
       description: '',
     };
 
-    this.store.dispatch(setCustomerAddress({ customerAddress }));
+    this.store2.dispatch(setCustomerAddress({ customerAddress }));
+
+    const customerAddresses: PostAddressRequest[] = [];
+    this.store3.dispatch(setCustomerAddresses({customerAddresses}))
 
     const contactMedium: PostContactMediumRequest = {
       customerId: '',
@@ -250,7 +256,7 @@ export class CreateCustomerFormComponent implements OnInit {
       mobilePhone: '',
       fax: '',
     };
-    this.store.dispatch(setContactMedium({ contactMedium }));
+    this.store4.dispatch(setContactMedium({ contactMedium }));
     this.router.navigate(['/home/search-customer']);
   }
   //inputlarda hata giderildiğinde hata mesajının bulunduğu boşluğun olmaması gerekiyor.

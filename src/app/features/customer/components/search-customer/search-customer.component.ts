@@ -9,6 +9,7 @@ import { SearchCustomerApiService } from '../../services/search-customer-api.ser
 import { PostSearchCustomerRequest } from '../../models/search/post-search-customer-request';
 import { GetListResponse } from '../../../../shared/models/getListResponse';
 import { GetAllSearchCustomerResponse } from '../../models/search/get-all-search-customer-response';
+import { environment } from '../../../../../environments/environment';
 
 @Component({
   selector: 'app-search-customer',
@@ -95,7 +96,7 @@ export class SearchCustomerComponent implements OnInit {
       complete: () => {
         console.log('Completed');
         this.searchCustomerApiService.apiUrl =
-          'http://localhost:8082/searchservice/api/v1/searchcustomer?';
+        environment.apiUrl + "/searchservice/api/v1/searchcustomer?";
       },
     });
   }
