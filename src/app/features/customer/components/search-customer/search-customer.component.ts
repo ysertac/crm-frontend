@@ -153,38 +153,48 @@ export class SearchCustomerComponent implements OnInit {
   }
 
   checkNationalityId() {
-    this.nId = this.form.value.nationalityId.replace(/\D/g, '');
-    this.form.patchValue({
+    if(this.form.get("nationalityId").dirty){
+      this.nId = this.form.value.nationalityId.replace(/\D/g, '');
+      this.form.patchValue({
       nationalityId: this.nId,
     });
+    }
   }
 
   checkCustomerId() {
-    this.cId = this.form.value.id.replace(/\D/g, '');
-    this.form.patchValue({
-      id: this.cId,
-    });
+    if(this.form.get("id").dirty){
+      this.cId = this.form.value.id.replace(/\D/g, '');
+      this.form.patchValue({
+        id: this.cId,
+      });
+    }
   }
 
   checkAccountNumber() {
-    this.accountNumber = this.form.value.accountNumber.replace(/\D/g, '');
-    this.form.patchValue({
-      accountNumber: this.accountNumber,
-    });
+    if(this.form.get("accountNumber").dirty){
+      this.accountNumber = this.form.value.accountNumber.replace(/\D/g, '');
+      this.form.patchValue({
+        accountNumber: this.accountNumber,
+      });
+    }
   }
 
   checkMobilePhone() {
-    this.mobilePhone = this.form.value.mobilePhone.replace(/\D/g, '');
-    this.form.patchValue({
-      mobilePhone: this.mobilePhone,
-    });
+    if(this.form.get("mobilePhone").dirty){
+      this.mobilePhone = this.form.value.mobilePhone.replace(/\D/g, '');
+      this.form.patchValue({
+        mobilePhone: this.mobilePhone,
+      });
+    }
   }
 
   checkOrderNumber() {
-    this.orderNumber = this.form.value.orderNumber.replace(/\D/g, '');
-    this.form.patchValue({
-      orderNumber: this.orderNumber,
-    });
+    if(this.form.get("orderNumber").dirty){
+      this.orderNumber = this.form.value.orderNumber.replace(/\D/g, '');
+      this.form.patchValue({
+        orderNumber: this.orderNumber,
+      });
+    }
   }
 
   checkFirstName() {
