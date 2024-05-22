@@ -31,20 +31,31 @@ import { CommonModule } from '@angular/common';
 })
 export class CustomerInfoUpdateFormComponent implements OnInit {
   form!: FormGroup;
+  minDate!: string;
+  maxDate!: string;
+  isUnderage: boolean = false;
+  isAboveage: boolean = false;
   options: string[] = ['Male', 'Female'];
   customerId: string;
   nId: string = '';
   isNotTurkishCitizen = false;
   nIdMaxLength: number | null = 11;
   hasNationalityIdError: boolean = false;
-  nationalityIdError:string=''
+  nationalityIdError: string = '';
 
   constructor(
     private fb: FormBuilder,
     private router: Router,
     private store: Store<{ individualCustomer: PostCustomerRequest }>,
     private customerApiService: CustomerApiService
-  ) {}
+  ) {
+    const minDate = new Date();
+    minDate.setFullYear(minDate.getFullYear() - 130);
+    this.minDate = this.formatDate(minDate);
+    const maxDate = new Date();
+    maxDate.setFullYear(maxDate.getFullYear() - 18);
+    this.maxDate = this.formatDate(maxDate);
+  }
 
   ngOnInit(): void {
     this.customerId = this.router.url.split('/')[3];
@@ -56,22 +67,54 @@ export class CustomerInfoUpdateFormComponent implements OnInit {
       });
   }
 
+  checkAgeMinOnInput() {
+    const birthDate = this.form.value.birthDate;
+    const today = new Date();
+    const eighteenYearsAgo = new Date(
+      today.getFullYear() - 18,
+      today.getMonth(),
+      today.getDate() + 1
+    );
+
+    if (new Date(birthDate) > eighteenYearsAgo) {
+      this.isUnderage = true;
+    } else {
+      this.isUnderage = false;
+    }
+  }
+
+  checkAgeMaxOnInput() {
+    const birthDate = this.form.value.birthDate;
+    const today = new Date();
+    const oneHundredThirtyYearsAgo = new Date(
+      today.getFullYear() - 130,
+      today.getMonth(),
+      today.getDate()
+    );
+    if (new Date(birthDate) < oneHundredThirtyYearsAgo) {
+      this.isAboveage = true;
+    } else {
+      this.isAboveage = false;
+    }
+  }
+
+  formatDate(date: Date): string {
+    const day = ('0' + date.getDate()).slice(-2);
+    const month = ('0' + (date.getMonth() + 1)).slice(-2);
+    const year = date.getFullYear();
+    return `${year}-${month}-${day}`;
+  }
+
   createForm() {
     this.form = this.fb.group({
-      firstName: ['',Validators.required],
+      firstName: ['', Validators.required],
       middleName: [''],
-      lastName: ['',Validators.required,],
+      lastName: ['', Validators.required],
       gender: ['', Validators.required],
       motherName: [''],
       fatherName: [''],
       birthDate: ['', Validators.required],
-      nationalityId: [
-        '',
-        [
-          Validators.required,
-          Validators.pattern('^[1-9]{1}[0-9]{9}[02468]{1}$'),
-        ],
-      ],
+      nationalityId: ['', [Validators.required, Validators.minLength(11)]],
     });
   }
 
@@ -114,10 +157,14 @@ export class CustomerInfoUpdateFormComponent implements OnInit {
         },
         error: (error) => {
           this.hasNationalityIdError = true;
-          if(error.error.detail==='"This national ID number already exists!"') {
-            this.nationalityIdError="A customer already exists with this Nationality ID"
-          }else {
-            this.nationalityIdError="Identity information could not be verified"
+          if (
+            error.error.detail === '"This national ID number already exists!"'
+          ) {
+            this.nationalityIdError =
+              'A customer already exists with this Nationality ID';
+          } else {
+            this.nationalityIdError =
+              'Identity information could not be verified';
           }
         },
       });

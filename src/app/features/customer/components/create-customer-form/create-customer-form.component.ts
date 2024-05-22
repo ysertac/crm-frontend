@@ -112,10 +112,7 @@ export class CreateCustomerFormComponent implements OnInit {
       today.getMonth(),
       today.getDate()
     );
-    if (
-      new Date(birthDate) > today ||
-      new Date(birthDate) < oneHundredThirtyYearsAgo
-    ) {
+    if (new Date(birthDate) < oneHundredThirtyYearsAgo) {
       this.isAboveage = true;
     } else {
       this.isAboveage = false;
@@ -187,7 +184,10 @@ export class CreateCustomerFormComponent implements OnInit {
       motherName: [''],
       fatherName: [''],
       birthDate: ['', Validators.required],
-      nationalityId: [this.nId, [Validators.required, Validators.minLength(11)]],
+      nationalityId: [
+        this.nId,
+        [Validators.required, Validators.minLength(11)],
+      ],
     });
   }
 

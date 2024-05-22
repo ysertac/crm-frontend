@@ -197,6 +197,17 @@
               {{ nationalityIdError }}
             </p>
           </div>
+          <div
+            class="mt-3"
+            *ngIf="
+              form.controls['nationalityId'].errors !== null &&
+              form.get('nationalityId')?.touched
+            "
+          >
+            <p class="text-danger fw-bold">
+              {{ form.get("nationalityId")?.errors | errorMessages }}
+            </p>
+          </div>
         </div>
       </div>
     </div>
