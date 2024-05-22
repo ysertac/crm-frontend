@@ -192,17 +192,6 @@
           >
             Nationality ID
           </app-input>
-          <!-- <div
-            class="mt-3"
-            *ngIf="
-              form.controls['nationalityId'].errors !== null &&
-              form.get('nationalityId')?.touched
-            "
-          >
-            <p class="text-danger fw-bold">
-              {{ form.get("nationalityId")?.errors | errorMessages }}
-            </p>
-          </div> -->
           <div class="mt-3" *ngIf="hasNationalityIdError">
             <p class="text-danger fw-bold">
               {{ nationalityIdError }}
@@ -232,17 +221,6 @@
         buttonClasses="general-button"
         >Cancel</app-button
       >
-      <!-- BURASI FR5 TE ACC23 VE 22 OLURSA EKLENECEKTİR AKSİ TAKDİRDE SİLİNEBİLİR
-        <app-button
-        type="submit"
-        buttonClasses="general-button"
-        [disabled]="
-          form.invalid || isUnderage || isAboveage || hasNationalityIdError
-        "
-      >
-        Next
-      </app-button>
-      -->
       <app-button
         type="submit"
         buttonClasses="general-button"

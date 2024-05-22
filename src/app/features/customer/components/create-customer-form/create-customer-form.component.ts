@@ -187,7 +187,7 @@ export class CreateCustomerFormComponent implements OnInit {
       motherName: [''],
       fatherName: [''],
       birthDate: ['', Validators.required],
-      nationalityId: [this.nId, [Validators.required]],
+      nationalityId: [this.nId, [Validators.required, Validators.minLength(11)]],
     });
   }
 

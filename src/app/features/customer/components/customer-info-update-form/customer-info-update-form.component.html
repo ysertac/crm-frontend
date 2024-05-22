@@ -13,6 +13,7 @@
             labelClasses="font-inter w-25 fw-bolder text-xl"
             [required]="true"
             [control]="form.get('firstName')"
+            [maxLength]="30"
             >First Name
           </app-input>
           <div
@@ -33,8 +34,8 @@
             placeholder=""
             inputClasses="form-control customer-info-update-input"
             labelClasses="font-inter w-25 fw-bolder text-xl"
-            [required]="true"
             [control]="form.get('middleName')"
+            [maxLength]="30"
             >Middle Name
           </app-input>
           <div
@@ -57,6 +58,7 @@
             labelClasses="font-inter w-25 fw-bolder text-xl"
             [required]="true"
             [control]="form.get('lastName')"
+            [maxLength]="30"
             >Last Name
           </app-input>
           <div
@@ -70,17 +72,6 @@
               {{ form.get("lastName")?.errors | errorMessages }}
             </p>
           </div>
-          <!-- <app-input
-            inputId="gender"
-            class="d-flex w-75 justify-content-between mt-4 align-items-center"
-            type="text"
-            placeholder=""
-            inputClasses="form-control customer-info-update-input"
-            labelClasses="font-inter w-25 fw-bolder text-xl"
-            [required]="true"
-            [control]="form.get('gender')"
-            >Gender
-          </app-input> -->
           <div
             class="d-flex w-75 justify-content-between mt-4 align-items-center"
           >
@@ -116,8 +107,8 @@
             placeholder=""
             inputClasses="form-control customer-info-update-input"
             labelClasses="font-inter w-25 fw-bolder text-xl"
-            [required]="true"
             [control]="form.get('motherName')"
+            [maxLength]="30"
             >Mother Name
           </app-input>
           <div
@@ -138,8 +129,8 @@
             placeholder=""
             inputClasses="form-control customer-info-update-input"
             labelClasses="font-inter w-25 fw-bolder text-xl"
-            [required]="true"
             [control]="form.get('fatherName')"
+            [maxLength]="30"
             >Father Name
           </app-input>
           <div
@@ -172,7 +163,9 @@
             inputClasses="form-control customer-info-update-input"
             labelClasses="font-inter w-25 fw-bolder text-xl"
             [required]="true"
+            [maxLength]="11"
             [control]="form.get('nationalityId')"
+            [change]="checkNationalityId()"
             >Nationality ID
           </app-input>
           <div
@@ -186,8 +179,25 @@
               {{ form.get("nationalityId")?.errors | errorMessages }}
             </p>
           </div>
+          <div class="mt-3" *ngIf="hasNationalityIdError">
+            <p class="text-danger fw-bold">
+              {{ nationalityIdError }}
+            </p>
+          </div>
         </div>
       </div>
+    </div>
+    <div class="mb-0 form-check not-turkish-citizen d-flex justify-content-end">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="exampleCheck1"
+        [checked]="isNotTurkishCitizen"
+        (change)="toggleTurkishCitizen()"
+      />
+      <label class="form-check-label ps-2" for="exampleCheck1"
+        >I am not a Turkish Citizen</label
+      >
     </div>
     <div class="create-customer-button-section">
       <app-button type="submit" buttonClasses="general-button">

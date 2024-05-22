@@ -33,6 +33,11 @@ export class CustomerInfoUpdateFormComponent implements OnInit {
   form!: FormGroup;
   options: string[] = ['Male', 'Female'];
   customerId: string;
+  nId: string = '';
+  isNotTurkishCitizen = false;
+  nIdMaxLength: number | null = 11;
+  hasNationalityIdError: boolean = false;
+  nationalityIdError:string=''
 
   constructor(
     private fb: FormBuilder,
@@ -53,12 +58,12 @@ export class CustomerInfoUpdateFormComponent implements OnInit {
 
   createForm() {
     this.form = this.fb.group({
-      firstName: ['', [Validators.required, Validators.maxLength(30)]],
-      middleName: ['', Validators.maxLength(30)],
-      lastName: ['', [Validators.required, Validators.maxLength(30)]],
+      firstName: ['',Validators.required],
+      middleName: [''],
+      lastName: ['',Validators.required,],
       gender: ['', Validators.required],
-      motherName: ['', [Validators.required, Validators.maxLength(30)]],
-      fatherName: ['', [Validators.required, Validators.maxLength(30)]],
+      motherName: [''],
+      fatherName: [''],
       birthDate: ['', Validators.required],
       nationalityId: [
         '',
@@ -67,6 +72,25 @@ export class CustomerInfoUpdateFormComponent implements OnInit {
           Validators.pattern('^[1-9]{1}[0-9]{9}[02468]{1}$'),
         ],
       ],
+    });
+  }
+
+  checkNationalityId() {
+    if (!this.isNotTurkishCitizen) {
+      this.nId = this.form.value.nationalityId.replace(/\D/g, '');
+      this.nIdMaxLength = 11;
+      this.form.patchValue({
+        nationalityId: this.nId,
+      });
+    } else {
+      this.nIdMaxLength = null;
+    }
+  }
+
+  toggleTurkishCitizen() {
+    this.isNotTurkishCitizen = this.isNotTurkishCitizen == true ? false : true;
+    this.form.patchValue({
+      nationalityId: '',
     });
   }
 
@@ -89,7 +113,12 @@ export class CustomerInfoUpdateFormComponent implements OnInit {
           console.log(response);
         },
         error: (error) => {
-          console.error(error);
+          this.hasNationalityIdError = true;
+          if(error.error.detail==='"This national ID number already exists!"') {
+            this.nationalityIdError="A customer already exists with this Nationality ID"
+          }else {
+            this.nationalityIdError="Identity information could not be verified"
+          }
         },
       });
   }
