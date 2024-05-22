@@ -14,6 +14,7 @@
             [required]="true"
             [control]="form.get('firstName')"
             [maxLength]="30"
+            [change]="checkFirstName()"
             >First Name
           </app-input>
           <div
@@ -36,6 +37,7 @@
             labelClasses="font-inter w-25 fw-bolder text-xl"
             [control]="form.get('middleName')"
             [maxLength]="30"
+            [change]="checkMiddleName()"
             >Middle Name
           </app-input>
           <div
@@ -59,6 +61,7 @@
             [required]="true"
             [control]="form.get('lastName')"
             [maxLength]="30"
+            [change]="checkLastName()"
             >Last Name
           </app-input>
           <div
@@ -109,6 +112,7 @@
             labelClasses="font-inter w-25 fw-bolder text-xl"
             [control]="form.get('motherName')"
             [maxLength]="30"
+            [change]="checkMotherName()"
             >Mother Name
           </app-input>
           <div
@@ -131,6 +135,7 @@
             labelClasses="font-inter w-25 fw-bolder text-xl"
             [control]="form.get('fatherName')"
             [maxLength]="30"
+            [change]="checkFatherName()"
             >Father Name
           </app-input>
           <div
@@ -212,12 +217,55 @@
       >
     </div>
     <div class="create-customer-button-section">
-      <app-button type="submit" buttonClasses="general-button">
+      <app-button
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModal"
+        type="submit"
+        buttonClasses="general-button"
+      >
         Cancel
       </app-button>
-      <app-button type="submit" buttonClasses="general-button">
+      <app-button
+        type="submit"
+        buttonClasses="general-button "
+        [disabled]="form.invalid || isUnderage || isAboveage"
+      >
         Save
       </app-button>
     </div>
   </form>
+</div>
+
+<div
+  class="modal fade"
+  id="exampleModal"
+  data-bs-backdrop="static"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-lg modal-dialog-centered w-100">
+    <div class="modal-content">
+      <div class="modal-body text-center">
+        Are you sure you want to cancel the customer update?
+      </div>
+      <div class="d-flex w-50 justify-content-between mx-auto mt-3">
+        <button
+          type="button"
+          class="update-customer-cancel-button"
+          data-bs-dismiss="modal"
+          (click)="cancelUpdate()"
+        >
+          Yes
+        </button>
+        <button
+          type="button"
+          class="update-customer-cancel-button"
+          data-bs-dismiss="modal"
+        >
+          No
+        </button>
+      </div>
+    </div>
+  </div>
 </div>

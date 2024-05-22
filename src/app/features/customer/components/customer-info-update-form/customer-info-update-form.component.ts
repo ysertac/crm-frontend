@@ -15,6 +15,7 @@ import { CustomerApiService } from '../../services/customer-api.service';
 import { UpdateCustomerRequest } from '../../models/customer/update-customer-request';
 import { ErrorMessagesPipe } from '../../../../core/pipe/error-messages.pipe';
 import { CommonModule } from '@angular/common';
+import { setIndividualCustomer } from '../../../../shared/store/customers/individual-customer.action';
 
 @Component({
   selector: 'app-customer-info-update-form',
@@ -38,6 +39,11 @@ export class CustomerInfoUpdateFormComponent implements OnInit {
   options: string[] = ['Male', 'Female'];
   customerId: string;
   nId: string = '';
+  fName: string = '';
+  mName: string = '';
+  lName: string = '';
+  mtName: string = '';
+  ftName: string = '';
   isNotTurkishCitizen = false;
   nIdMaxLength: number | null = 11;
   hasNationalityIdError: boolean = false;
@@ -65,6 +71,21 @@ export class CustomerInfoUpdateFormComponent implements OnInit {
       .subscribe((individualCustomer) => {
         this.form.patchValue(individualCustomer);
       });
+  }
+
+  cancelUpdate() {
+    const individualCustomer: PostCustomerRequest = {
+      firstName: '',
+      middleName: '',
+      lastName: '',
+      gender: '',
+      motherName: '',
+      fatherName: '',
+      birthDate: null,
+      nationalityId: '',
+    };
+    this.store.dispatch(setIndividualCustomer({ individualCustomer }));
+    this.router.navigate(['/home/customer/' + this.customerId]);
   }
 
   checkAgeMinOnInput() {
@@ -128,6 +149,56 @@ export class CustomerInfoUpdateFormComponent implements OnInit {
     } else {
       this.nIdMaxLength = null;
     }
+  }
+
+  checkFirstName() {
+    this.fName = this.form.value.firstName.replace(
+      /[^a-zA-ZğüşöçİĞÜŞÖÇ\sı]*/g,
+      ''
+    );
+    this.form.patchValue({
+      firstName: this.fName,
+    });
+  }
+
+  checkMiddleName() {
+    this.mName = this.form.value.middleName.replace(
+      /[^a-zA-ZğüşöçİĞÜŞÖÇ\sı]*/g,
+      ''
+    );
+    this.form.patchValue({
+      middleName: this.mName,
+    });
+  }
+
+  checkLastName() {
+    this.lName = this.form.value.lastName.replace(
+      /[^a-zA-ZğüşöçİĞÜŞÖÇ\sı]*/g,
+      ''
+    );
+    this.form.patchValue({
+      lastName: this.lName,
+    });
+  }
+
+  checkMotherName() {
+    this.mtName = this.form.value.motherName.replace(
+      /[^a-zA-ZğüşöçİĞÜŞÖÇ\sı]*/g,
+      ''
+    );
+    this.form.patchValue({
+      motherName: this.mtName,
+    });
+  }
+
+  checkFatherName() {
+    this.ftName = this.form.value.fatherName.replace(
+      /[^a-zA-ZğüşöçİĞÜŞÖÇ\sı]*/g,
+      ''
+    );
+    this.form.patchValue({
+      fatherName: this.ftName,
+    });
   }
 
   toggleTurkishCitizen() {
