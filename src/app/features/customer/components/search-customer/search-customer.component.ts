@@ -154,66 +154,84 @@ export class SearchCustomerComponent implements OnInit {
 
   checkNationalityId() {
     if(this.form.get("nationalityId").dirty){
+      console.log("nationality")
       this.nId = this.form.value.nationalityId.replace(/\D/g, '');
       this.form.patchValue({
       nationalityId: this.nId,
     });
+      this.form.get("nationalityId").markAsPristine();
     }
   }
 
   checkCustomerId() {
     if(this.form.get("id").dirty){
+      console.log("customerid")
       this.cId = this.form.value.id.replace(/\D/g, '');
       this.form.patchValue({
         id: this.cId,
       });
+      this.form.get("id").markAsPristine();
     }
   }
 
   checkAccountNumber() {
     if(this.form.get("accountNumber").dirty){
+      console.log("accountnumber")
       this.accountNumber = this.form.value.accountNumber.replace(/\D/g, '');
       this.form.patchValue({
         accountNumber: this.accountNumber,
       });
+      this.form.get("accountNumber").markAsPristine();
     }
   }
 
   checkMobilePhone() {
     if(this.form.get("mobilePhone").dirty){
+      console.log("mobilephone")
       this.mobilePhone = this.form.value.mobilePhone.replace(/\D/g, '');
       this.form.patchValue({
         mobilePhone: this.mobilePhone,
       });
+      this.form.get("mobilePhone").markAsPristine();
     }
   }
 
   checkOrderNumber() {
     if(this.form.get("orderNumber").dirty){
+      console.log("ordernumber")
       this.orderNumber = this.form.value.orderNumber.replace(/\D/g, '');
       this.form.patchValue({
         orderNumber: this.orderNumber,
       });
+      this.form.get("orderNumber").markAsPristine();
     }
   }
 
   checkFirstName() {
-    this.fName = this.form.value.firstName.replace(
-      /[^a-zA-ZğüşöçİĞÜŞÖÇ\s]*/g,
-      ''
-    );
-    this.form.patchValue({
-      firstName: this.fName,
-    });
+    if(this.form.get("firstName").dirty){
+      console.log("firstName")
+      this.fName = this.form.value.firstName.replace(
+        /[^a-zA-ZğüşöçİĞÜŞÖÇ\s]*/g,
+        ''
+      );
+      this.form.patchValue({
+        firstName: this.fName,
+      });
+      this.form.get("firstName").markAsPristine();
+    }
   }
 
   checkLastName() {
-    this.lName = this.form.value.lastName.replace(
-      /[^a-zA-ZğüşöçİĞÜŞÖÇ\s]*/g,
-      ''
-    );
-    this.form.patchValue({
-      lastName: this.lName,
-    });
+    if(this.form.get("lastName").dirty){
+      console.log("lastname")
+      this.lName = this.form.value.lastName.replace(
+        /[^a-zA-ZğüşöçİĞÜŞÖÇ\s]*/g,
+        ''
+      );
+      this.form.patchValue({
+        lastName: this.lName,
+      });
+      this.form.get("lastName").markAsPristine();
+    }
   }
 }
