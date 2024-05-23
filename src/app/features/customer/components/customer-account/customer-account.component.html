@@ -1,150 +1,156 @@
-<div class="d-flex mb-3">
-  <h2 class="customer-account-header fw-bolder font-inter">
-    Customer Accounts
-  </h2>
+<h2 class="customer-account-header pt-3 mx-auto">Customer Accounts</h2>
+<div class="d-flex flex-column align-items-center">
   <app-button
     [routerLink]="['/home/create-billing-account']"
     buttonClasses="customer-account-button fw-normal me-4 px-4"
     class="d-flex justify-content-center w-25"
-    >Create New Account</app-button
   >
-</div>
-<div class="container">
-  <table class="table">
-    <thead>
-      <tr>
-        <th class="customer-account-table-header" scope="col"></th>
-        <th class="customer-account-table-header" scope="col">
-          Account Status
-        </th>
-        <th class="customer-account-table-header" scope="col">
-          Account Number
-        </th>
-        <th class="customer-account-table-header" scope="col">Account Name</th>
-        <th class="customer-account-table-header" scope="col">Account Type</th>
-        <th class="customer-account-table-header" scope="col">Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let account of accounts">
-        <td class="customer-account-table-data">
-          <a
-            class="customer-account-icon"
-            data-bs-toggle="collapse"
-            data-bs-target="#collapseExample1"
-            aria-expanded="false"
-            aria-controls="collapseExample1"
-            (click)="toggleCollapse()"
-          >
-            <img
-              [src]="
-                isCollapsed
-                  ? '../../../../../assets/images/customer-account/down-arrow.png'
-                  : '../../../../../assets/images/customer-account/up-arrow.png'
-              "
-              alt=""
-            />
-          </a>
-        </td>
-        <td class="customer-account-table-data">{{ account.status }}</td>
-        <td class="customer-account-table-data">{{ account.accountNumber }}</td>
-        <td class="customer-account-table-data">{{ account.name }}</td>
-        <td class="customer-account-table-data">{{ account.type }}</td>
-        <td class="customer-account-table-data">
-          <a class="me-2">
-            <img
-              src="../../../../../assets/images/customer-account/trash.png"
-              alt=""
-            />
-          </a>
-          <a>
-            <img
-              src="../../../../../assets/images/customer-account/edit.png"
-              alt=""
-            />
-          </a>
-        </td>
-      </tr>
-      <tr class="collapse" id="collapseExample1">
-        <td colspan="9">
-          <div class="card card-body">
-            <table class="table">
-              <thead>
-                <tr class="customer-account-sub-table-header">
-                  <th scope="col">Product ID</th>
-                  <th scope="col">Product Name Action</th>
-                  <th scope="col">Campaign Name</th>
-                  <th scope="col">Campaign ID</th>
-                  <th scope="col">Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="customer-account-sub-table-row">
-                  <td>001</td>
-                  <td>ADSL 8MB</td>
-                  <td></td>
-                  <td></td>
-                  <td>
-                    <a class="me-2">
-                      <img
-                        src="../../../../../assets/images/customer-account/delete.png"
-                        alt=""
-                      />
-                    </a>
-                    <a>
-                      <img
-                        src="../../../../../assets/images/customer-account/eye.png"
-                        alt=""
-                      />
-                    </a>
-                  </td>
-                </tr>
-                <tr class="customer-account-sub-table-row">
-                  <td>001</td>
-                  <td>ADSL 8MB</td>
-                  <td></td>
-                  <td></td>
-                  <td>
-                    <a class="me-2">
-                      <img
-                        src="../../../../../assets/images/customer-account/delete.png"
-                        alt=""
-                      />
-                    </a>
-                    <a>
-                      <img
-                        src="../../../../../assets/images/customer-account/eye.png"
-                        alt=""
-                      />
-                    </a>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="d-flex justify-content-center mt-2">
-            <app-button
-              type="submit"
-              buttonClasses="customer-account-button fw-normal me-4 px-4"
-              class="d-flex justify-content-center w-25"
+    Create New Account
+  </app-button>
+
+  <div class="container mt-4">
+    <table class="table">
+      <thead>
+        <tr>
+          <th class="customer-account-table-header" scope="col"></th>
+          <th class="customer-account-table-header" scope="col">
+            Account Status
+          </th>
+          <th class="customer-account-table-header" scope="col">
+            Account Number
+          </th>
+          <th class="customer-account-table-header" scope="col">
+            Account Name
+          </th>
+          <th class="customer-account-table-header" scope="col">
+            Account Type
+          </th>
+          <th class="customer-account-table-header" scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let account of accounts">
+          <td class="customer-account-table-data">
+            <a
+              class="customer-account-icon"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseExample1"
+              aria-expanded="false"
+              aria-controls="collapseExample1"
+              (click)="toggleCollapse()"
             >
-              Start New Sale
-            </app-button>
-            <app-button
-              type="submit"
-              buttonClasses="customer-account-button fw-normal me-4 px-4"
-              class="d-flex justify-content-center w-25"
-              >Transfer</app-button
-            >
-            <app-button
-              type="submit"
-              buttonClasses="customer-account-button fw-normal me-4 px-4"
-              class="d-flex justify-content-center w-25"
-              >Service Address Change</app-button
-            >
-          </div>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+              <img
+                [src]="
+                  isCollapsed
+                    ? '../../../../../assets/images/customer-account/down-arrow.png'
+                    : '../../../../../assets/images/customer-account/up-arrow.png'
+                "
+                alt=""
+              />
+            </a>
+          </td>
+          <td class="customer-account-table-data">{{ account.status }}</td>
+          <td class="customer-account-table-data">
+            {{ account.accountNumber }}
+          </td>
+          <td class="customer-account-table-data">{{ account.name }}</td>
+          <td class="customer-account-table-data">{{ account.type }}</td>
+          <td class="customer-account-table-data">
+            <a class="me-2">
+              <img
+                src="../../../../../assets/images/customer-account/trash.png"
+                alt=""
+              />
+            </a>
+            <a>
+              <img
+                src="../../../../../assets/images/customer-account/edit.png"
+                alt=""
+              />
+            </a>
+          </td>
+        </tr>
+        <tr class="collapse" id="collapseExample1">
+          <td colspan="9">
+            <div class="card card-body">
+              <table class="table">
+                <thead>
+                  <tr class="customer-account-sub-table-header">
+                    <th scope="col">Product ID</th>
+                    <th scope="col">Product Name Action</th>
+                    <th scope="col">Campaign Name</th>
+                    <th scope="col">Campaign ID</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="customer-account-sub-table-row">
+                    <td>001</td>
+                    <td>ADSL 8MB</td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                      <a class="me-2">
+                        <img
+                          src="../../../../../assets/images/customer-account/delete.png"
+                          alt=""
+                        />
+                      </a>
+                      <a>
+                        <img
+                          src="../../../../../assets/images/customer-account/eye.png"
+                          alt=""
+                        />
+                      </a>
+                    </td>
+                  </tr>
+                  <tr class="customer-account-sub-table-row">
+                    <td>001</td>
+                    <td>ADSL 8MB</td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                      <a class="me-2">
+                        <img
+                          src="../../../../../assets/images/customer-account/delete.png"
+                          alt=""
+                        />
+                      </a>
+                      <a>
+                        <img
+                          src="../../../../../assets/images/customer-account/eye.png"
+                          alt=""
+                        />
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="d-flex justify-content-center mt-2">
+              <app-button
+                type="submit"
+                buttonClasses="customer-account-button fw-normal me-4 px-4"
+                class="d-flex justify-content-center w-25"
+              >
+                Start New Sale
+              </app-button>
+              <app-button
+                type="submit"
+                buttonClasses="customer-account-button fw-normal me-4 px-4"
+                class="d-flex justify-content-center w-25"
+                >Transfer</app-button
+              >
+              <app-button
+                type="submit"
+                buttonClasses="customer-account-button fw-normal me-4 px-4"
+                class="d-flex justify-content-center w-25"
+                >Service Address Change</app-button
+              >
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

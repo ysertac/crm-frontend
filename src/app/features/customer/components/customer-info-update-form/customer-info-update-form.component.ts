@@ -228,15 +228,7 @@ export class CustomerInfoUpdateFormComponent implements OnInit {
         },
         error: (error) => {
           this.hasNationalityIdError = true;
-          if (
-            error.error.detail === '"This national ID number already exists!"'
-          ) {
-            this.nationalityIdError =
-              'A customer already exists with this Nationality ID';
-          } else {
-            this.nationalityIdError =
-              'Identity information could not be verified';
-          }
+          this.nationalityIdError = error.error.detail;
         },
       });
   }
