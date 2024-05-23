@@ -32,7 +32,7 @@ export class CustomerAddressComponent implements OnInit {
     private addressApiService: AddressApiService,
     private change: ChangeDetectorRef,
     private fb: FormBuilder,
-    private router: Router,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -45,9 +45,7 @@ export class CustomerAddressComponent implements OnInit {
   }
 
   getNumberArray(): number[] {
-    return new Array(Math.ceil(this.customerAddresses.length / 2)).fill(
-      0
-    );
+    return new Array(Math.ceil(this.customerAddresses.length / 2)).fill(0);
   }
 
   getAddresses(): GetByCustomerIdAddressResponse[] {
