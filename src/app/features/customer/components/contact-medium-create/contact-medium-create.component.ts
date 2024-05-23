@@ -23,7 +23,10 @@ import { Observable, forkJoin, switchMap } from 'rxjs';
 import { ErrorMessagesPipe } from '../../../../core/pipe/error-messages.pipe';
 import { CommonModule } from '@angular/common';
 import { setIndividualCustomer } from '../../../../shared/store/customers/individual-customer.action';
-import { setCustomerAddress, setCustomerAddresses } from '../../../../shared/store/addresses/customer-address.action';
+import {
+  setCustomerAddress,
+  setCustomerAddresses,
+} from '../../../../shared/store/addresses/customer-address.action';
 
 @Component({
   selector: 'app-contact-medium-create',
@@ -88,15 +91,6 @@ export class ContactMediumCreateComponent {
           newAddresses.forEach((address) => {
             addressRequests.push(this.addressApiService.add(address));
           });
-          /*let newAddress: PostAddressRequest = {
-            customerId: response1.customerId,
-            cityId: addressFromState.cityId,
-            neighbourhood: addressFromState.neighbourhood,
-            houseNumber: addressFromState.houseNumber,
-            district: addressFromState.district,
-            street: addressFromState.street,
-            description: addressFromState.description,
-          };*/
           return forkJoin(addressRequests).pipe(
             switchMap((response2) => {
               let contactMedium: PostContactMediumRequest = {
@@ -113,10 +107,11 @@ export class ContactMediumCreateComponent {
       )
       .subscribe({
         next: (response) => {
-          this.router.navigate([`/home/customer/${customerIdFromFirstReq}/info`])
+          this.router.navigate([
+            `/home/customer/${customerIdFromFirstReq}/info`,
+          ]);
         },
-        complete: () => {
-        }
+        complete: () => {},
       });
   }
 
@@ -156,5 +151,4 @@ export class ContactMediumCreateComponent {
     }
     this.makeRequests();
   }
-
 }
