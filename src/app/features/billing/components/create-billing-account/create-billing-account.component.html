@@ -1,112 +1,89 @@
 <div class="customer-create">
-  <div class="h-75">
-    <h2 class="customer-create-header">Create Billing Account</h2>
-    <div class="create-billing-account-content pt-5">
-      <app-input
-        inputId="account-name"
-        class="d-flex align-items-center w-100"
-        type="text"
-        placeholder=""
-        inputClasses="create-billing-account-input border border-dark ms-2"
-        labelClasses="create-billing-account-label text-end"
-        [required]="true"
-        >Account Name</app-input
-      >
+  <form class="h-100" (submit)="onFormSubmit()" [formGroup]="form">
+    <div class="h-75">
+      <h2 class="customer-create-header">Create Billing Account</h2>
+      <div class="create-billing-account-content pt-5">
+        <app-input
+          inputId="account-name"
+          class="d-flex align-items-center w-100"
+          type="text"
+          placeholder=""
+          inputClasses="create-billing-account-input border border-dark ms-2"
+          labelClasses="create-billing-account-label text-end"
+          [control]="form.get('name')"
+          [required]="true"
+          >Account Name
+        </app-input>
 
-      <div class="d-flex">
-        <label
-          class="create-billing-account-textarea-label text-end"
-          for="create-account-description"
-          >Account Description *</label
-        >
-        <textarea
-          class="create-billing-account-textarea border border-dark w-75 ms-2"
-          name="create-account-description"
-          id="create-account-description"
-          rows="4"
-        ></textarea>
-      </div>
-      <div class="d-flex h-50">
-        <div
-          class="create-billing-account-textarea-label d-flex flex-column align-items-end"
-        >
-          <span>Address Info</span>
-          <app-button
-            type="submit"
-            buttonClasses="create-billing-account-button mt-3 py-1"
-            >Add New Address
-          </app-button>
+        <div class="d-flex">
+          <label
+            class="create-billing-account-textarea-label text-end"
+            for="create-account-description"
+            >Account Description *</label
+          >
+          <textarea
+            class="create-billing-account-textarea border border-dark w-75 ms-2"
+            name="create-account-description"
+            id="create-account-description"
+            rows="4"
+            formControlName="description"
+          ></textarea>
         </div>
-        <div class="d-flex w-75 justify-content-between ms-2">
-          <div class="box">
-            <div class="d-flex justify-content-between mt-2 ms-2 me-2">
-              <app-input
-                class="d-flex flex-row-reverse"
-                type="radio"
-                inputId="radio"
-                [checked]="true"
-                >Select as a primary address</app-input
-              >
-              <div class="">
-                <img
-                  class="me-3"
-                  src="../../../../../assets/images/address-feature/addresspenicon.png"
-                  width="22"
-                  height="22"
-                />
-                <img
-                  class="me-3"
-                  src="../../../../../assets/images/address-feature/addresstrashicon.png"
-                  width="22"
-                  height="22"
-                />
-              </div>
-            </div>
-            <div class="content d-flex justify-content-center">
-              City, District, Neighborhood, Street Name,<br />
-              House/Flat Number<br />
-              Address Description
-            </div>
+
+        <div class="d-flex h-50">
+          <div
+            class="create-billing-account-textarea-label d-flex flex-column align-items-end"
+          >
+            <span>Address Info</span>
+            <app-button
+              type="submit"
+              buttonClasses="create-billing-account-button mt-3 py-1"
+              >Add New Address
+            </app-button>
           </div>
-          <div class="box">
-            <div class="d-flex justify-content-between mt-2 ms-2 me-2">
-              <app-input
-                class="d-flex flex-row-reverse"
-                type="radio"
-                inputId="radio"
-                >Select as a primary address</app-input
-              >
-              <div class="">
-                <img
-                  class="me-3"
-                  src="../../../../../assets/images/address-feature/addresspenicon.png"
-                  width="22"
-                  height="22"
-                />
-                <img
-                  class="me-3"
-                  src="../../../../../assets/images/address-feature/billingtrashenableicon.png"
-                  width="22"
-                  height="22"
-                />
+          <div class="d-flex w-75 justify-content-between ms-2">
+            <div class="box">
+              <div class="d-flex justify-content-between mt-2 ms-2 me-2">
+                <app-input
+                  class="d-flex flex-row-reverse"
+                  type="radio"
+                  inputId="radio"
+                  [checked]="true"
+                  [control]="form.get('addressId')"
+                  >Select as a primary address</app-input
+                >
+                <div class="">
+                  <img
+                    class="me-3"
+                    src="../../../../../assets/images/address-feature/addresspenicon.png"
+                    width="22"
+                    height="22"
+                  />
+                  <img
+                    class="me-3"
+                    src="../../../../../assets/images/address-feature/addresstrashicon.png"
+                    width="22"
+                    height="22"
+                  />
+                </div>
               </div>
-            </div>
-            <div class="content d-flex justify-content-center">
-              City, District, Neighborhood, Street Name,<br />
-              House/Flat Number<br />
-              Address Description
+              <div class="content d-flex justify-content-center">
+                City, District, Neighborhood, Street Name,<br />
+                House/Flat Number<br />
+                Address Description
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="create-customer-button-section">
-    <app-button type="submit" buttonClasses="general-button"
-      >Cancel
-    </app-button>
-    <app-button type="submit" buttonClasses="general-button"
-      >Create
-    </app-button>
-  </div>
+    <div class="create-customer-button-section">
+      <app-button type="submit" buttonClasses="general-button"
+        >Cancel
+      </app-button>
+      <app-button type="submit" buttonClasses="general-button"
+        >Create
+      </app-button>
+    </div>
+  </form>
 </div>

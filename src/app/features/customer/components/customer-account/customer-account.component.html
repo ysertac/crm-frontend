@@ -3,7 +3,7 @@
     Customer Accounts
   </h2>
   <app-button
-    type="submit"
+    [routerLink]="['/home/create-billing-account']"
     buttonClasses="customer-account-button fw-normal me-4 px-4"
     class="d-flex justify-content-center w-25"
     >Create New Account</app-button
@@ -26,7 +26,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
+      <tr *ngFor="let account of accounts">
         <td class="customer-account-table-data">
           <a
             class="customer-account-icon"
@@ -36,15 +36,20 @@
             aria-controls="collapseExample1"
             (click)="toggleCollapse()"
           >
-          <img [src]="isCollapsed ? '../../../../../assets/images/customer-account/down-arrow.png' : '../../../../../assets/images/customer-account/up-arrow.png'"
-          alt=""
-        />
+            <img
+              [src]="
+                isCollapsed
+                  ? '../../../../../assets/images/customer-account/down-arrow.png'
+                  : '../../../../../assets/images/customer-account/up-arrow.png'
+              "
+              alt=""
+            />
           </a>
         </td>
-        <td class="customer-account-table-data">1</td>
-        <td class="customer-account-table-data">John Doe</td>
-        <td class="customer-account-table-data">Abs</td>
-        <td class="customer-account-table-data">dfg</td>
+        <td class="customer-account-table-data">{{ account.status }}</td>
+        <td class="customer-account-table-data">{{ account.accountNumber }}</td>
+        <td class="customer-account-table-data">{{ account.name }}</td>
+        <td class="customer-account-table-data">{{ account.type }}</td>
         <td class="customer-account-table-data">
           <a class="me-2">
             <img
