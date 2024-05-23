@@ -60,7 +60,7 @@ fieldset {
   height: 86.5%;
   width: 84vw;
 
-  .customer-create-header {
+  .customer-update-header {
     font-family: "inter", sans-serif;
     color: #f38022;
     height: 10%;
@@ -84,8 +84,18 @@ fieldset {
     }
   }
 
+  .not-turkish-citizen {
+    height: 5%;
+    width: 67.75%;
+    font-family: "Inter", sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    text-align: left;
+    color: #838383;
+  }
+
   .create-customer-button-section {
-    height: 25%;
+    height: 20%;
     width: 90%;
     display: flex;
     justify-content: space-between;

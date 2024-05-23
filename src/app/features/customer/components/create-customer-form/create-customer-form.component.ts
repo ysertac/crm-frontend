@@ -147,7 +147,7 @@ export class CreateCustomerFormComponent implements OnInit {
 
   checkFirstName() {
     this.fName = this.form.value.firstName.replace(
-      /[^a-zA-ZğüşöçİĞÜŞÖÇ\s]*/g,
+      /[^a-zA-ZğüşöçİĞÜŞÖÇ\sı]*/g,
       ''
     );
     this.form.patchValue({
@@ -157,7 +157,7 @@ export class CreateCustomerFormComponent implements OnInit {
 
   checkMiddleName() {
     this.mName = this.form.value.middleName.replace(
-      /[^a-zA-ZğüşöçİĞÜŞÖÇ\s]*/g,
+      /[^a-zA-ZğüşöçİĞÜŞÖÇ\sı]*/g,
       ''
     );
     this.form.patchValue({
@@ -167,7 +167,7 @@ export class CreateCustomerFormComponent implements OnInit {
 
   checkLastName() {
     this.lName = this.form.value.lastName.replace(
-      /[^a-zA-ZğüşöçİĞÜŞÖÇ\s]*/g,
+      /[^a-zA-ZğüşöçİĞÜŞÖÇ\sı]*/g,
       ''
     );
     this.form.patchValue({

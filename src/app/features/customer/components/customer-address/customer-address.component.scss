@@ -1,47 +1,50 @@
-.p-address{
+.p-address {
+  font-family: "inter", sans-serif;
+  color: #f38022;
+  width: 90%;
+}
+
+.box {
+  background-color: #ffcda4;
+  border: 0.05rem solid;
+  height: 45vh;
+  width: 40%;
+  overflow-y: auto;
+}
+
+.p-primary {
+  height: 5%;
+  p {
     font-family: "inter", sans-serif;
-    color: #F38022;
-    font-size: 1.3rem;
-    font-weight: 900;
+    color: #b1b1b1;
+    font-size: 0.75rem;
+  }
+}
+.address-icons {
+  height: 5%;
 }
 
-.box{
-    background-color: #FFCDA4;
-    border: 0.05rem solid;
-    margin: 1.5rem;
-    height: 50vh;
-    overflow-y: auto;
+.box-content {
+  padding-top: 14vh;
 }
 
-.p-primary{
-    height: 5%;
-    p{
-        font-family: "inter", sans-serif;
-        color: #B1B1B1;
-        font-size: 0.75rem;
-    } 
-}
-.address-icons{
-    height: 5%;
-}
-
-.box-content{
-    padding-top: 14vh;
+.b-add-address {
+  background-color: #f38022;
+  color: #ffffff;
+  font-family: "inter", sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  width: 17.8vw;
+  height: 10vh;
+  //width: 21.4rem;
+  //height: 4.6rem;
 }
 
-.b-add-address{
-    background-color: #F38022;
-    color: #FFFFFF;
-    font-family: "inter", sans-serif;
-    font-weight: 400;
-    font-size: 1rem;
-    width: 17.8vw;
-    height: 10vh ;
-    //width: 21.4rem;
-    //height: 4.6rem;
+.row-height {
+  height: 60vh;
+  overflow-y: auto;
 }
 
-.row-height{
-    height: 60vh;
-    overflow-y: auto;
+.row-height {
+  width: 90%;
 }
